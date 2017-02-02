@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sovadb001Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="sovadb001ModelStoreContainer">
+    <EntitySet Name="documents" EntityType="sovadb001Model.Store.documents" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="documentSpecialization" EntityType="sovadb001Model.Store.documentSpecialization" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="orders" EntityType="sovadb001Model.Store.orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="prices" EntityType="sovadb001Model.Store.prices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="queue" EntityType="sovadb001Model.Store.queue" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="specializations" EntityType="sovadb001Model.Store.specializations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="translators" EntityType="sovadb001Model.Store.translators" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="user" EntityType="sovadb001Model.Store.user" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WordsSpecialization" EntityType="sovadb001Model.Store.WordsSpecialization" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_documents_ToOrder" Association="sovadb001Model.Store.FK_documents_ToOrder">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="documents" EntitySet="documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_documentSpecialization_ToOrders" Association="sovadb001Model.Store.FK_documentSpecialization_ToOrders">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="documentSpecialization" EntitySet="documentSpecialization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_documentSpecialization_ToSpecializations" Association="sovadb001Model.Store.FK_documentSpecialization_ToSpecializations">
+      <End Role="specializations" EntitySet="specializations" />
+      <End Role="documentSpecialization" EntitySet="documentSpecialization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_ToUser" Association="sovadb001Model.Store.FK_orders_ToUser">
+      <End Role="user" EntitySet="user" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prices_ToSpecialization" Association="sovadb001Model.Store.FK_prices_ToSpecialization">
+      <End Role="specializations" EntitySet="specializations" />
+      <End Role="prices" EntitySet="prices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prices_ToTranslators" Association="sovadb001Model.Store.FK_prices_ToTranslators">
+      <End Role="translators" EntitySet="translators" />
+      <End Role="prices" EntitySet="prices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_queue_ToOrder" Association="sovadb001Model.Store.FK_queue_ToOrder">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="queue" EntitySet="queue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_queue_ToTranslator" Association="sovadb001Model.Store.FK_queue_ToTranslator">
+      <End Role="translators" EntitySet="translators" />
+      <End Role="queue" EntitySet="queue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_translators_ToUsers" Association="sovadb001Model.Store.FK_translators_ToUsers">
+      <End Role="user" EntitySet="user" />
+      <End Role="translators" EntitySet="translators" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WordsSpecialization_ToSpacialization" Association="sovadb001Model.Store.FK_WordsSpecialization_ToSpacialization">
+      <End Role="specializations" EntitySet="specializations" />
+      <End Role="WordsSpecialization" EntitySet="WordsSpecialization" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="documents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="pathToDoc" Type="nchar" MaxLength="80" />
+    <Property Name="conuntOfSymbols" Type="int" />
+    <Property Name="idOrder" Type="int" />
+    <Property Name="pathToDocView" Type="nchar" MaxLength="80" />
+    <Property Name="isTranslate" Type="bit" />
+  </EntityType>
+  <EntityType Name="documentSpecialization">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdOrder" Type="int" />
+    <Property Name="IdSpecialization" Type="int" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="IdOrder" />
+    </Key>
+    <Property Name="IdOrder" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="isDone" Type="bit" Nullable="false" />
+    <Property Name="deadline" Type="date" />
+    <Property Name="dateOfCompletion" Type="date" Nullable="false" />
+    <Property Name="description" Type="ntext" />
+    <Property Name="name" Type="nchar" MaxLength="10" />
+    <Property Name="idUser" Type="int" />
+    <Property Name="inProgress" Type="bit" />
+    <Property Name="totalCost" Type="float" />
+  </EntityType>
+  <EntityType Name="prices">
+    <Key>
+      <PropertyRef Name="IdPrice" />
+    </Key>
+    <Property Name="IdPrice" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdSpecialization" Type="int" Nullable="false" />
+    <Property Name="IdTranslator" Type="int" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="queue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdOrder" Type="int" Nullable="false" />
+    <Property Name="IdTranslator" Type="int" Nullable="false" />
+    <Property Name="cost" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="specializations">
+    <Key>
+      <PropertyRef Name="IdSpecialization" />
+    </Key>
+    <Property Name="IdSpecialization" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nchar" MaxLength="10" />
+    <Property Name="complexity" Type="int" />
+    <Property Name="isLanguage" Type="bit" />
+  </EntityType>
+  <EntityType Name="translators">
+    <Key>
+      <PropertyRef Name="IdTranslator" />
+    </Key>
+    <Property Name="IdTranslator" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="reputation" Type="int" />
+    <Property Name="countOfComplitedOrders" Type="int" />
+    <Property Name="IdUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="email" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="roleid" Type="int" Nullable="false" />
+    <Property Name="password" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="cookies" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="phoneNumber" Type="nchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="WordsSpecialization">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdSpecialization" Type="int" Nullable="false" />
+    <Property Name="word" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="isWordSpecialization" Type="bit" Nullable="false" />
+    <Property Name="numberOfVisits" Type="int" Nullable="false" />
+    <Property Name="languageId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_documents_ToOrder">
+    <End Role="orders" Type="sovadb001Model.Store.orders" Multiplicity="0..1" />
+    <End Role="documents" Type="sovadb001Model.Store.documents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="IdOrder" />
+      </Principal>
+      <Dependent Role="documents">
+        <PropertyRef Name="idOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_documentSpecialization_ToOrders">
+    <End Role="orders" Type="sovadb001Model.Store.orders" Multiplicity="0..1" />
+    <End Role="documentSpecialization" Type="sovadb001Model.Store.documentSpecialization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="IdOrder" />
+      </Principal>
+      <Dependent Role="documentSpecialization">
+        <PropertyRef Name="IdOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_documentSpecialization_ToSpecializations">
+    <End Role="specializations" Type="sovadb001Model.Store.specializations" Multiplicity="0..1" />
+    <End Role="documentSpecialization" Type="sovadb001Model.Store.documentSpecialization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="specializations">
+        <PropertyRef Name="IdSpecialization" />
+      </Principal>
+      <Dependent Role="documentSpecialization">
+        <PropertyRef Name="IdSpecialization" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_ToUser">
+    <End Role="user" Type="sovadb001Model.Store.user" Multiplicity="0..1" />
+    <End Role="orders" Type="sovadb001Model.Store.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prices_ToSpecialization">
+    <End Role="specializations" Type="sovadb001Model.Store.specializations" Multiplicity="1" />
+    <End Role="prices" Type="sovadb001Model.Store.prices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="specializations">
+        <PropertyRef Name="IdSpecialization" />
+      </Principal>
+      <Dependent Role="prices">
+        <PropertyRef Name="IdSpecialization" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prices_ToTranslators">
+    <End Role="translators" Type="sovadb001Model.Store.translators" Multiplicity="1" />
+    <End Role="prices" Type="sovadb001Model.Store.prices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="translators">
+        <PropertyRef Name="IdTranslator" />
+      </Principal>
+      <Dependent Role="prices">
+        <PropertyRef Name="IdTranslator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_queue_ToOrder">
+    <End Role="orders" Type="sovadb001Model.Store.orders" Multiplicity="1" />
+    <End Role="queue" Type="sovadb001Model.Store.queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="IdOrder" />
+      </Principal>
+      <Dependent Role="queue">
+        <PropertyRef Name="IdOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_queue_ToTranslator">
+    <End Role="translators" Type="sovadb001Model.Store.translators" Multiplicity="1" />
+    <End Role="queue" Type="sovadb001Model.Store.queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="translators">
+        <PropertyRef Name="IdTranslator" />
+      </Principal>
+      <Dependent Role="queue">
+        <PropertyRef Name="IdTranslator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_translators_ToUsers">
+    <End Role="user" Type="sovadb001Model.Store.user" Multiplicity="1" />
+    <End Role="translators" Type="sovadb001Model.Store.translators" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="translators">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WordsSpecialization_ToSpacialization">
+    <End Role="specializations" Type="sovadb001Model.Store.specializations" Multiplicity="1" />
+    <End Role="WordsSpecialization" Type="sovadb001Model.Store.WordsSpecialization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="specializations">
+        <PropertyRef Name="IdSpecialization" />
+      </Principal>
+      <Dependent Role="WordsSpecialization">
+        <PropertyRef Name="IdSpecialization" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

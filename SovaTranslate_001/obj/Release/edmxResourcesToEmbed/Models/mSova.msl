@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="sovadb001ModelStoreContainer" CdmEntityContainer="sovadb001Entities0">
+    <EntitySetMapping Name="documents">
+      <EntityTypeMapping TypeName="sovadb001Model.document">
+        <MappingFragment StoreEntitySet="documents">
+          <ScalarProperty Name="isTranslate" ColumnName="isTranslate" />
+          <ScalarProperty Name="pathToDocView" ColumnName="pathToDocView" />
+          <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+          <ScalarProperty Name="conuntOfSymbols" ColumnName="conuntOfSymbols" />
+          <ScalarProperty Name="pathToDoc" ColumnName="pathToDoc" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="documentSpecializations">
+      <EntityTypeMapping TypeName="sovadb001Model.documentSpecialization">
+        <MappingFragment StoreEntitySet="documentSpecialization">
+          <ScalarProperty Name="IdSpecialization" ColumnName="IdSpecialization" />
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="sovadb001Model.order">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="totalCost" ColumnName="totalCost" />
+          <ScalarProperty Name="inProgress" ColumnName="inProgress" />
+          <ScalarProperty Name="isDone" ColumnName="isDone" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="dateOfCompletion" ColumnName="dateOfCompletion" />
+          <ScalarProperty Name="deadline" ColumnName="deadline" />
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prices">
+      <EntityTypeMapping TypeName="sovadb001Model.price">
+        <MappingFragment StoreEntitySet="prices">
+          <ScalarProperty Name="price1" ColumnName="price" />
+          <ScalarProperty Name="IdTranslator" ColumnName="IdTranslator" />
+          <ScalarProperty Name="IdSpecialization" ColumnName="IdSpecialization" />
+          <ScalarProperty Name="IdPrice" ColumnName="IdPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="queues">
+      <EntityTypeMapping TypeName="sovadb001Model.queue">
+        <MappingFragment StoreEntitySet="queue">
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="IdTranslator" ColumnName="IdTranslator" />
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="specializations">
+      <EntityTypeMapping TypeName="sovadb001Model.specialization">
+        <MappingFragment StoreEntitySet="specializations">
+          <ScalarProperty Name="isLanguage" ColumnName="isLanguage" />
+          <ScalarProperty Name="complexity" ColumnName="complexity" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="IdSpecialization" ColumnName="IdSpecialization" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="translators">
+      <EntityTypeMapping TypeName="sovadb001Model.translator">
+        <MappingFragment StoreEntitySet="translators">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="countOfComplitedOrders" ColumnName="countOfComplitedOrders" />
+          <ScalarProperty Name="reputation" ColumnName="reputation" />
+          <ScalarProperty Name="IdTranslator" ColumnName="IdTranslator" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="sovadb001Model.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="cookies" ColumnName="cookies" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WordsSpecializations">
+      <EntityTypeMapping TypeName="sovadb001Model.WordsSpecialization">
+        <MappingFragment StoreEntitySet="WordsSpecialization">
+          <ScalarProperty Name="languageId" ColumnName="languageId" />
+          <ScalarProperty Name="numberOfVisits" ColumnName="numberOfVisits" />
+          <ScalarProperty Name="isWordSpecialization" ColumnName="isWordSpecialization" />
+          <ScalarProperty Name="word" ColumnName="word" />
+          <ScalarProperty Name="IdSpecialization" ColumnName="IdSpecialization" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

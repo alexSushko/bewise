@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Кабинет";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Личный кабинет</h2>
+<div class="center">
+@Html.ActionLink("Заказы", "Orders", "User",null,new{@class="button"})<br />
+@Html.ActionLink("Добавить заказ", "Register", "Application",null,new{@class="button"})<br />
+@Html.ActionLink("Профиль","Profile","Account",null,new{@class="button"})
+    </div>

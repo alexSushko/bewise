@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="704999784177442a8c1908ebeee3f544" Name="Диаграмма1" ZoomLevel="80">
+        <EntityTypeShape EntityType="sovadb001Model.document" Width="1.5" PointX="2.75" PointY="17.75" />
+        <EntityTypeShape EntityType="sovadb001Model.documentSpecialization" Width="1.5" PointX="8.375" PointY="17.875" />
+        <EntityTypeShape EntityType="sovadb001Model.order" Width="1.5" PointX="5.375" PointY="17.5" />
+        <EntityTypeShape EntityType="sovadb001Model.price" Width="1.5" PointX="12.875" PointY="16.5" />
+        <EntityTypeShape EntityType="sovadb001Model.queue" Width="1.5" PointX="3.75" PointY="20.75" />
+        <EntityTypeShape EntityType="sovadb001Model.specialization" Width="1.5" PointX="10.5" PointY="17.625" />
+        <EntityTypeShape EntityType="sovadb001Model.translator" Width="1.5" PointX="15.875" PointY="16.625" />
+        <EntityTypeShape EntityType="sovadb001Model.user" Width="1.5" PointX="13.625" PointY="19.375" />
+        <AssociationConnector Association="sovadb001Model.FK_documents_ToOrder" />
+        <AssociationConnector Association="sovadb001Model.FK_documentSpecialization_ToOrders" />
+        <AssociationConnector Association="sovadb001Model.FK_documentSpecialization_ToSpecializations" />
+        <AssociationConnector Association="sovadb001Model.FK_queue_ToOrder" />
+        <AssociationConnector Association="sovadb001Model.FK_prices_ToSpecialization" />
+        <AssociationConnector Association="sovadb001Model.FK_prices_ToTranslators" />
+        <AssociationConnector Association="sovadb001Model.FK_queue_ToTranslator" />
+        <AssociationConnector Association="sovadb001Model.FK_translators_ToUsers" />
+        <AssociationConnector Association="sovadb001Model.FK_orders_ToUser" />
+        <EntityTypeShape EntityType="sovadb001Model.WordsSpecialization" Width="1.5" PointX="8.25" PointY="14.375" />
+        <AssociationConnector Association="sovadb001Model.FK_WordsSpecialization_ToSpacialization" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

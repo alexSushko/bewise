@@ -1,0 +1,57 @@
+﻿@model List<SovaTranslate_001.Models.user>
+@{
+    ViewBag.Title = "UsersList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UsersList</h2>
+<table>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Email</th>
+        <th>name</th>
+        <th>Role</th>
+        <th>ChangeRole</th>
+        <th></th>
+
+    </tr>
+    @foreach (var us in Model) { 
+     
+        <tr>
+       <td><a href="~/Account/ProfileUser/?id=@us.Id">Profile  </a></td>
+          <td><a href="~/Admin/AddTranslator/?id=@us.Id">Сделать переводчиком</a></td>
+        <td>
+            @us.email
+        </td>
+        <td>
+            @us.name
+        </td>
+        <td>
+            @switch (us.roleid) {
+                case 0:{@Html.Label("User");break;}
+            case 1:{@Html.Label("Manager");break;}
+            case 2:
+                {@Html.Label("Operator"); break;
+                }
+            case 3:
+                {@Html.Label("Admin"); break;
+                }
+            }
+        </td>
+        <td>
+            <form action="/Admin/ChangeRole" method="post">
+            <br />
+                 <input type="radio" name="roleid" value="0"> User<Br>
+                   <input type="radio" name="roleid" value="1"> Manager<Br>
+                   <input type="radio" name="roleid" value="2"> Operator<Br>
+                             <input type="radio" name="roleid" value="3"> Admin<Br>
+            @Html.Hidden("idUser", us.Id)
+            <input type="submit" /><br />
+            </form>
+        </td>
+    </tr>
+    }
+
+
+</table>

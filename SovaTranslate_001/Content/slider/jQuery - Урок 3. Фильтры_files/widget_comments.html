@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0324)http://vk.com/widget_comments.php?app=2752181&width=728px&_ver=1&limit=10&height=0&mini=auto&norealtime=0&page=0&status_publish=1&attach=&url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B&description=&image=&referrer=&1566883cb40 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script type="text/javascript" async="" src="./code.js"></script><script type="text/javascript" src="./loader_nav19420_0.js"></script>
+
+<link rel="shortcut icon" href="http://vk.com/images/faviconnew.ico?3">
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="robots" content="noindex, nofollow">
+
+<title>ВКонтакте | Comments Widget</title>
+
+<noscript>&lt;meta http-equiv="refresh" content="0; URL=/badbrowser.php"&gt;</noscript>
+
+<link rel="stylesheet" type="text/css" href="./lite.css">
+<!--[if lte IE 6]><style type="text/css" media="screen">/* <![CDATA[ */ @import url(/css/al/ie6.css?26); /* ]]> */</style><![endif]-->
+<!--[if IE 7]><style type="text/css" media="screen">/* <![CDATA[ */ @import url(/css/al/ie7.css?18); /* ]]> */</style><![endif]-->
+
+<script type="text/javascript">
+var vk = {
+  ads_rotate_interval: 120000,
+  al: parseInt('3') || 4,
+  intnat: '1' ? true : false,
+  lang: 0,
+  rtl: parseInt('') || 0,
+  version: 19420,
+  loginscheme: 'https',
+  ip_h: '5afe585f73054a0f60',
+  id: parseInt('140756562'),
+  nodomain: ''
+}
+var StaticFiles = {
+  'lite.js'   : {v: 91},
+  'lite.css'  : {v: 37},
+  'ie6.css'   : {v: 26},
+  'ie7.css'   : {v: 18}
+  ,'lang0_0.js':{v:6737},'api/xdm.js':{v:9},'api/widgets/al_comments.js':{v:130},'widget_comments.css':{v:89}
+}
+</script>
+<script type="text/javascript" src="./lite.js"></script>
+<script type="text/javascript" src="./lang0_0.js"></script><link type="text/css" rel="stylesheet" href="./widget_comments.css"><script type="text/javascript" src="./xdm.js"></script><script type="text/javascript" src="./al_comments.js"></script><!--<base target="_blank">--><base href="." target="_blank">
+
+</head>
+
+<body class="is_rtl VK1  widget_body font_medium">
+  <div id="system_msg" class="fixed"></div>
+  <div id="utils"><div id="lite_css"></div><div id="widget_comments_css"></div><div id="queue_transport_wrap"><iframe id="queue_transport_frame" name="queue_transport_frame" src="./q_frame.html"></iframe></div></div>
+  <div id="box_layer_bg" class="fixed"></div><div id="box_layer_wrap" class="scroll_fix_wrap fixed"><div id="box_layer"><div id="box_loader"><div class="loader"></div><div class="back"></div></div></div></div>
+
+  <div id="stl_left"></div><div id="stl_side"></div>
+
+  <a id="widget_focus_link" href="javascript: return;"></a>
+  <script type="text/javascript">domStarted();</script>
+
+  <div class="scroll_fix_wrap" id="page_wrap"><div class="wcomments_page" id="wcomments_page">
+  <div class="wcomments_head clear_fix">
+    <div class="wcomments_head_icon fl_r">
+      <a href="http://vk.com/dev/Comments"><div class="wcomments_logo"></div></a>
+    </div>
+    <div id="wcomments_count" class="fl_l">9 комментариев</div>
+  </div>
+  <div id="wcomments_form"><div id="submit_post_box_wrap">
+  <div id="submit_post_box" class="clear_fix" onclick="return cancelEvent(event)">
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tbody><tr><td class="wcomments_userpic_wrap"><div class="wcomments_userpic"><img src="./e_dad3edae.jpg" class="wcomments_userpic"></div></td><td class="wcommens_input_wrap">
+        <div class="wcomments_input">
+          <div class="clear_fix">
+            <div class="input_back_wrap no_select"><div class="input_back" style="margin: 1px; padding: 3px 0px;"><div class="input_back_content" style="width: 620px;">Ваш комментарий...</div></div></div><textarea id="post_field" class="fl_l" onkeyup="wall.checkPostLen(this.value)" onkeypress="onCtrlEnter(event, wall.sendPost)" onfocus="wall.showEditPost();"></textarea>
+          </div>
+        </div>
+       </td></tr>
+     </tbody></table>
+    <div id="post_warn"></div>
+    <div id="submit_post" class="clear_fix " onclick="event.cancelBubble=true;">
+      <div id="media_preview" class="clear_fix media_preview"></div>
+      
+      <div class="button_blue fl_l"><button id="send_post">Отправить</button></div>
+      <div class="checkbox_pic fl_l on" id="wcomments_export" onclick="checkbox(this);" onmouseover="showTooltip(this, {text: &quot;отобразить на Вашей странице&quot;, black: 1, shift: [13,4,0]});"><div></div></div>
+      <div class="progress fl_r" id="page_post_progress"></div>
+    </div>
+  </div>
+</div></div>
+  <div id="wcomments_admin_nav"><div class="wcomments_tabs clear_fix" id="wcomments_admin_tabs">
+  <div class="wcomments_admins_wrap fl_r">
+    <a target="_blank" href="http://vk.com/editapp?id=2752181&amp;section=admins">Назначить администраторов</a>
+  </div>
+  <div class="wcomments_tab_selected" id="wcomments_tab_admin_browse" onclick="WComments.switchSection(&#39;admin_browse&#39;);" onmouseover="addClass(this, &#39;wcomments_tab_over&#39;);" onmouseout="removeClass(this, &#39;wcomments_tab_over&#39;);">
+    <div class="wcomments_tab1">
+      <div class="wcomments_tab2"><nobr>Обзор</nobr></div>
+    </div>
+  </div>
+  <div class="wcomments_tab" id="wcomments_tab_admin_updates" onclick="WComments.switchSection(&#39;admin_updates&#39;);" onmouseover="addClass(this, &#39;wcomments_tab_over&#39;);" onmouseout="removeClass(this, &#39;wcomments_tab_over&#39;);">
+    <div class="wcomments_tab1">
+      <div class="wcomments_tab2"><nobr>Комментарии</nobr></div>
+    </div>
+  </div>
+  <div class="wcomments_tab" id="wcomments_tab_admin_bl" onclick="WComments.switchSection(&#39;admin_bl&#39;);" onmouseover="addClass(this, &#39;wcomments_tab_over&#39;);" onmouseout="removeClass(this, &#39;wcomments_tab_over&#39;);">
+    <div class="wcomments_tab1">
+      <div class="wcomments_tab2"><nobr>Чёрный список</nobr></div>
+    </div>
+  </div>
+</div></div>
+  <div id="wcomments_posts_wrap">
+    <div id="wcomments_posts" class="wcomments_posts wall_module  no_post_click wide_wall_module"><div id="post221712311_689" class="post wcomments_post" onmouseover="wall.postOver(&#39;221712311_689&#39;);" onmouseout="wall.postOut(&#39;221712311_689&#39;);" onclick="wall.postClick(&#39;221712311_689&#39;, event);">
+  <div class="post_table">
+    <div class="post_image">
+      <a target="_blank" class="post_image" href="http://vk.com/katavagner"><img src="./-JLQXy4w0qQ.jpg" data-post-id="221712311_689" width="50" height="50"></a>
+      
+    </div>
+    <div class="post_info">
+      <div class="fl_r post_actions_wrap"><div class="post_actions"><div id="post_delete221712311_689" class="post_delete_button fl_r" onclick="wall.markAsSpam(&#39;221712311_689&#39;, &#39;06308f893c7a1ba254&#39;);" onmouseover="wall.activeDeletePost(&#39;221712311_689&#39;, &#39;Пожаловаться&#39;, &#39;post_delete&#39;)" onmouseout="wall.deactiveDeletePost(&#39;221712311_689&#39;, &#39;post_delete&#39;)"></div></div></div>
+      <div class="wall_text"><div class="wall_text_name"><a target="_blank" class="author" href="http://vk.com/katavagner" data-from-id="221712311" data-post-id="221712311_689">Моисей Сутулин</a></div> <div id="wpt221712311_689"><div class="wall_post_text">Бесплатный курс по jQuery с практикой: <a target="_blank" href="http://vk.com/away.php?to=http%3A%2F%2Fcodebra.ru%2Fru%2Flesson-js-client%2Fjquery%2F1%2F1&amp;post=221712311_689">codebra.ru/ru/lesson-js-client/jquery/1/1</a></div></div></div>
+      <div class="post_like_wrap fl_r" onmouseover="wall.postLikeOver(&#39;221712311_689&#39;)" onmouseout="wall.postLikeOut(&#39;221712311_689&#39;)" onclick="wall.like(&#39;221712311_689&#39;, &#39;e945621385e5daa2c9&#39;); event.cancelBubble = true;">
+  <div class="post_like">
+    <span class="post_like_link fl_l" id="like_link221712311_689">Мне нравится</span>
+    <i class="post_like_icon sp_main no_likes fl_l" id="like_icon221712311_689"></i>
+    <span class="post_like_count fl_l" id="like_count221712311_689"></span>
+  </div>
+</div>
+      <div class="replies"><div class="reply_link_wrap sm" id="wpe_bottom221712311_689">
+  <small><span class="rel_date">8 ноя 2015</span></small><span id="reply_link221712311_689" class="reply_link"><span class="divide">|</span><a target="_blank" class="reply_link" onclick="return Wall.showEditReply(&#39;221712311_689&#39;, event)">Комментировать</a></span>
+</div>
+<div class="replies_wrap clear" id="replies_wrap221712311_689" style="display: none">
+  <div id="replies221712311_689"><input type="hidden" id="start_reply221712311_689" value=""></div>
+  <div class="reply_fakebox_wrap" id="reply_fakebox221712311_689" onclick="return Wall.showEditReply(&#39;221712311_689&#39;, event)"><div class="reply_fakebox">Комментировать..</div></div><input type="hidden" id="post_hash221712311_689" value="b043f114da7e8c5eb0">
+</div></div>
+    </div>
+  </div>
+  
+</div><div id="post294629152_20" class="post wcomments_post" onmouseover="wall.postOver(&#39;294629152_20&#39;);" onmouseout="wall.postOut(&#39;294629152_20&#39;);" onclick="wall.postClick(&#39;294629152_20&#39;, event);">
+  <div class="post_table">
+    <div class="post_image">
+      <a target="_blank" class="post_image" href="http://vk.com/id294629152"><img src="./NiACfOV3y60.jpg" data-post-id="294629152_20" width="50" height="50"></a>
+      
+    </div>
+    <div class="post_info">
+      <div class="fl_r post_actions_wrap"><div class="post_actions"><div id="post_delete294629152_20" class="post_delete_button fl_r" onclick="wall.markAsSpam(&#39;294629152_20&#39;, &#39;cca4f3f1f4dc3a7f90&#39;);" onmouseover="wall.activeDeletePost(&#39;294629152_20&#39;, &#39;Пожаловаться&#39;, &#39;post_delete&#39;)" onmouseout="wall.deactiveDeletePost(&#39;294629152_20&#39;, &#39;post_delete&#39;)"></div></div></div>
+      <div class="wall_text"><div class="wall_text_name"><a target="_blank" class="author" href="http://vk.com/id294629152" data-from-id="294629152" data-post-id="294629152_20">Эля Халимова</a></div> <div id="wpt294629152_20"><div class="wall_post_text">Мне очень нравится ваше меню. Направьте, пожалуйста, как можно сделать такие симпатичные клавиши. Обещаю, что не буду делать точную копию:)</div></div></div>
+      <div class="post_like_wrap fl_r" onmouseover="wall.postLikeOver(&#39;294629152_20&#39;)" onmouseout="wall.postLikeOut(&#39;294629152_20&#39;)" onclick="wall.like(&#39;294629152_20&#39;, &#39;0c4ae179e60d87a3fa&#39;); event.cancelBubble = true;">
+  <div class="post_like">
+    <span class="post_like_link fl_l" id="like_link294629152_20">Мне нравится</span>
+    <i class="post_like_icon sp_main no_likes fl_l" id="like_icon294629152_20"></i>
+    <span class="post_like_count fl_l" id="like_count294629152_20"></span>
+  </div>
+</div>
+      <div class="replies"><div class="reply_link_wrap sm" id="wpe_bottom294629152_20">
+  <small><span class="rel_date">30 окт 2015</span></small><span id="reply_link294629152_20" class="reply_link"><span class="divide">|</span><a target="_blank" class="reply_link" onclick="return Wall.showEditReply(&#39;294629152_20&#39;, event)">Комментировать</a></span>
+</div>
+<div class="replies_wrap clear" id="replies_wrap294629152_20" style="display: none">
+  <div id="replies294629152_20"><input type="hidden" id="start_reply294629152_20" value=""></div>
+  <div class="reply_fakebox_wrap" id="reply_fakebox294629152_20" onclick="return Wall.showEditReply(&#39;294629152_20&#39;, event)"><div class="reply_fakebox">Комментировать..</div></div><input type="hidden" id="post_hash294629152_20" value="320fd84f6c8afec3ca">
+</div></div>
+    </div>
+  </div>
+  
+</div><div id="post17384921_1329" class="post wcomments_post" onmouseover="wall.postOver(&#39;17384921_1329&#39;);" onmouseout="wall.postOut(&#39;17384921_1329&#39;);" onclick="wall.postClick(&#39;17384921_1329&#39;, event);">
+  <div class="post_table">
+    <div class="post_image">
+      <a target="_blank" class="post_image" href="http://vk.com/grinev95"><img src="./C9A-XWo2LcU.jpg" data-post-id="17384921_1329" width="50" height="50"></a>
+      
+    </div>
+    <div class="post_info">
+      <div class="fl_r post_actions_wrap"><div class="post_actions"><div id="post_delete17384921_1329" class="post_delete_button fl_r" onclick="wall.markAsSpam(&#39;17384921_1329&#39;, &#39;c55586ec05fa15b12b&#39;);" onmouseover="wall.activeDeletePost(&#39;17384921_1329&#39;, &#39;Пожаловаться&#39;, &#39;post_delete&#39;)" onmouseout="wall.deactiveDeletePost(&#39;17384921_1329&#39;, &#39;post_delete&#39;)"></div></div></div>
+      <div class="wall_text"><div class="wall_text_name"><a target="_blank" class="author" href="http://vk.com/grinev95" data-from-id="17384921" data-post-id="17384921_1329">Александр Гринёв</a></div> <div id="wpt17384921_1329"><div class="wall_post_text">$("div button:only-child").css("border", "1px solid blue");<br><br>Здесь обводится как раз таки не сам div, а именно кнопка. Ну и помимо кнопки, в div'е ничего не должно быть.</div></div></div>
+      <div class="post_like_wrap fl_r" onmouseover="wall.postLikeOver(&#39;17384921_1329&#39;)" onmouseout="wall.postLikeOut(&#39;17384921_1329&#39;)" onclick="wall.like(&#39;17384921_1329&#39;, &#39;265e62de3e95866041&#39;); event.cancelBubble = true;">
+  <div class="post_like">
+    <span class="post_like_link fl_l" id="like_link17384921_1329">Мне нравится</span>
+    <i class="post_like_icon sp_main no_likes fl_l" id="like_icon17384921_1329"></i>
+    <span class="post_like_count fl_l" id="like_count17384921_1329"></span>
+  </div>
+</div>
+      <div class="replies"><div class="reply_link_wrap sm" id="wpe_bottom17384921_1329">
+  <small><span class="rel_date">11 мая 2014</span></small><span id="reply_link17384921_1329" class="reply_link"><span class="divide">|</span><a target="_blank" class="reply_link" onclick="return Wall.showEditReply(&#39;17384921_1329&#39;, event)">Комментировать</a></span>
+</div>
+<div class="replies_wrap clear" id="replies_wrap17384921_1329" style="display: none">
+  <div id="replies17384921_1329"><input type="hidden" id="start_reply17384921_1329" value=""></div>
+  <div class="reply_fakebox_wrap" id="reply_fakebox17384921_1329" onclick="return Wall.showEditReply(&#39;17384921_1329&#39;, event)"><div class="reply_fakebox">Комментировать..</div></div><input type="hidden" id="post_hash17384921_1329" value="a35c892fd932410e0f">
+</div></div>
+    </div>
+  </div>
+  
+</div><div id="post91634385_25" class="post wcomments_post" onmouseover="wall.postOver(&#39;91634385_25&#39;);" onmouseout="wall.postOut(&#39;91634385_25&#39;);" onclick="wall.postClick(&#39;91634385_25&#39;, event);">
+  <div class="post_table">
+    <div class="post_image">
+      <a target="_blank" class="post_image" href="http://vk.com/vladimir_cerevan"><img src="./b8slJ-9AnBI.jpg" data-post-id="91634385_25" width="50" height="50"></a>
+      
+    </div>
+    <div class="post_info">
+      <div class="fl_r post_actions_wrap"><div class="post_actions"><div id="post_delete91634385_25" class="post_delete_button fl_r" onclick="wall.markAsSpam(&#39;91634385_25&#39;, &#39;e9cd6f339ab79d3d3f&#39;);" onmouseover="wall.activeDeletePost(&#39;91634385_25&#39;, &#39;Пожаловаться&#39;, &#39;post_delete&#39;)" onmouseout="wall.deactiveDeletePost(&#39;91634385_25&#39;, &#39;post_delete&#39;)"></div></div></div>
+      <div class="wall_text"><div class="wall_text_name"><a target="_blank" class="author" href="http://vk.com/vladimir_cerevan" data-from-id="91634385" data-post-id="91634385_25">Vladimir Cerevan</a></div> <div id="wpt91634385_25"><div class="wall_post_text">$("input:checked").lenght; В данном уроке присутствует ошибка в слове lenght.</div></div></div>
+      <div class="post_like_wrap fl_r" onmouseover="wall.postLikeOver(&#39;91634385_25&#39;)" onmouseout="wall.postLikeOut(&#39;91634385_25&#39;)" onclick="wall.like(&#39;91634385_25&#39;, &#39;f9b4a7fb204242a224&#39;); event.cancelBubble = true;">
+  <div class="post_like">
+    <span class="post_like_link fl_l" id="like_link91634385_25">Мне нравится</span>
+    <i class="post_like_icon sp_main  fl_l" id="like_icon91634385_25"></i>
+    <span class="post_like_count fl_l" id="like_count91634385_25">1</span>
+  </div>
+</div>
+      <div class="replies"><div class="reply_link_wrap sm" id="wpe_bottom91634385_25">
+  <small><span class="rel_date">4 фев 2014</span></small><span id="reply_link91634385_25" class="reply_link"><span class="divide">|</span><a target="_blank" class="reply_link" onclick="return Wall.showEditReply(&#39;91634385_25&#39;, event)">Комментировать</a></span>
+</div>
+<div class="replies_wrap clear" id="replies_wrap91634385_25" style="display: none">
+  <div id="replies91634385_25"><input type="hidden" id="start_reply91634385_25" value=""></div>
+  <div class="reply_fakebox_wrap" id="reply_fakebox91634385_25" onclick="return Wall.showEditReply(&#39;91634385_25&#39;, event)"><div class="reply_fakebox">Комментировать..</div></div><input type="hidden" id="post_hash91634385_25" value="df3899297926c80387">
+</div></div>
+    </div>
+  </div>
+  
+</div><div id="post59748774_694" class="post wcomments_post" onmouseover="wall.postOver(&#39;59748774_694&#39;);" onmouseout="wall.postOut(&#39;59748774_694&#39;);" onclick="wall.postClick(&#39;59748774_694&#39;, event);">
+  <div class="post_table">
+    <div class="post_image">
+      <a target="_blank" class="post_image" href="http://vk.com/vladkomarov"><img src="./deactivated_50.png" data-post-id="59748774_694" width="50" height="50"></a>
+      
+    </div>
+    <div class="post_info">
+      <div class="fl_r post_actions_wrap"><div class="post_actions"><div id="post_delete59748774_694" class="post_delete_button fl_r" onclick="wall.markAsSpam(&#39;59748774_694&#39;, &#39;0ea9d3fecb2a439524&#39;);" onmouseover="wall.activeDeletePost(&#39;59748774_694&#39;, &#39;Пожаловаться&#39;, &#39;post_delete&#39;)" onmouseout="wall.deactiveDeletePost(&#39;59748774_694&#39;, &#39;post_delete&#39;)"></div></div></div>
+      <div class="wall_text"><div class="wall_text_name"><a target="_blank" class="author" href="http://vk.com/vladkomarov" data-from-id="59748774" data-post-id="59748774_694">Влад Комаров</a></div> <div id="wpt59748774_694"><div class="wall_post_text">volvo<br>mazda<br>ford</div></div></div>
+      <div class="post_like_wrap fl_r" onmouseover="wall.postLikeOver(&#39;59748774_694&#39;)" onmouseout="wall.postLikeOut(&#39;59748774_694&#39;)" onclick="wall.like(&#39;59748774_694&#39;, &#39;ec8e5c78759eea7c6d&#39;); event.cancelBubble = true;">
+  <div class="post_like">
+    <span class="post_like_link fl_l" id="like_link59748774_694">Мне нравится</span>
+    <i class="post_like_icon sp_main no_likes fl_l" id="like_icon59748774_694"></i>
+    <span class="post_like_count fl_l" id="like_count59748774_694"></span>
+  </div>
+</div>
+      <div class="replies"><div class="reply_link_wrap sm" id="wpe_bottom59748774_694">
+  <small><span class="rel_date">12 мар 2013</span></small><span id="reply_link59748774_694" class="reply_link"><span class="divide">|</span><a target="_blank" class="reply_link" onclick="return Wall.showEditReply(&#39;59748774_694&#39;, event)">Комментировать</a></span>
+</div>
+<div class="replies_wrap clear" id="replies_wrap59748774_694" style="display: none">
+  <div id="replies59748774_694"><input type="hidden" id="start_reply59748774_694" value=""></div>
+  <div class="reply_fakebox_wrap" id="reply_fakebox59748774_694" onclick="return Wall.showEditReply(&#39;59748774_694&#39;, event)"><div class="reply_fakebox">Комментировать..</div></div><input type="hidden" id="post_hash59748774_694" value="873e33e46138078deb">
+</div></div>
+    </div>
+  </div>
+  
+</div><div id="post136076279_71" class="post wcomments_post" onmouseover="wall.postOver(&#39;136076279_71&#39;);" onmouseout="wall.postOut(&#39;136076279_71&#39;);" onclick="wall.postClick(&#39;136076279_71&#39;, event);">
+  <div class="post_table">
+    <div class="post_image">
+      <a target="_blank" class="post_image" href="http://vk.com/id136076279"><img src="./deactivated_50.png" data-post-id="136076279_71" width="50" height="50"></a>
+      
+    </div>
+    <div class="post_info">
+      <div class="fl_r post_actions_wrap"><div class="post_actions"><div id="post_delete136076279_71" class="post_delete_button fl_r" onclick="wall.markAsSpam(&#39;136076279_71&#39;, &#39;9fdf841e347b550d7e&#39;);" onmouseover="wall.activeDeletePost(&#39;136076279_71&#39;, &#39;Пожаловаться&#39;, &#39;post_delete&#39;)" onmouseout="wall.deactiveDeletePost(&#39;136076279_71&#39;, &#39;post_delete&#39;)"></div></div></div>
+      <div class="wall_text"><div class="wall_text_name"><a target="_blank" class="author" href="http://vk.com/id136076279" data-from-id="136076279" data-post-id="136076279_71">Сергій Казмірук</a></div> <div id="wpt136076279_71"><div class="wall_post_text">супер</div></div></div>
+      <div class="post_like_wrap fl_r" onmouseover="wall.postLikeOver(&#39;136076279_71&#39;)" onmouseout="wall.postLikeOut(&#39;136076279_71&#39;)" onclick="wall.like(&#39;136076279_71&#39;, &#39;34daacf9ec5595fa5c&#39;); event.cancelBubble = true;">
+  <div class="post_like">
+    <span class="post_like_link fl_l" id="like_link136076279_71">Мне нравится</span>
+    <i class="post_like_icon sp_main no_likes fl_l" id="like_icon136076279_71"></i>
+    <span class="post_like_count fl_l" id="like_count136076279_71"></span>
+  </div>
+</div>
+      <div class="replies"><div class="reply_link_wrap sm" id="wpe_bottom136076279_71">
+  <small><span class="rel_date">28 янв 2013</span></small><span id="reply_link136076279_71" class="reply_link"><span class="divide">|</span><a target="_blank" class="reply_link" onclick="return Wall.showEditReply(&#39;136076279_71&#39;, event)">Комментировать</a></span>
+</div>
+<div class="replies_wrap clear" id="replies_wrap136076279_71" style="display: none">
+  <div id="replies136076279_71"><input type="hidden" id="start_reply136076279_71" value=""></div>
+  <div class="reply_fakebox_wrap" id="reply_fakebox136076279_71" onclick="return Wall.showEditReply(&#39;136076279_71&#39;, event)"><div class="reply_fakebox">Комментировать..</div></div><input type="hidden" id="post_hash136076279_71" value="9982b017131753c692">
+</div></div>
+    </div>
+  </div>
+  
+</div><div id="post38750001_13" class="post wcomments_post" onmouseover="wall.postOver(&#39;38750001_13&#39;);" onmouseout="wall.postOut(&#39;38750001_13&#39;);" onclick="wall.postClick(&#39;38750001_13&#39;, event);">
+  <div class="post_table">
+    <div class="post_image">
+      <a target="_blank" class="post_image" href="http://vk.com/id38750001"><img src="./3VCtluVpOL8.jpg" data-post-id="38750001_13" width="50" height="50"></a>
+      
+    </div>
+    <div class="post_info">
+      <div class="fl_r post_actions_wrap"><div class="post_actions"><div id="post_delete38750001_13" class="post_delete_button fl_r" onclick="wall.markAsSpam(&#39;38750001_13&#39;, &#39;ec43b5d18adcc56fd4&#39;);" onmouseover="wall.activeDeletePost(&#39;38750001_13&#39;, &#39;Пожаловаться&#39;, &#39;post_delete&#39;)" onmouseout="wall.deactiveDeletePost(&#39;38750001_13&#39;, &#39;post_delete&#39;)"></div></div></div>
+      <div class="wall_text"><div class="wall_text_name"><a target="_blank" class="author" href="http://vk.com/id38750001" data-from-id="38750001" data-post-id="38750001_13">Александр Фёдоров</a></div> <div id="wpt38750001_13"><div class="wall_post_text">...........</div></div></div>
+      <div class="post_like_wrap fl_r" onmouseover="wall.postLikeOver(&#39;38750001_13&#39;)" onmouseout="wall.postLikeOut(&#39;38750001_13&#39;)" onclick="wall.like(&#39;38750001_13&#39;, &#39;added60b3c452e948b&#39;); event.cancelBubble = true;">
+  <div class="post_like">
+    <span class="post_like_link fl_l" id="like_link38750001_13">Мне нравится</span>
+    <i class="post_like_icon sp_main no_likes fl_l" id="like_icon38750001_13"></i>
+    <span class="post_like_count fl_l" id="like_count38750001_13"></span>
+  </div>
+</div>
+      <div class="replies"><div class="reply_link_wrap sm" id="wpe_bottom38750001_13">
+  <small><span class="rel_date">24 янв 2013</span></small><span id="reply_link38750001_13" class="reply_link"><span class="divide">|</span><a target="_blank" class="reply_link" onclick="return Wall.showEditReply(&#39;38750001_13&#39;, event)">Комментировать</a></span>
+</div>
+<div class="replies_wrap clear" id="replies_wrap38750001_13" style="display: none">
+  <div id="replies38750001_13"><input type="hidden" id="start_reply38750001_13" value=""></div>
+  <div class="reply_fakebox_wrap" id="reply_fakebox38750001_13" onclick="return Wall.showEditReply(&#39;38750001_13&#39;, event)"><div class="reply_fakebox">Комментировать..</div></div><input type="hidden" id="post_hash38750001_13" value="2d9fcae3e36ca2d6f7">
+</div></div>
+    </div>
+  </div>
+  
+</div><div id="post129105777_506" class="post wcomments_post" onmouseover="wall.postOver(&#39;129105777_506&#39;);" onmouseout="wall.postOut(&#39;129105777_506&#39;);" onclick="wall.postClick(&#39;129105777_506&#39;, event);">
+  <div class="post_table">
+    <div class="post_image">
+      <a target="_blank" class="post_image" href="http://vk.com/bart64"><img src="./FfD0RS1W70w.jpg" data-post-id="129105777_506" width="50" height="50"></a>
+      
+    </div>
+    <div class="post_info">
+      <div class="fl_r post_actions_wrap"><div class="post_actions"><div id="post_delete129105777_506" class="post_delete_button fl_r" onclick="wall.markAsSpam(&#39;129105777_506&#39;, &#39;b98721400f91c10c13&#39;);" onmouseover="wall.activeDeletePost(&#39;129105777_506&#39;, &#39;Пожаловаться&#39;, &#39;post_delete&#39;)" onmouseout="wall.deactiveDeletePost(&#39;129105777_506&#39;, &#39;post_delete&#39;)"></div></div></div>
+      <div class="wall_text"><div class="wall_text_name"><a target="_blank" class="author" href="http://vk.com/bart64" data-from-id="129105777" data-post-id="129105777_506">Иван Веселенский</a></div> <div id="wpt129105777_506"><div class="wall_post_text">рр</div></div></div>
+      <div class="post_like_wrap fl_r" onmouseover="wall.postLikeOver(&#39;129105777_506&#39;)" onmouseout="wall.postLikeOut(&#39;129105777_506&#39;)" onclick="wall.like(&#39;129105777_506&#39;, &#39;0e9778459d4b914ade&#39;); event.cancelBubble = true;">
+  <div class="post_like">
+    <span class="post_like_link fl_l" id="like_link129105777_506">Мне нравится</span>
+    <i class="post_like_icon sp_main no_likes fl_l" id="like_icon129105777_506"></i>
+    <span class="post_like_count fl_l" id="like_count129105777_506"></span>
+  </div>
+</div>
+      <div class="replies"><div class="reply_link_wrap sm" id="wpe_bottom129105777_506">
+  <small><span class="rel_date">16 авг 2012</span></small><span id="reply_link129105777_506" class="reply_link"><span class="divide">|</span><a target="_blank" class="reply_link" onclick="return Wall.showEditReply(&#39;129105777_506&#39;, event)">Комментировать</a></span>
+</div>
+<div class="replies_wrap clear" id="replies_wrap129105777_506" style="display: none">
+  <div id="replies129105777_506"><input type="hidden" id="start_reply129105777_506" value=""></div>
+  <div class="reply_fakebox_wrap" id="reply_fakebox129105777_506" onclick="return Wall.showEditReply(&#39;129105777_506&#39;, event)"><div class="reply_fakebox">Комментировать..</div></div><input type="hidden" id="post_hash129105777_506" value="74a2aca45b8441a86e">
+</div></div>
+    </div>
+  </div>
+  
+</div><div id="post129105777_505" class="post wcomments_post" onmouseover="wall.postOver(&#39;129105777_505&#39;);" onmouseout="wall.postOut(&#39;129105777_505&#39;);" onclick="wall.postClick(&#39;129105777_505&#39;, event);">
+  <div class="post_table">
+    <div class="post_image">
+      <a target="_blank" class="post_image" href="http://vk.com/bart64"><img src="./FfD0RS1W70w.jpg" data-post-id="129105777_505" width="50" height="50"></a>
+      
+    </div>
+    <div class="post_info">
+      <div class="fl_r post_actions_wrap"><div class="post_actions"><div id="post_delete129105777_505" class="post_delete_button fl_r" onclick="wall.markAsSpam(&#39;129105777_505&#39;, &#39;dda9a8a4dfd764f2a9&#39;);" onmouseover="wall.activeDeletePost(&#39;129105777_505&#39;, &#39;Пожаловаться&#39;, &#39;post_delete&#39;)" onmouseout="wall.deactiveDeletePost(&#39;129105777_505&#39;, &#39;post_delete&#39;)"></div></div></div>
+      <div class="wall_text"><div class="wall_text_name"><a target="_blank" class="author" href="http://vk.com/bart64" data-from-id="129105777" data-post-id="129105777_505">Иван Веселенский</a></div> <div id="wpt129105777_505"><div class="wall_post_text">ап</div></div></div>
+      <div class="post_like_wrap fl_r" onmouseover="wall.postLikeOver(&#39;129105777_505&#39;)" onmouseout="wall.postLikeOut(&#39;129105777_505&#39;)" onclick="wall.like(&#39;129105777_505&#39;, &#39;eb5ac79c5ce42096c5&#39;); event.cancelBubble = true;">
+  <div class="post_like">
+    <span class="post_like_link fl_l" id="like_link129105777_505">Мне нравится</span>
+    <i class="post_like_icon sp_main no_likes fl_l" id="like_icon129105777_505"></i>
+    <span class="post_like_count fl_l" id="like_count129105777_505"></span>
+  </div>
+</div>
+      <div class="replies"><div class="reply_link_wrap sm" id="wpe_bottom129105777_505">
+  <small><span class="rel_date">16 авг 2012</span></small><span id="reply_link129105777_505" class="reply_link"><span class="divide">|</span><a target="_blank" class="reply_link" onclick="return Wall.showEditReply(&#39;129105777_505&#39;, event)">Комментировать</a></span>
+</div>
+<div class="replies_wrap clear" id="replies_wrap129105777_505" style="display: none">
+  <div id="replies129105777_505"><input type="hidden" id="start_reply129105777_505" value=""></div>
+  <div class="reply_fakebox_wrap" id="reply_fakebox129105777_505" onclick="return Wall.showEditReply(&#39;129105777_505&#39;, event)"><div class="reply_fakebox">Комментировать..</div></div><input type="hidden" id="post_hash129105777_505" value="74a2aca45b8441a86e">
+</div></div>
+    </div>
+  </div>
+  
+</div></div>
+    <a href="http://vk.com/widget_comments.php?app=2752181&amp;width=728px&amp;_ver=1&amp;limit=10&amp;height=0&amp;mini=auto&amp;norealtime=0&amp;page=0&amp;status_publish=1&amp;attach=&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B&amp;description=&amp;image=&amp;referrer=&amp;1566883cb40" onclick="WComments.showMore(); return false;" id="wcomments_more_link" style="display: none;">
+      <div class="progress" id="wcomments_more_progress"></div>
+      <div id="wcomments_more">к предыдущим записям &#8595;</div>
+    </a>
+  </div>
+</div></div>
+  <div class="progress" id="global_prg"></div>
+
+  <script type="text/javascript">
+    if (window.devicePixelRatio >= 2) {
+      document.body.className += ' is_2x';
+    }
+    domReady();
+    cur.lang = extend(cur.lang || {}, {
+  widgets_comments_moder_browse: 'администрирование',
+  widgets_comments_moder_return: 'вернуться',
+  widgets_restore_to_banlist: 'Вернуть в чёрный список',
+  widgets_remove_from_banlist: 'Удалить из списка',
+  widgets_comments: 'Комментарии',
+  widgets_comments_top_count: ["","%s комментарий","%s комментария","%s комментариев"],
+  news_X_seconds_ago_words: ["","только что","две секунды назад","три секунды назад","четыре секунды назад","пять секунд назад"],
+  news_just_now: 'только что',
+  news_X_seconds_ago: ["","%s секунду назад","%s секунды назад","%s секунд назад"],
+  news_X_minutes_ago_words: ["","минуту назад","две минуты назад","три минуты назад","4 минуты назад","5 минут назад"],
+  news_X_minutes_ago: ["","%s минуту назад","%s минуты назад","%s минут назад"],
+  news_X_hours_ago_words: ["","час назад","два часа назад","три часа назад","четыре часа назад","пять часов назад"],
+  news_X_hours_ago: ["","%s час назад","%s часа назад","%s часов назад"],
+  news_x_new_replies_more: ["","Добавлен %s новый комментарий","Добавлено %s новых комментария","Добавлено %s новых комментариев"],
+  wall_link_label: 'Ссылка',
+  dont_attach: 'Не прикреплять',
+  wall_M_replies_of_N: ["","%s комментарий из {link}{all}{\/link}","%s последних комментария из {link}{all}{\/link}","%s последних комментариев из {link}{all}{\/link}"],
+  wall_: ["","Показать %s комментарий","Показать все %s комментария","Показать все %s комментариев"],
+  wall_hide_replies: 'Скрыть комментарии',
+  wall_show_n_of_m_last: ["","Показать последние %s комментарий из {count}","Показать последние %s комментария из {count}","Показать последние %s комментариев из {count}"],
+  wall_show_all_n_replies: ["","Показать %s комментарий","Показать все %s комментария","Показать все %s комментариев"],
+  wall_N_replies: ["","%s комментарий","%s комментария","%s комментариев"],
+  wall_three_last_replies: 'три последних комментария',
+  wall_all_replies: 'все комментарии'
+});
+cur.share_timehash = '1470643222_6a1d634312a0f2642f';
+cur.widgetHash = '757e1351d03764e664';
+WComments.init({"count":"9","offset":9,"reply_names":[],"script":"placeholderSetup('reply_field221712311_689');placeholderSetup('reply_field294629152_20');placeholderSetup('reply_field17384921_1329');placeholderSetup('reply_field91634385_25');placeholderSetup('reply_field59748774_694');placeholderSetup('reply_field136076279_71');placeholderSetup('reply_field38750001_13');placeholderSetup('reply_field129105777_506');placeholderSetup('reply_field129105777_505');","last_comment":"Бесплатный курс по jQuery с практикой: codebra.ru\/ru\/lesson-js-client\/jquery\/1\/1","date":"2016-08-08T11:00:22+03:00","num_hash":"80018a52aa605fb608649e07de25031b","full_hash":"fcd1c74f5f5efa5897f9f3f4723d9fc1","pageId":63443171,"max_post_len":280,"post_hash":"ab99e0e6c8b7c60834","media_types":false,"wall_type":"widget","share":{"url":false,"hash":false,"rhash":false},"user_id":140756562,"app":2752181,"page_query":"fd4bea3f60da02223f8b27d7f4d3fd39","page_url":"http:\/\/www.site-do.ru\/js\/jquery3.php","page_title":"jQuery - Урок 3. Фильтры","page_desc":"","browse":null,"limit":10,"qversion":4,"is_admin":false,"mini":"auto","replies":null,"qtransport":{"queue_id":"wt140756562_250137762","timestamp":875359163,"key":"kVrs1bqIJUGjJH_tKHMkjZuIJFkQT8T0IoYWlzTySlDUDW20n0Zk_gNJriREscvp","uid":140756562,"version":10,"debug":false,"instance_id":"NzcyNTY=","server_url":"http:\/\/q74.queuev4.vk.com\/im562","frame_path":"http:\/\/q74.queuev4.vk.com\/q_frame.php?7","frame_url":"im562","refresh_url":"http:\/\/vk.com\/notifier.php"},"wall_tpl":{"reply_form":"<div id=\"reply_box%post_id%\" class=\"reply_box clear_fix\" onclick=\"return cancelEvent(event)\">\n  <a class=\"reply_form_image\" href=\"\/superbul009\"><img src=\"http:\/\/cs304915.vk.me\/u140756562\/e_dad3edae.jpg\" class=\"reply_form_img\" \/><\/a>\n  <div class=\"reply_form\">\n    <input type=\"hidden\" id=\"reply_to%post_id%\" value=\"\" \/>\n    <div class=\"reply_field_wrap clear_fix\">\n      <div class=\"reply_field_tail\"><\/div>\n\n      <div id=\"reply_smile%post_id%\" title=\"Используйте TAB, чтобы быстрее открывать смайлы\" class=\"emoji_smile fl_l\" onmouseover=\"return Wall.emojiShowTT('%post_id%', this, event);\" onmouseout=\"return Wall.emojiHideTT('%post_id%', this, event);\" onmousedown=\"return cancelEvent(event);\"><div class=\"emoji_smile_icon_on\"><\/div><div class=\"emoji_smile_icon\"><\/div><\/div>\n\n      <div id=\"reply_field%post_id%\" class=\"fl_l reply_field\" onfocus=\"return Wall.showEditReply('%post_id%', event);\" contenteditable=\"true\" placeholder=\"Комментировать..\"><\/div>\n    <\/div>\n    <div id=\"reply_media_preview%post_id%\" class=\"reply_media_preview clear_fix media_preview\"><\/div>\n    <div class=\"reply_warn clear\" id=\"reply_warn%post_id%\"><\/div>\n    <div id=\"submit_reply%post_id%\" class=\"submit_reply clear\">\n      <div class=\"fl_l reply_button_wrap\"><button class=\"flat_button\" id=\"reply_button%post_id%\" onclick=\"wall.sendReply('%post_id%', event);\" onmouseover=\"wall.replySubmitTooltip('%post_id%', 1, this);\" onmouseout=\"wall.replySubmitTooltip('%post_id%', 0, this);\">Отправить<\/button><\/div>\n      <div class=\"reply_as_group_wrap fl_l \">\n        <div class=\"checkbox\" id=\"reply_as_group%post_id%\" onclick=\"wall.replyAsGroup(this, '%owner_photo%');\"><div><\/div><span class=\"reply_as_group_long\">от имени сообщества<\/span><span class=\"reply_as_group_short\">от сообщества<\/span><\/div>\n      <\/div>\n      <div id=\"reply_to_title%post_id%\" class=\"reply_to_title fl_l\"><\/div>\n      <div id=\"reply_media_lnk%post_id%\" class=\"reply_media_lnk fl_r\"><span class=\"add_media_lnk\">Прикрепить<\/span><\/div>\n    <\/div>\n  <\/div>\n<\/div>","reply_multiline":false,"reply_multiline_intro":true,"reply_fast":"<div id=\"post%reply_id%\" class=\"reply reply_dived clear \" onmouseover=\"wall.replyOver('%reply_id%')\" onmouseout=\"wall.replyOut('%reply_id%')\" >\n  <div class=\"reply_table\">\n    <a class=\"reply_image\" href=\"\/superbul009\">\n      <img src=\"http:\/\/cs304915.vk.me\/u140756562\/e_dad3edae.jpg\" width=\"50\" height=\"50\" class=\"reply_image\" \/>\n    <\/a>\n    <div class=\"reply_info\" >\n      \n      <div class=\"reply_text\" >\n        <a class=\"author\" href=\"\/superbul009\" data-from-id=\"0\">Александр Сушко<\/a> <div class=\"wall_reply_text\">%message%<\/div>\n      <\/div>\n      <div class=\"info_footer sm\" id=\"wpe_bottom%reply_id%\">\n        \n        %date%\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>","reply_multiline_hint":"<div class=\"reply_submit_tail_wrap\"><div class=\"reply_submit_tail\"><\/div><\/div>\n<div class=\"reply_submit_hint_wrap\" onclick=\"event.cancelBubble = true;\">\n  <div class=\"reply_submit_hint_title\">Настройки отправки<\/div>\n  <div id=\"reply_submit_hint_opts\">\n    <div class=\"radiobtn %disabled%\" onclick=\"radiobtn(this, 0, 'reply_submit'); wall.onReplySubmitChanged(0);\"><div><\/div><b>Enter<\/b> — отправка сообщения<br><b>Shift+Enter<\/b> — перенос строки<\/div>\n    <div class=\"radiobtn %enabled%\" onclick=\"radiobtn(this, 1, 'reply_submit'); wall.onReplySubmitChanged(1);\"><div><\/div><b>Ctrl+Enter<\/b> — отправка сообщения<br><b>Enter<\/b> — перенос строки<\/div>\n  <\/div>\n<\/div>","own_reply_link":"<span class=\"divide\">|<\/span><a class=\"reply_link\" onclick=\"Wall.likeShareCustom('%post_id%')\">Ответить<\/a>","edit_link":"<span class=\"divide\">|<\/span><a onclick=\"wall.editPost('%post_id%')\">Редактировать<\/a>","post":"<div id=\"post%post_id%\" class=\"post wcomments_post\" onmouseover=\"wall.postOver('%post_id%')\" onmouseout=\"wall.postOut('%post_id%')\" onclick=\"wall.postClick('%post_id%', event);\" >\n  <div class=\"post_table\">\n    <div class=\"post_image\">\n      <a class=\"post_image\" href=\"%link%\"><img src=\"%photo%\" data-post-id=\"%post_id%\" width=\"50\" height=\"50\"\/><\/a>\n      %online%\n    <\/div>\n    <div class=\"post_info\">\n      %actions%\n      <div class=\"wall_text\"><div class=\"wall_text_name\">%name%<\/div> %text%<\/div>\n      <div class=\"post_like_wrap fl_r\" onmouseover=\"wall.postLikeOver('%post_id%')\" onmouseout=\"wall.postLikeOut('%post_id%')\" onclick=\"wall.like('%post_id%', '1470643222_2bc1525a2e1b45cf8e'); event.cancelBubble = true;\">\n  <div class=\"post_like\">\n    <span class=\"post_like_link fl_l\" id=\"like_link%post_id%\">Мне нравится<\/span>\n    <i class=\"post_like_icon sp_main no_likes fl_l\" id=\"like_icon%post_id%\"><\/i>\n    <span class=\"post_like_count fl_l\" id=\"like_count%post_id%\"><\/span>\n  <\/div>\n<\/div>\n      <div class=\"replies\"><div class=\"reply_link_wrap sm\" id=\"wpe_bottom%post_id%\">\n  <small><a href=\"%post_url%\" onclick=\"return nav.go(this, event)\">%date%<\/a>%date_postfix%<\/small><span id=\"reply_link%post_id%\" class=\"reply_link\"><span class=\"divide\">|<\/span><a class=\"reply_link\" onclick=\"return Wall.showEditReply('%post_id%', event)\">Комментировать<\/a><\/span>\n<\/div>\n<div class=\"replies_wrap clear\" id=\"replies_wrap%post_id%\" style=\"display: none;\">\n  <div id=\"replies%post_id%\"><input type=\"hidden\" id=\"start_reply%post_id%\" value=\"\"\/><\/div>\n  <div class=\"reply_fakebox_wrap\" id=\"reply_fakebox%post_id%\" onclick=\"return Wall.showEditReply('%post_id%', event)\"><div class=\"reply_fakebox\">Комментировать..<\/div><\/div><input type=\"hidden\" id=\"post_hash%post_id%\" value=\"1470643222_f6670de2e0a78d12d6\" can_reply_as_group=\"%can_reply_as_group%\" \/>\n<\/div><\/div>\n    <\/div>\n  <\/div>\n  \n<\/div>","reply":"<div id=\"post%reply_id%\" class=\"reply reply_dived clear %classname%\" onmouseover=\"wall.replyOver('%reply_id%')\" onmouseout=\"wall.replyOut('%reply_id%')\" %attr%>\n  <div class=\"reply_table\">\n    <a class=\"reply_image\" href=\"%link%\">\n      <img src=\"%photo%\" width=\"50\" height=\"50\" class=\"reply_image\" \/>\n    <\/a>\n    <div class=\"reply_info\" >\n      %actions%\n      <div class=\"reply_text\" >\n        <a class=\"author\" href=\"%link%\" data-from-id=\"%reply_uid%\">%name%<\/a> %text%\n      <\/div>\n      <div class=\"info_footer sm\" id=\"wpe_bottom%reply_id%\">\n        <div class=\"like_wrap fl_r\" onclick=\"wall.like('%like_id%', '1470643222_2bc1525a2e1b45cf8e'); event.cancelBubble = true;\" onmouseover=\"wall.likeOver('%like_id%')\" onmouseout=\"wall.likeOut('%like_id%')\">\n  <span class=\"like_link fl_l\" id=\"like_link%like_id%\">Мне нравится<\/span>\n  <i class=\"no_likes fl_l\" id=\"like_icon%like_id%\"><\/i>\n  <span class=\"like_count fl_l\" id=\"like_count%like_id%\"><\/span>\n<\/div>\n        <a class=\"wd_lnk\" href=\"\/wall%post_id%?reply=%reply_msg_id%\" onclick=\"return nav.go(this, event)\">%date%<\/a>%to_link%\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>","del":"<div id=\"post_delete%post_id%\" class=\"post_delete_button fl_r\" onclick=\"wall.deletePost('%post_id%', '1470643222_214425808017b3136a');\" onmouseover=\"wall.activeDeletePost('%post_id%', 'Удалить запись', 'post_delete')\" onmouseout=\"wall.deactiveDeletePost('%post_id%', 'post_delete')\"><\/div>","spam":"<div id=\"post_delete%post_id%\" class=\"post_delete_button fl_r\" onclick=\"wall.markAsSpam('%post_id%', '1470643222_005b03d5e1e3f4ffbf');\" onmouseover=\"wall.activeDeletePost('%post_id%', 'Пожаловаться', 'post_delete')\" onmouseout=\"wall.deactiveDeletePost('%post_id%', 'post_delete')\"><\/div>","edit":"<div id=\"post_edit%post_id%\" class=\"post_edit_button fl_r\" onclick=\"wall.editPost('%post_id%');\" onmouseover=\"wall.activeDeletePost('%post_id%', 'Редактировать', 'post_edit')\" onmouseout=\"wall.deactiveDeletePost('%post_id%', 'post_edit')\"><\/div>","del_reply":"<div id=\"reply_delete%reply_id%\" class=\"reply_delete_button fl_r\" onclick=\"wall.deletePost('%reply_id%', '1470643222_214425808017b3136a');\" onmouseover=\"wall.activeDeletePost('%reply_id%', 'Удалить', 'reply_delete')\" onmouseout=\"wall.deactiveDeletePost('%reply_id%', 'reply_delete')\"><\/div>","spam_reply":"<div id=\"reply_delete%reply_id%\" class=\"reply_delete_button fl_r\" onclick=\"wall.markAsSpam('%reply_id%', '1470643222_005b03d5e1e3f4ffbf');\" onmouseover=\"wall.activeDeletePost('%reply_id%', 'Пожаловаться', 'reply_delete')\" onmouseout=\"wall.deactiveDeletePost('%reply_id%', 'reply_delete')\"><\/div>","edit_reply":"<div id=\"reply_edit%reply_id%\" class=\"reply_edit_button fl_r\" onclick=\"wall.editPost('%reply_id%');\" onmouseover=\"wall.activeDeletePost('%reply_id%', 'Редактировать', 'reply_edit')\" onmouseout=\"wall.deactiveDeletePost('%reply_id%', 'reply_edit')\"><\/div>","post_actions":"<div class=\"fl_r post_actions_wrap\"><div class=\"post_actions\">%actions%<\/div><\/div>","poll_stats":"<tr%handlers%><td colspan=\"2\" class=\"page_poll_text\">%option_text%<\/td><\/tr>\n<tr%handlers%>\n  <td class=\"page_poll_row\">\n    <div class=\"page_poll_percent\" style=\"width: %css_percent%%\"><\/div>\n    <div class=\"page_poll_row_count\">%count%<\/div>\n  <\/td>\n  <td class=\"page_poll_row_percent ta_r\"><nobr><b>%percent%%<\/b><\/nobr><\/td>\n<\/tr>","poll_hash":"1470643222_47bacbe12bb860e449","date_format":"сегодня в {hour}:{minute}","time_system":false,"abs_timestamp":1470632422,"lang":{"wall_M_replies_of_N":["","%s комментарий из {link}{all}{\/link}","%s последних комментария из {link}{all}{\/link}","%s последних комментариев из {link}{all}{\/link}"],"wall_hide_replies":"Скрыть комментарии","wall_show_n_of_m_last":["","Показать последние %s комментарий из {count}","Показать последние %s комментария из {count}","Показать последние %s комментариев из {count}"],"wall_show_all_n_replies":["","Показать %s комментарий","Показать все %s комментария","Показать все %s комментариев"],"wall_N_replies":["","%s комментарий","%s комментария","%s комментариев"],"wall_three_last_replies":"три последних комментария","wall_all_replies":"все комментарии","wall_x_new_replies_more":["","Добавлен %s новый комментарий","Добавлено %s новых комментария","Добавлено %s новых комментариев"],"wall_X_people_voted":["","Проголосовал <b>%s<\/b> человек.","Проголосовало <b>%s<\/b> человека.","Проголосовало <b>%s<\/b> человек."],"wall_reply_submit_hint_1":"Shift+Enter – перевод строки","wall_reply_submit_hint_2":"Ctrl+Enter – отправка сообщения","wall_reply_submit_hint_1_more":"Enter – отправка сообщения, Shift+Enter – перевод строки","wall_reply_submit_hint_2_more":"Enter – перевод строки, Ctrl+Enter – отправка сообщения","wall_reply_post":"Ответить","wall_just_now":["","только что","две секунды назад","три секунды назад","четыре секунды назад","пять секунд назад"],"wall_X_seconds_ago_words":["","только что","две секунды назад","три секунды назад","четыре секунды назад","пять секунд назад"],"wall_X_seconds_ago":["","%s секунду назад","%s секунды назад","%s секунд назад"],"wall_X_minutes_ago_words":["","минуту назад","две минуты назад","три минуты назад","4 минуты назад","5 минут назад"],"wall_X_minutes_ago":["","%s минуту назад","%s минуты назад","%s минут назад"],"wall_X_hours_ago_words":["","час назад","два часа назад","три часа назад","четыре часа назад","пять часов назад"],"wall_X_hours_ago":["","%s час назад","%s часа назад","%s часов назад"]}},"time_hash":"1470643222_6a1d634312a0f2642f","widget_hash":"757e1351d03764e664"});placeholderSetup('reply_field221712311_689');placeholderSetup('reply_field294629152_20');placeholderSetup('reply_field17384921_1329');placeholderSetup('reply_field91634385_25');placeholderSetup('reply_field59748774_694');placeholderSetup('reply_field136076279_71');placeholderSetup('reply_field38750001_13');placeholderSetup('reply_field129105777_506');placeholderSetup('reply_field129105777_505');;vk.id = 140756562;
+    ;window._tmr = window._tmr || [];
+var tmr = {"id":2685520,"pid":140756562,"url":"http:\/\/www.site-do.ru\/js\/jquery3.php","referrer":"","title":"jQuery - Урок 3. Фильтры"};
+tmr.url     = unclean(tmr.url     || '');
+tmr.referrer = unclean(tmr.referrer || '');
+tmr.title   = unclean(tmr.title   || '');
+window._tmr.push({id: tmr.id, pid: tmr.pid, url: tmr.url, referrer: tmr.referrer, title: tmr.title, type: "pageView", start: (new Date()).getTime()});
+(function (d, w) {
+var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window);
+  </script>
+
+
+</body></html>

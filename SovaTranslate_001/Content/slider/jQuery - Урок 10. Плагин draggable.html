@@ -1,0 +1,537 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0037)http://www.site-do.ru/js/jquery11.php -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Урок 11. Плагин droppable</title>
+<meta http-equiv="KEYWORDS" content="jQuery плагин droppable">
+<meta http-equiv="DESCRIPTION" content="В этом уроке по jQuery рассматривается плагин droppable - плагин для сброса элементов в целевой.">
+<link rel="stylesheet" type="text/css" href="./jQuery - Урок 10. Плагин draggable_files/style.css">
+
+<script type="text/javascript" async="" src="http://mc.yandex.ru/metrika/watch.js"></script><script src="http://an.yandex.ru/system/context.js" type="text/javascript" async=""></script><script src="http://an.yandex.ru/system/context.js" type="text/javascript" async=""></script><script type="text/javascript" src="./jQuery - Урок 10. Плагин draggable_files/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="./jQuery - Урок 10. Плагин draggable_files/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" src="http://www.site-do.ru/script3.js"></script>
+    <style type="text/css" id="ya_share_style">.b-share-form-button{font:86%/17px Verdana,Arial,sans-serif;display:-moz-inline-box;display:inline-block;position:relative;height:19px;margin:0 3px;padding:0 4px;cursor:default;white-space:nowrap;text-decoration:none!important;color:#000!important;border:none;outline:none;background:url("//yastatic.net/share/static/b-share-form-button.png") 0 -20px repeat-x}.b-share-form-button:link:hover,.b-share-form-button:visited:hover{color:#000!important}.b-share-form-button__before,.b-share-form-button__after{position:absolute;width:3px;height:19px;background:url("//yastatic.net/share/static/b-share-form-button.png")}.b-share-form-button__before{margin-left:-7px}.b-share-form-button__after{margin-left:4px;background-position:-3px 0}.b-share-form-button::-moz-focus-inner{border:none}button.b-share-form-button .b-share-form-button__before,button.b-share-form-button .b-share-form-button__after{margin-top:-1px}@-moz-document url-prefix(){button.b-share-form-button .b-share-form-button__after{margin-top:-2px;margin-left:6px}button.b-share-form-button .b-share-form-button__before{margin-top:-2px;margin-left:-9px}}SPAN.b-share-form-button:hover,.b-share-form-button_state_hover{background-position:0 -60px}SPAN.b-share-form-button:hover .b-share-form-button__before,.b-share-form-button_state_hover .b-share-form-button__before{background-position:0 -40px}SPAN.b-share-form-button:hover .b-share-form-button__after,.b-share-form-button_state_hover .b-share-form-button__after{background-position:-3px -40px}.b-share-form-button_state_pressed,.b-share-form-button_state_pressed .b-share-form-button_share{background-position:0 -100px!important}.b-share-form-button_state_pressed .b-share-form-button__before{background-position:0 -80px!important}.b-share-form-button_state_pressed .b-share-form-button__after{background-position:-3px -80px!important}button.b-share-form-button_state_pressed{overflow:visible}.b-share-form-button_icons{position:relative;padding:0;background-position:0 -20px!important}.b-share-form-button_icons .b-share-form-button__before{left:0;margin-left:-3px;background-position:0 0!important}.b-share-form-button_icons .b-share-form-button__after{z-index:-1;margin-left:0;background-position:-3px 0!important}.b-share-form-button_icons .b-share__handle{padding:2px!important}.b-share-form-button_icons .b-share__handle_more{position:relative;padding-right:6px!important;margin-right:-4px}.b-share-form-button_icons .b-share-icon{opacity:.5;background-image:url("//yastatic.net/share/static/b-share-icon_size_14.png")}.b-share-form-button_icons A.b-share__handle:hover .b-share-icon{opacity:1}.b-share{font:86%/1.4545em Arial,sans-serif;display:-moz-inline-box;display:inline-block;padding:1px 3px 1px 4px!important;vertical-align:middle}.b-share .b-share-form-button{font-size:1em}.b-share__text .b-share-icon{margin:0 5px 0 0;border:none}.b-share__text{margin-right:5px}.b-share__handle{float:left;height:16px;padding:5px 3px 5px 2px!important;cursor:pointer;text-align:left;text-decoration:none!important}.b-share__handle_cursor_default{cursor:default}.b-share__handle .b-share-form-button{margin-top:-2px}.b-share__hr{display:none;float:left;width:1px;height:26px;margin:0 3px 0 2px}a.b-share__handle:hover .b-share__text{text-decoration:underline;color:red}.b-share_bordered{padding:0 2px 0 3px!important;border:1px solid #E4E4E4;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.b-share_bordered .b-share__hr{display:inline;background:#E4E4E4}.b-share_link{margin:-8px 0}a.b-share_link{margin:0}.b-share_link .b-share__text{text-decoration:underline;color:#1A3DC1}.b-share-form-button_share{padding-left:26px!important;vertical-align:top}.b-share-form-button_share .b-share-form-button__before{margin-left:-29px}.b-share-form-button_share .b-share-form-button__icon{position:absolute;width:20px;height:17px;margin:1px 0 0 -23px;background:url("//yastatic.net/share/static/b-share-form-button_share__icon.png") 0 0 no-repeat}.b-share-pseudo-link{border-bottom:1px dotted;cursor:pointer;text-decoration:none!important}.b-share_font_fixed{font-size:11px}.b-share__handle_more{font-size:9px;margin-top:-1px;color:#7B7B7B}A.b-share__handle_more:hover{color:#000}.b-share__group{float:left}.b-share-icon{float:left;display:inline;overflow:hidden;width:16px;height:16px;padding:0!important;vertical-align:top;border:0;background:url("//yastatic.net/share/static/b-share-icon.png") 0 99px no-repeat}.b-share-icon_vkontakte,.b-share-icon_custom{background-position:0 0}.b-share-icon_yaru,.b-share-icon_yaru_photo,.b-share-icon_yaru_wishlist{background-position:0 -17px}.b-share-icon_lj{background-position:0 -34px}.b-share-icon_twitter{background-position:0 -51px}.b-share-icon_facebook{background-position:0 -68px}.b-share-icon_moimir{background-position:0 -85px}.b-share-icon_friendfeed{background-position:0 -102px}.b-share-icon_mail{background-position:0 -119px}.b-share-icon_html{background-position:0 -136px}.b-share-icon_postcard{background-position:0 -153px}.b-share-icon_odnoklassniki{background-position:0 -170px}.b-share-icon_blogger{background-position:0 -187px}.b-share-icon_delicious{background-position:0 -221px}.b-share-icon_gbuzz{background-position:0 -238px}.b-share-icon_linkedin{background-position:0 -255px}.b-share-icon_myspace{background-position:0 -272px}.b-share-icon_evernote{background-position:0 -289px}.b-share-icon_digg{background-position:0 -306px}.b-share-icon_juick{background-position:0 -324px}.b-share-icon_moikrug{background-position:0 -341px}.b-share-icon_yazakladki{background-position:0 -358px}.b-share-icon_liveinternet{background-position:0 -375px}.b-share-icon_tutby{background-position:0 -392px}.b-share-icon_diary{background-position:0 -409px}.b-share-icon_gplus{background-position:0 -426px}.b-share-icon_pocket{background-position:0 -443px}.b-share-icon_surfingbird{background-position:0 -460px}.b-share-icon_pinterest{background-position:0 -477px}.b-share-icon_renren{background-position:0 0}.b-share-icon_renren,.b-share-icon_sina_weibo{background:url("//yastatic.net/share/static/b-share-icon__china.png") no-repeat}.b-share-icon_sina_weibo{background-position:-18px 0}.b-share-icon_qzone{background-position:-36px 0}.b-share-icon_qzone,.b-share-icon_tencent_weibo{background:url("//yastatic.net/share/static/b-share-icon__china.png") no-repeat}.b-share-icon_tencent_weibo{background-position:-54px 0}.b-share_theme_counter .b-share{display:inline-block;vertical-align:middle;white-space:nowrap}.b-share-counter{font:14px Arial,sans-serif;line-height:18px;display:none;float:left;margin:3px 6px 3px 3px;color:#fff}.b-share_theme_counter .b-share_type_small .b-share-counter{font-size:11px;line-height:14px;margin:2px 6px 2px 1px}.b-share_theme_counter .b-share-btn__counter .b-share-counter{display:block}.b-share-btn__counter{text-decoration:none}.b-share_theme_counter .b-share-btn__wrap{position:relative;float:left;margin-left:5px}.b-share_theme_counter .b-share_type_small .b-share-btn__wrap{margin-left:4px}.b-share_theme_counter .b-share-btn__wrap:first-child{margin-left:0}.b-share_theme_counter .b-share__link{display:inline-block;cursor:pointer;-webkit-border-radius:3px;border-radius:3px}.b-share_theme_counter .b-share_type_small .b-share__link{-webkit-border-radius:2px;border-radius:2px}.b-share_theme_counter .b-share-icon{display:block;float:left;width:24px;height:24px;background-image:url("//yastatic.net/share/static/b-share_counter_large.png");background-position:-20px 0}.b-share_theme_counter .b-share_type_small .b-share-icon{width:18px;height:18px;background-image:url("//yastatic.net/share/static/b-share_counter_small.png")}.b-share_theme_counter .b-share-icon_facebook{background-position:0 0}.b-share_theme_counter .b-share-btn__facebook{background-color:#3c5a98}.b-share_theme_counter .b-share-btn__facebook:hover{background-color:#30487a}.b-share_theme_counter .b-share-btn__facebook:active{border-top:2px solid #24365a;background-color:#334d81}.b-share_theme_counter .b-share-icon_moimir{background-position:0 -29px}.b-share_theme_counter .b-share-btn__moimir{background-color:#226eb7}.b-share_theme_counter .b-share-btn__moimir:hover{background-color:#1b5892}.b-share_theme_counter .b-share-btn__moimir:active{border-top:2px solid #14426d;background-color:#1d5e9c}.b-share_theme_counter .b-share-icon_vkontakte{background-position:0 -58px}.b-share_theme_counter .b-share-btn__vkontakte{background-color:#48729e}.b-share_theme_counter .b-share-btn__vkontakte:hover{background-color:#3a5b7e}.b-share_theme_counter .b-share-btn__vkontakte:active{border-top:2px solid #2b445e;background-color:#3d6186}.b-share_theme_counter .b-share-icon_twitter{background-position:0 -87px}.b-share_theme_counter .b-share-btn__twitter{background-color:#00aced}.b-share_theme_counter .b-share-btn__twitter:hover{background-color:#008abe}.b-share_theme_counter .b-share-btn__twitter:active{border-top:2px solid #00668d;background-color:#0092ca}.b-share_theme_counter .b-share-icon_odnoklassniki{background-position:0 -116px}.b-share_theme_counter .b-share-btn__odnoklassniki{background-color:#ff9f4d}.b-share_theme_counter .b-share-btn__odnoklassniki:hover{background-color:#cc7f3e}.b-share_theme_counter .b-share-btn__odnoklassniki:active{border-top:2px solid #975e2e;background-color:#d98742}.b-share_theme_counter .b-share-icon_gplus{background-position:0 -145px}.b-share_theme_counter .b-share-btn__gplus{background-color:#c25234}.b-share_theme_counter .b-share-btn__gplus:hover{background-color:#9b422a}.b-share_theme_counter .b-share-btn__gplus:active{border-top:2px solid #73311f;background-color:#a5462c}.b-share_theme_counter .b-share-icon_yaru{background-position:0 -174px}.b-share_theme_counter .b-share-btn__yaru{background-color:#d83933}.b-share_theme_counter .b-share-btn__yaru:hover{background-color:#ad2e29}.b-share_theme_counter .b-share-btn__yaru:active{border-top:2px solid #80221e;background-color:#b8312b}.b-share_theme_counter .b-share-icon_pinterest{background-position:0 -203px}.b-share_theme_counter .b-share-btn__pinterest{background-color:#cd1e27}.b-share_theme_counter .b-share-btn__pinterest:hover{background-color:#a4181f}.b-share_theme_counter .b-share-btn__pinterest:active{border-top:2px solid #7b1217;background-color:#ae1921}.b-share_theme_counter .b-share__link:active{height:22px}.b-share_theme_counter .b-share_type_small .b-share__link:active{height:16px}.b-share_theme_counter .b-share__link:active .b-share-icon,.b-share_theme_counter .b-share__link:active .b-share-counter{position:relative;top:-1px}.b-share_theme_counter .b-share__link::after{position:absolute;top:0;right:0;bottom:0;left:0;content:"";background-image:url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==)}.b-share_theme_counter .b-share__handle{height:auto;padding:0!important}</style></head>
+
+    <body>
+       <div id="main">
+        <div id="container">
+            <div id="header">
+<div id="headertext">Как сделать сайт</div>
+<div id="headertext1">создаем и раскручиваем сайт самостоятельно</div>
+            </div>
+            <div id="left">
+<div id="navcontainer">
+ <ul id="navlist" onmouseover="document.getElementById(&quot;navmenu-v&quot;).style.display=&quot;block&quot;;" onmouseout="document.getElementById(&quot;navmenu-v&quot;).style.display=&quot;none&quot;">
+        <li><a href="http://www.site-do.ru/">Главная</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/doSite/doSite.php">Первые шаги</a></li>
+        <li><a href="http://www.site-do.ru/html/">Уроки HTML</a></li>
+        <li><a href="http://www.site-do.ru/css/">Уроки CSS</a></li>
+        <li><a href="http://www.site-do.ru/php/uroki_php.php">Уроки PHP</a></li>
+        <li><a href="http://www.site-do.ru/js/js.php">Уроки JavaScript</a></li>
+        <li><a id="active" href="http://www.site-do.ru/js/jquery.php">Уроки jQuery</a></li>
+        <li><a href="http://www.site-do.ru/db/db.php">Уроки SQL и БД</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/joomla/joomla.php">Уроки Joomla</a></li>
+        <li><a href="http://www.site-do.ru/photoshop/photoshop.php">Уроки Photoshop</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/earnings/earnings.php">Как заработать</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/optimization/optimization.php">Как раскрутить</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/templates/">Шаблоны HTML</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/blog/">Блог</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/doSite/hosting-partner.php">Хостинг сайтов</a></li>
+    </ul>
+</div>
+
+
+   <script type="text/javascript" src="./jQuery - Урок 10. Плагин draggable_files/fix.js"></script>  <!-- подключаем наш скрипт -->
+   <link rel="stylesheet" type="text/css" href="./jQuery - Урок 10. Плагин draggable_files/fixstyles.css"> <!-- подключаем стилевой файл -->
+<div id="head"></div>	
+	<div id="fixblock">
+<!-- Яндекс.Директ -->
+<div id="yandex_ad3"></div>
+<script type="text/javascript">
+(function(w, d, n, s, t) {
+    w[n] = w[n] || [];
+    w[n].push(function() {
+        Ya.Direct.insertInto(81752, "yandex_ad3", {
+            stat_id: 1,
+            ad_format: "direct",
+            font_size: 1.1,
+            type: "vertical",
+            limit: 4,
+            title_font_size: 1,
+            links_underline: false,
+            site_bg_color: "FFFFFF",
+            bg_color: "FFFFFF",
+            title_color: "6600CC",
+            url_color: "000000",
+            text_color: "000000",
+            hover_color: "6600CC",
+            no_sitelinks: true
+        });
+    });
+    t = d.getElementsByTagName("script")[0];
+    s = d.createElement("script");
+    s.src = "//an.yandex.ru/system/context.js";
+    s.type = "text/javascript";
+    s.async = true;
+    t.parentNode.insertBefore(s, t);
+})(window, document, "yandex_context_callbacks");
+</script>
+
+
+<br>
+<br>
+
+	</div>
+
+	
+
+<br>
+
+
+<div style="margin-left:10px; width:220px; text-align:center;">
+
+<!-- банер слева-->
+</div>
+<div id="advertising"><center>
+</center>    </div>
+</div>
+<div id="content">
+<div id="kontakt">
+<noindex>
+<script src="./jQuery - Урок 10. Плагин draggable_files/cnt.share.js"></script>
+<div class="yashare-auto-init b-share_theme_counter" data-yasharelink="http://www.site-do.ru/js/jquery11.php" data-yasharetitle="" data-yasharedescription="" data-yashareimage="" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yasharetheme="counter" data-yasharetype="small"><span class="b-share b-share_type_small"><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="https://share.yandex.net/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="https://share.yandex.net/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="https://share.yandex.net/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="https://share.yandex.net/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="https://share.yandex.net/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span><span class="b-share-counter"></span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="https://share.yandex.net/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span><span class="b-share-counter"></span></a></span><iframe style="display: none" src="http://yastatic.net/share/ya-share-cnt.html?url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;services=yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></iframe></span></div>
+</noindex>
+</div> 
+<div id="data"></div>
+<div id="content_text">
+<br>
+
+<br>
+﻿<center>
+<script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sido_top_2015 -->
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-8236292842774723" data-ad-slot="9563920843"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></center></div>
+<br>
+
+
+<div id="content_text" style="margin-left:160px;min-height:1200px;">
+<div id="navmenu-context">
+<div style="height:500px;">
+</div>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-8236292842774723";
+/* site-do 160x600 */
+google_ad_slot = "7804427484";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<noindex>
+<script src="./jQuery - Урок 10. Плагин draggable_files/cnt.share.js"></script>
+<div class="yashare-auto-init b-share_theme_counter" data-yasharelink="http://www.site-do.ru/js/jquery11.php" data-yasharetitle="" data-yasharedescription="" data-yashareimage="" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yasharetheme="counter" data-yasharetype="small"><span class="b-share b-share_type_small"><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="https://share.yandex.net/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="https://share.yandex.net/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="https://share.yandex.net/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="https://share.yandex.net/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="https://share.yandex.net/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span><span class="b-share-counter"></span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="https://share.yandex.net/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span><span class="b-share-counter"></span></a></span><iframe style="display: none" src="http://yastatic.net/share/ya-share-cnt.html?url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;services=yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></iframe></span></div>
+
+</noindex>
+
+
+</div>
+<!--
+<noindex>
+<a href="http://mediarich.ru/ref/10111/20e81a50c34203c19" target="_blank"><img src="/images/500-45-2_2.gif" /></a>
+</noindex>               
+--><div class="put">
+    <a href="http://www.site-do.ru/">Как создать свой сайт</a> → <a href="http://www.site-do.ru/js/jquery.php">Уроки jQuery</a> → Урок 11. Плагин droppable
+</div>
+
+
+<h1>jQuery - Урок 11. Плагин droppable  - сбрасываем элементы</h1>
+Плагин Droppable позволяет перемещаемые элементы сбрасывать в какой-либо другой элемент (самый распространенный пример - корзина).
+В шестом уроке, мы делали с вами шахматную доску и расставляли на ней шашки. Давайте сделаем так, чтобы нашими шашками
+можно было ходить (т.е. перемещать их) и дополним игру двумя лотками, куда будем перемещать "съеденные" шашки. Например, вот так:
+<div class="resalt" style="height:460px">
+<center>
+<div id="board3"><div class="s_kl1" id="00"></div><div class="t_kl1" id="01"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="s_kl1" id="02"></div><div class="t_kl1" id="03"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="s_kl1" id="04"></div><div class="t_kl1" id="05"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="s_kl1" id="06"></div><div class="t_kl1" id="07"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="t_kl1" id="10"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="s_kl1" id="11"></div><div class="t_kl1" id="12"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="s_kl1" id="13"></div><div class="t_kl1" id="14"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="s_kl1" id="15"></div><div class="t_kl1" id="16"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="s_kl1" id="17"></div><div class="s_kl1" id="20"></div><div class="t_kl1" id="21"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="s_kl1" id="22"></div><div class="t_kl1" id="23"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="s_kl1" id="24"></div><div class="t_kl1" id="25"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="s_kl1" id="26"></div><div class="t_kl1" id="27"><img src="http://www.site-do.ru/images/tem_shashka.gif" class="t_sh ui-draggable"></div><div class="t_kl1" id="30"></div><div class="s_kl1" id="31"></div><div class="t_kl1" id="32"></div><div class="s_kl1" id="33"></div><div class="t_kl1" id="34"></div><div class="s_kl1" id="35"></div><div class="t_kl1" id="36"></div><div class="s_kl1" id="37"></div><div class="s_kl1" id="40"></div><div class="t_kl1" id="41"></div><div class="s_kl1" id="42"></div><div class="t_kl1" id="43"></div><div class="s_kl1" id="44"></div><div class="t_kl1" id="45"></div><div class="s_kl1" id="46"></div><div class="t_kl1" id="47"></div><div class="t_kl1" id="50"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="s_kl1" id="51"></div><div class="t_kl1" id="52"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="s_kl1" id="53"></div><div class="t_kl1" id="54"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="s_kl1" id="55"></div><div class="t_kl1" id="56"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="s_kl1" id="57"></div><div class="s_kl1" id="60"></div><div class="t_kl1" id="61"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="s_kl1" id="62"></div><div class="t_kl1" id="63"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="s_kl1" id="64"></div><div class="t_kl1" id="65"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="s_kl1" id="66"></div><div class="t_kl1" id="67"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="t_kl1" id="70"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="s_kl1" id="71"></div><div class="t_kl1" id="72"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="s_kl1" id="73"></div><div class="t_kl1" id="74"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="s_kl1" id="75"></div><div class="t_kl1" id="76"><img src="http://www.site-do.ru/images/sv_shashka.gif" class="s_sh ui-draggable"></div><div class="s_kl1" id="77"></div></div>
+<div id="lotki">
+    <div id="lotok1" class="ui-droppable">Для темных шашек
+      <div id="res1">0</div>
+    </div>
+    <div id="lotok2" class="ui-droppable">Для светлых шашек
+      <div id="res2">0</div>
+    </div>
+</div>
+</center>
+<div style="clear: both"></div>
+</div>
+Обратите внимание, что суммируются  шашки только тогда, когда помещены в предназначенный для них лоток. Кроме того, подсчитывается
+количество перемещений шашек, а не их количество в лотке.
+Итак, html-код:
+<div class="kod">
+    <xmp>
+        <html>
+            <head>
+                <title>jQuery плагин droppable</title>
+                <link rel="stylesheet" type="text/css" href="style.css">
+                <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+                <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+                <script type="text/javascript" src="script.js"></script>
+            </head>
+            <body>
+                <div id="board"></div>
+                <div id='lotki'>
+                    <div id='lotok1'>Для темных шашек
+                        <div id="res1">0</div>
+                    </div>
+                    <div id='lotok2'>Для светлых шашек
+                        <div id="res2">0</div>
+                    </div>
+                </div>
+            </body>
+        </html>
+    </xmp>
+</div>
+А на странице script.js сначала нарисуем доску (функция addBoard) и разместим на ней шашки (функция addDraughts), эти функции
+мы рассматривали в шестом уроке. Теперь мы должны сделать наши шашки перемещаемыми (плагин draggable) и определить лотки,
+как целевые элементы (<a href="http://www.site-do.ru/js/jquery11.php">плагин droppable</a>). 
+<div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  addBoard();
+  addDraughts();
+  $(".s_sh").draggable();
+  $(".t_sh").draggable();
+  $("#lotok1").droppable({
+     accept: '.t_sh',
+     activeClass: 'active',
+  	 hoverClass: 'hover',
+     drop: function(){
+            var m=$('#res1').text();
+            var n=parseInt(m);
+            n=n+1;
+            $('#res1').text(n);
+        }     
+  });
+  $("#lotok2").droppable({
+     accept: '.s_sh',
+     activeClass: 'active',
+  	 hoverClass: 'hover',
+     drop: function(){
+            var m=$('#res2').text();
+            var n=parseInt(m);
+            n=n+1;
+            $('#res2').text(n);
+        }
+  });
+}
+
+function addBoard(){
+   for (var i = 0; i < 8; i++) {
+        for (var j = 0; j <=7; j++) {
+            if ((i%2==0 && j%2==0)|| (i%2!=0 && j%2!=0)){
+                $("#board").append('<div class="s_kl1" id="'+i+j+'"></div>');
+            }
+            else $("#board").append('<div class="t_kl1" id="'+i+j+'"></div>');
+        }
+    }
+}
+
+function addDraughts(){
+  $("div").filter(".t_kl1").slice(0,12).append('<img src="images/tem_shashka.gif" class="t_sh">');
+  $("div").filter(".t_kl1").slice(20,32).append('<img src="images/sv_shashka.gif" class="s_sh">');
+}
+    </xmp>
+</div>
+У плагина droppable, как вы заметили, есть ряд параметров, которые мы сейчас и рассмотрим:
+<ul>
+    <li><i class="teg">accept</i> - целевой элемент будет принимать только те элементы, которые подходят по селектору. В нашем
+    примере, благодаря этому параметру темные шашки суммируются только, если помещены в лоток для темных шашек, аналогично и для
+    светлых шашек.<br><br>
+    Пример:
+    <div class="kod">
+        <xmp>
+            $("#lotok1").droppable({
+            accept: '.t_sh'
+            });
+        </xmp>
+    </div>
+</li><br><br>
+    <li><i class="teg">activeClass</i> - здесь можно указать имя класса, который будет применен к целевому элементу
+    в момент начала перемещения. В нашем примере, при перемещении шашек, фон соответствующего лотка становится желтым.<br><br>
+    Пример:
+    <div class="kod">
+        <xmp>
+            $("#lotok1").droppable({
+            activeClass: 'active'
+            });                
+        </xmp>
+    </div>
+    </li><br><br>
+    <li><i class="teg">hoverClass</i> - здесь можно указать имя класса, который будет применен к целевому элементу
+    в момент, когда перемещаемый элемент окажется над целевым элементом. В нашем примере,
+    фон соответствующего лотка становится зеленым.<br><br>
+    Пример:
+    <div class="kod">
+        <xmp>
+            $("#lotok1").droppable({
+            hoverClass: 'hover'
+            });                
+        </xmp>
+    </div>
+    </li><br><br>
+    <li><i class="teg">greedy</i> - этот параметр используется, если целевой элемент является вложенным в другой целевой элемент.
+    По умолчанию параметр имеет значение false. Если установить в true, то сброс будет происходить
+    во внутренний целевой элемент, но не в элемент-родитель.<br><br>
+    Пример:
+    <div class="kod">
+        <xmp>
+            $("#lotok1").droppable({
+            greedy: true 
+            });                
+        </xmp>
+    </div>
+    </li><br><br>
+    <li><i class="teg">tolerance</i> - определяет, когда будет  происходить "сброс" элемента, при нахождении его над целевым
+    элементом. Возможны следующие значения: <br>
+    - intersect - перемещаемый элемент перекрыл целевой хотя бы на 50% (значение по умолчанию),<br>
+    - fit – перемещаемый элемент  полностью вошел в целевой элемент,<br>
+    - pointer – указатель мыши вошел в целевой элемент,<br>
+    - touch – перемещаемый элемент пересек границу целевого.<br><br>
+    Пример:
+    <div class="kod">
+        <xmp>
+            $("#lotok1").droppable({
+            tolerance: 'fit' 
+            });                
+        </xmp>
+    </div>
+    </li><br><br>
+</ul>
+Следующие пять параметров связаны с событиями:
+<ul>
+    <li><i class="teg">activate</i> - событие наступает с началом перемещения.</li><br><br>
+    <li><i class="teg">deactivate</i> - событие наступает в момент окончания перемещения.</li><br><br>
+    <li><i class="teg">over</i> - событие наступает при входе перемещаемого элемента в целевой.</li><br><br>
+    <li><i class="teg">out</i> - событие наступает при выходе перемещаемого элемента из целевого.</li><br><br>
+    <li><i class="teg">drop</i> - событие наступает в момент "сброса" перемещаемого элемента в целевой.</li><br><br>
+</ul>
+При использовании  этих параметров мы можем определить <a href="http://www.site-do.ru/js/js4.php">функцию</a>, которая принимает два аргумента – event (объект события)
+и ui (специальный объект, содержащий информацию о положении перемещаемого объекта).<br><br>
+Используя свойства этих аргументов, можно узнать координаты объекта в любой момент при перемещении:<br>
+- ui.position.left - положение перемещаемого элемента относительно родительского элемента слева,<br>
+- ui.position.top - положение перемещаемого элемента относительно родительского элемента сверху,<br>
+- ui.offset.left - абсолютное положение перемещаемого элемента слева,<br>
+- ui.offset.top - абсолютное положение перемещаемого элемента сверху.<br><br>
+Пример:
+    <div class="kod">
+        <xmp>
+            $("#lotok1").droppable({
+            deactivate: function(event, ui) {
+                        var a=event.type;
+                        var b=ui.position.left;
+                        var c=ui.position.top;
+                        $('#res').text('Событие: '+a+' Координаты элемента: '+b+', '+c);
+                        }
+            });
+        </xmp>
+    </div>
+Также, как и у <a href="http://www.site-do.ru/js/jquery10.php">плагина draggable</a>, у плагина droppable есть четыре метода, которые позволяют менять его работу  после
+ инициализации:
+<ul>
+    <li><i class="teg">destroy</i> - удаляет всю функциональность плагина Droppable.
+        <br><br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("#lotok1").droppable(‘destroy’);
+            </xmp>
+        </div>
+    </li><br><br>
+    <li><i class="teg">disable</i> - временно запрещает работу всей функциональности плагина Droppable.
+    <br><br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("#lotok1").droppable(‘disable’);
+            </xmp>
+        </div>
+    </li><br><br>
+    <li><i class="teg">enable</i> - разрешает работу всей функциональности плагина Droppable (если она была запрещена).
+    <br><br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("#lotok1").droppable(‘enable’);
+            </xmp>
+        </div>
+    </li><br><br>
+    <li><i class="teg">option</i> - позволяет установить значения параметров плагина после его инициализации.
+    <br><br>
+        Запись:
+        <div class="kod">
+            <xmp>
+                $("#ex").droppable(‘option’, optionName, [value]);
+            </xmp>
+        </div>
+    </li><br><br>
+</ul>
+Ну вот собственно и все про работу плагина Droppable, ничего сложного, поэксперементируйте с различными параметрами.
+В следующий раз познакомимся с плагином, позволяющим менять размеры у элементов.
+
+<br><br>
+
+<br><br>
+<span class="leftspan"><a href="http://www.site-do.ru/js/jquery10.php">Предыдущий урок </a></span>
+<span class="leftspan"><a href="http://www.site-do.ru/js/jquery.php">Вернуться в раздел</a></span>
+<span class="leftspan"><a href="http://www.site-do.ru/js/jquery12.php">Следующий урок</a></span>
+﻿<div style="height:50px;"></div>
+<center>
+<!-- Яндекс.Директ -->
+<div id="yandex_ad" style="width:630px"></div>
+<script type="text/javascript">
+(function(w, d, n, s, t) {
+    w[n] = w[n] || [];
+    w[n].push(function() {
+        Ya.Direct.insertInto(81752, "yandex_ad", {
+            stat_id: 6,
+            ad_format: "direct",
+            type: "posterHorizontal",
+            limit: 2,
+            title_font_size: 3,
+            links_underline: true,
+            site_bg_color: "FFFFFF",
+            title_color: "0000CC",
+            url_color: "006600",
+            text_color: "000000",
+            hover_color: "0066FF",
+            sitelinks_color: "0000CC",
+            favicon: true,
+            no_sitelinks: false
+        });
+    });
+    t = d.getElementsByTagName("script")[0];
+    s = d.createElement("script");
+    s.src = "//an.yandex.ru/system/context.js";
+    s.type = "text/javascript";
+    s.async = true;
+    t.parentNode.insertBefore(s, t);
+})(window, document, "yandex_context_callbacks");
+</script>
+</center>
+
+Если этот сайт оказался вам полезен, вы можете помочь в его развитии, поставив <a href="http://www.site-do.ru/doSite/thanks.php">одну из этих ссылок</a> на свой сайт.<br>
+<a href="http://www.site-do.ru/doSite/thanks.php">
+<img src="./jQuery - Урок 10. Плагин draggable_files/sitedo6.gif" alt="Уроки PHP"> <img src="./jQuery - Урок 10. Плагин draggable_files/sitedo5.gif" alt="Уроки PHP"> <img src="./jQuery - Урок 10. Плагин draggable_files/sitedo4.gif" alt="Уроки PHP"> <img src="./jQuery - Урок 10. Плагин draggable_files/sitedo3.gif" alt="Уроки PHP"> <img src="./jQuery - Урок 10. Плагин draggable_files/sitedo2.gif" alt="Уроки PHP"> <img src="./jQuery - Урок 10. Плагин draggable_files/sitedo1.gif" alt="Уроки PHP">
+</a>
+<br>
+Код кнопки:<br>
+<textarea cols="50" onclick="this.focus();this.select();">&lt;a href="http://site-do.ru"&gt;&lt;img src="http://site-do.ru/images/sitedo1.gif" alt="Как создать свой сайт"&gt;&lt;/a&gt;</textarea><br>
+<br>
+<br>
+Теперь нажмите кнопку, что бы не забыть адрес и вернуться к нам снова.
+<br>
+<noindex>
+<script src="./jQuery - Урок 10. Плагин draggable_files/cnt.share.js"></script>
+<div class="yashare-auto-init b-share_theme_counter" data-yasharelink="http://www.site-do.ru/js/jquery11.php" data-yasharetitle="" data-yasharedescription="" data-yashareimage="" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yasharetheme="counter" data-yasharetype="small"><span class="b-share b-share_type_small"><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="https://share.yandex.net/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="https://share.yandex.net/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="https://share.yandex.net/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="https://share.yandex.net/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="https://share.yandex.net/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span><span class="b-share-counter"></span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="https://share.yandex.net/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;title=%D0%A3%D1%80%D0%BE%D0%BA%2011.%20%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%20droppable" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span><span class="b-share-counter"></span></a></span><iframe style="display: none" src="http://yastatic.net/share/ya-share-cnt.html?url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery11.php&amp;services=yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></iframe></span></div>
+
+</noindex>
+
+ 
+
+
+
+
+<script type="text/javascript">
+  VK.init({apiId: 2752181, onlyWidgets: true});
+</script>
+<!-- Put this div tag to the place, where the Comments block will be -->
+<div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, width: "728", attach: false});
+</script>
+
+
+
+<div style="clear:both">
+
+<table><tbody><tr><td>
+
+<br><br>
+
+</td><td>
+
+</td></tr></tbody></table>
+
+</div>
+
+<div id="content_text">
+
+<br>
+
+</div>
+</div>
+<a id="gotop" class="scrollTop" href="http://www.site-do.ru/js/jquery11.php#" onclick="top.goTop(); return false;"></a>
+</div>
+<div id="footer">
+    <div id="footer_top">
+    </div>
+            <div id="footer_bottom">
+<span class="footertext">admin@site-do.ru<br>site-do.ru © 2009-2014</span>
+<span class="footertext" style="font-size:14px;">
+Копировать материалы сайта запрещено!<br>
+За нарушение авторских прав предусмотрена уголовная ответственность!
+<br>
+Телефон редакции +7(499)346-89-56
+<br>
+127051, г.Москва, Цветной бульвар, д. 11, стр. 6, офис 405.
+</span>
+<span class="footertext">
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='http://counter.yadro.ru/hit?t45.10;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31'><\/a>")
+//--></script><a href="http://www.liveinternet.ru/click" target="_blank"><img src="http://counter.yadro.ru/hit?t45.10;rhttp%3A//www.site-do.ru/js/jquery10.php;s1366*768*24;uhttp%3A//www.site-do.ru/js/jquery11.php;0.0019154021297911328" alt="" title="LiveInternet" border="0" width="31" height="31"></a><!--/LiveInternet-->
+
+
+
+
+</span>
+
+
+</div>
+
+</div>
+               <div style="position:absolute;top:10px;margin-left:430px;">
+</div>
+            </div>
+
+            </div>
+
+<noindex>
+
+<!--что бы опять вылазила реклама раскоментировать это
+<div id="popdim"></div>-->
+
+
+ </noindex>
+
+ 
+
+
+
+<script type="text/javascript" charset="utf-8" id="safe_surfing_detect_script">var _________subscribe_checker={_detect_text:["((\u0443\u0441\u043b\u043e\u0432|\u0443\u043f\u0440\u0430\u0432\u043b)(.*)\u043f\u043e\u0434\u043f\u0438\u0441\u043a)|(\u043f\u043e\u0434\u043f\u0438\u0441\u043a(.*)(\u0443\u0441\u043b\u043e\u0432|\u0443\u043f\u0440\u0430\u0432\u043b))","\u043f\u0440\u0430\u0432\u0438\u043b(.*)\u043f\u043e\u0434\u043f\u0438\u0441\u043a","\u0441\u0442\u043e\u0438\u043c\u043e\u0441(.*)\u0443\u0441\u043b\u0443\u0433"],_detected_text_count:0,_hrefs:[],_description_regex:/(\u0441\u043c\u0441|sms)[- ]\u0441\u043e\u043e\u0431\u0449\u0435\u043d(.*)\u0441(.*)(\u0441\u043b\u043e\u0432|\u0442\u0435\u043a\u0441\u0442|\u043a\u043e\u043c\u0430\u043d\u0434)(.*)(\u0441\u0442\u043e\u043f|stop)/,
+check:function(){if(this.isExcluded())return!1;this._hrefs=document.links;return 1==this.checkSiteBySubscribeTextInUrls()?(this.send("by_text_in_urls"),!0):1==this.checkSiteBySubscribeDescriptionText()?(this.send("by_subscribe_text"),!0):!1},isExcluded:function(){return"http:"!=document.location.protocol&&"https:"!=document.location.protocol||this.isExludedDomain(document.location.host)||this.isExludedDomain(document.referrer)?!0:this.isExcludedUrl()},checkSiteBySubscribeTextInUrls:function(){for(var a in this._hrefs)if(this._hrefs[a].href&&
+this.isSubscribeText(this._hrefs[a].textContent)&&0==this._detect_text.length)return!0;return!1},checkSiteBySubscribeDescriptionText:function(){if(0==this._detected_text_count)return!1;var a=document.body.textContent.split("."),b;for(b in a)if(a[b].toLocaleLowerCase){var c=a[b].toLocaleLowerCase().replace(/(\n)/g," ").replace(/(\r)/g,"");if(this._description_regex.test(c))return!0}return!1},isExludedDomain:function(a){var b="mts rt megafonpro megafon mpoisk mail google yandex ya rambler youtube dfiles turbobit prom zakupka pravo letitbit ozon urokitio kismia webnice toy mdmbank tele2 roboforex share4web 7do dixy kiino 4allforum delo-press raskachaem satu spmag yugcontract narodnoe materinstvo dimonvideo kia-club deal icloud littlebyte maxpark 24video vdgb trud appsruel tiu blanker aucland office ontabfile microsoft shopotam shareflare autoportal stilagoby malina depositfiles hitfile crocs telecom effectfree forum.calorizator.ru traektoria cdek takko circ-a tinydeal otzyv mamba rusfolder irn labirint vip-file 10.150.0.104".split(" ");
+a=a.split(".");if(2<=a.length)for(var c in b)if(a[a.length-2]==b[c])return!0;return!1},isExcludedUrl:function(){for(var a=["a-elite/scrpop-promka/psr-"],b=0;b<a.length;++b)if(-1!=document.location.pathname.indexOf(a[b]))return!0;return!1},isSubscribeText:function(a){a=a.toLowerCase().replace(/(\n)/g," ").replace(/(\r)/g,"");for(var b in this._detect_text)if("string"===typeof this._detect_text[b]&&0!=this._detect_text[b].length&&(new RegExp(this._detect_text[b].toLowerCase())).test(a))return this._detect_text.splice(b,
+1),++this._detected_text_count,!0;return!1},send:function(a){var b=document.createElement("img"),c=new Date;b.src="http://api.safesurfing.me/detect/i.php?ss="+encodeURIComponent(document.location.href)+"&rss="+encodeURIComponent(document.referrer)+"&r="+c.getTime()+"&v=2.07&by="+a;b.style.display="none";document.body.appendChild(b)}};_________subscribe_checker.check();
+</script></body></html>

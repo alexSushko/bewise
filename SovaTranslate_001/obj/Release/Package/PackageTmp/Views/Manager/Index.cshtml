@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Личный кабинет</h2>
+
+@Html.ActionLink("Пользователи", "UsersList", "Manager",null,new{@class="button"})
+
+@Html.ActionLink("AddUser", "AddUser", "Manager",null,new{@class="button"})
+  

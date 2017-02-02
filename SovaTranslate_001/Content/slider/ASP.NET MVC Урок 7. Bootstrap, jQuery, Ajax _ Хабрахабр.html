@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://habrahabr.ru/post/176053/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta content="width=1024" name="viewport">
+
+    
+
+    <title>ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax / Хабрахабр</title>
+
+      <meta name="description" content="Цель урока: Определить правила работы с html, js и css файлами. Bootstrap и дополнительный css. Структура js-файлов. Использование jQuery, основные моменты, изучение селекторов, событий и др....">
+
+      <meta name="keywords" content="asp.net mvc, .net, c#, bootstrap, html, css, jquery, javascript">
+
+      <meta property="fb:app_id" content="444736788986613"> 
+<meta property="og:type" content="article"> 
+<meta property="og:url" content="https://habrahabr.ru/post/176053/"> 
+<meta property="og:title" content="ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax">
+	<meta property="og:image" content="https://habrastorage.org/storage2/072/655/b11/072655b1163de9eb90791d6fc3899a19.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/072655b1163de9eb90791d6fc3899a19.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/713/8f6/e29/7138f6e2945ff76202eec3d889776907.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/7138f6e2945ff76202eec3d889776907.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/b61/508/288/b61508288490f8aee9120db277467ac9.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/b61508288490f8aee9120db277467ac9.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/52c/b94/5a1/52cb945a148637c9b1272a7424edc4b4.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/52cb945a148637c9b1272a7424edc4b4.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/a1c/6bd/27b/a1c6bd27bdc7c9fb05f172ab886c14bb.png">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/a1c6bd27bdc7c9fb05f172ab886c14bb.png"><meta property="og:image" content="https://habrastorage.org/storage2/077/e7c/820/077e7c820ade1cd084c026288d93be80.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/077e7c820ade1cd084c026288d93be80.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/894/e36/b15/894e36b15ed7847acaaf2f9d7236fb5f.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/894e36b15ed7847acaaf2f9d7236fb5f.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/e08/2fe/ba3/e082feba3a7e75107cf9f7a151115ba0.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/e082feba3a7e75107cf9f7a151115ba0.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/3e5/eee/2d9/3e5eee2d91463b614f32a53f1facfee4.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/3e5eee2d91463b614f32a53f1facfee4.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/590/f88/7a4/590f887a42048be144566a085d2fc444.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/590f887a42048be144566a085d2fc444.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/f7a/5f1/084/f7a5f1084549aeee10404c85914f751f.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/f7a5f1084549aeee10404c85914f751f.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/6f3/c79/3e2/6f3c793e2936aeac582304cc501a5e59.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/6f3c793e2936aeac582304cc501a5e59.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/292/bf9/c99/292bf9c99b148665e9bf178192e406e1.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/292bf9c99b148665e9bf178192e406e1.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/2f3/0a4/681/2f30a468192074a5df6bced922bc5b6e.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/2f30a468192074a5df6bced922bc5b6e.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/3f4/2cd/2c0/3f42cd2c02181248b3cee509a85b3c26.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/3f42cd2c02181248b3cee509a85b3c26.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/7f7/f71/dee/7f7f71deecc0d8733f29088f94af7eb5.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/7f7f71deecc0d8733f29088f94af7eb5.jpg"><meta property="og:image" content="https://habrastorage.org/storage2/2ce/9b9/26a/2ce9b926a9d91a85780e355233ad495b.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/2ce9b926a9d91a85780e355233ad495b.jpg">
+	
+<meta property="og:description" content="Цель урока: Определить правила работы с html, js и css файлами. Bootstrap и дополнительный css. Структура js-файлов. Использование jQuery, основные моменты,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@habrahabr">
+  <meta property="al:android:url" content="habrahabr://post/176053">
+<meta property="al:android:app_name" content="Habrahabr">
+<meta property="al:android:package" content="ru.habrahabr">
+<meta property="al:windows_phone:url" content="habrahabr://post/176053">
+<meta property="al:windows_phone:app_name" content="Habrahabr">
+<meta property="al:windows_phone:app_id" content="460a6bd6-8955-470f-935e-9ea1726a6060">
+  <link rel="canonical" href="https://habrahabr.ru/post/176053/">
+  <link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.habrahabr.ru/post/176053/">
+
+
+    <meta name="yandex-verification" content="71593b225aeafc4e">
+    <meta name="referrer" content="unsafe-url">
+    <meta name="pocket-site-verification" content="ed24b2b9721edf0a282c5b4a3232c4">
+
+    <style type="text/css">
+      @font-face{font-family:'Fira Sans';font-style:normal;font-display:swap;font-weight:500;src:url(/fonts/0/FiraSans/FiraSans-Medium.eot);src:local('Fira Sans Medium'),local(FiraSans-Medium),url(/fonts/0/FiraSans/FiraSans-Medium.eot?#iefix) format("embedded-opentype"),url(/fonts/0/FiraSans/FiraSans-Medium.woff2) format("woff2"),url(/fonts/0/FiraSans/FiraSans-Medium.woff) format("woff"),url(/fonts/0/FiraSans/FiraSans-Medium.ttf) format("truetype")}
+    </style>
+
+      <link href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/post_common_css.css" rel="stylesheet" media="all">
+  <link href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/all.css" rel="stylesheet" media="all">
+
+    <link href="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/global_main.css" rel="stylesheet" media="all">
+
+    <!-- load font-face observer -->
+    <script id="an.yandex.ru/resource/context_static_r1181.js" src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/context_static_r1181.js"></script><script src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/context.js" type="text/javascript" async=""></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script>
+      (function(){'use strict';var f,g=[];function l(a){g.push(a);1==g.length&&f()}function m(){for(;g.length;)g[0](),g.shift()}f=function(){setTimeout(m)};function n(a){this.a=p;this.b=void 0;this.f=[];var b=this;try{a(function(a){q(b,a)},function(a){r(b,a)})}catch(c){r(b,c)}}var p=2;function t(a){return new n(function(b,c){c(a)})}function u(a){return new n(function(b){b(a)})}function q(a,b){if(a.a==p){if(b==a)throw new TypeError;var c=!1;try{var d=b&&b.then;if(null!=b&&"object"==typeof b&&"function"==typeof d){d.call(b,function(b){c||q(a,b);c=!0},function(b){c||r(a,b);c=!0});return}}catch(e){c||r(a,e);return}a.a=0;a.b=b;v(a)}}
+      function r(a,b){if(a.a==p){if(b==a)throw new TypeError;a.a=1;a.b=b;v(a)}}function v(a){l(function(){if(a.a!=p)for(;a.f.length;){var b=a.f.shift(),c=b[0],d=b[1],e=b[2],b=b[3];try{0==a.a?"function"==typeof c?e(c.call(void 0,a.b)):e(a.b):1==a.a&&("function"==typeof d?e(d.call(void 0,a.b)):b(a.b))}catch(h){b(h)}}})}n.prototype.g=function(a){return this.c(void 0,a)};n.prototype.c=function(a,b){var c=this;return new n(function(d,e){c.f.push([a,b,d,e]);v(c)})};
+      function w(a){return new n(function(b,c){function d(c){return function(d){h[c]=d;e+=1;e==a.length&&b(h)}}var e=0,h=[];0==a.length&&b(h);for(var k=0;k<a.length;k+=1)u(a[k]).c(d(k),c)})}function x(a){return new n(function(b,c){for(var d=0;d<a.length;d+=1)u(a[d]).c(b,c)})};window.Promise||(window.Promise=n,window.Promise.resolve=u,window.Promise.reject=t,window.Promise.race=x,window.Promise.all=w,window.Promise.prototype.then=n.prototype.c,window.Promise.prototype["catch"]=n.prototype.g);}());
+
+      (function(){var k=!!document.addEventListener;function l(a,b){k?a.addEventListener("scroll",b,!1):a.attachEvent("scroll",b)}function v(a){document.body?a():k?document.addEventListener("DOMContentLoaded",a):document.attachEvent("onreadystatechange",function(){"interactive"!=document.readyState&&"complete"!=document.readyState||a()})};function w(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.f=document.createElement("span");this.g=-1;this.b.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";
+      this.f.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;";this.b.appendChild(this.h);this.c.appendChild(this.f);this.a.appendChild(this.b);this.a.appendChild(this.c)}
+      function y(a,b){a.a.style.cssText="max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;left:-999px;white-space:nowrap;font:"+b+";"}function z(a){var b=a.a.offsetWidth,c=b+100;a.f.style.width=c+"px";a.c.scrollLeft=c;a.b.scrollLeft=a.b.scrollWidth+100;return a.g!==b?(a.g=b,!0):!1}function A(a,b){function c(){var a=m;z(a)&&null!==a.a.parentNode&&b(a.g)}var m=a;l(a.b,c);l(a.c,c);z(a)};function B(a,b){var c=b||{};this.family=a;this.style=c.style||"normal";this.weight=c.weight||"normal";this.stretch=c.stretch||"normal"}var C=null,D=null,H=!!window.FontFace;function I(){if(null===D){var a=document.createElement("div");try{a.style.font="condensed 100px sans-serif"}catch(b){}D=""!==a.style.font}return D}function J(a,b){return[a.style,a.weight,I()?a.stretch:"","100px",b].join(" ")}
+      B.prototype.load=function(a,b){var c=this,m=a||"BESbswy",x=b||3E3,E=(new Date).getTime();return new Promise(function(a,b){if(H){var K=new Promise(function(a,b){function e(){(new Date).getTime()-E>=x?b():document.fonts.load(J(c,c.family),m).then(function(c){1<=c.length?a():setTimeout(e,25)},function(){b()})}e()}),L=new Promise(function(a,c){setTimeout(c,x)});Promise.race([L,K]).then(function(){a(c)},function(){b(c)})}else v(function(){function q(){var b;if(b=-1!=f&&-1!=g||-1!=f&&-1!=h||-1!=g&&-1!=
+      h)(b=f!=g&&f!=h&&g!=h)||(null===C&&(b=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent),C=!!b&&(536>parseInt(b[1],10)||536===parseInt(b[1],10)&&11>=parseInt(b[2],10))),b=C&&(f==r&&g==r&&h==r||f==t&&g==t&&h==t||f==u&&g==u&&h==u)),b=!b;b&&(null!==d.parentNode&&d.parentNode.removeChild(d),clearTimeout(G),a(c))}function F(){if((new Date).getTime()-E>=x)null!==d.parentNode&&d.parentNode.removeChild(d),b(c);else{var a=document.hidden;if(!0===a||void 0===a)f=e.a.offsetWidth,g=n.a.offsetWidth,
+      h=p.a.offsetWidth,q();G=setTimeout(F,50)}}var e=new w(m),n=new w(m),p=new w(m),f=-1,g=-1,h=-1,r=-1,t=-1,u=-1,d=document.createElement("div"),G=0;d.dir="ltr";y(e,J(c,"sans-serif"));y(n,J(c,"serif"));y(p,J(c,"monospace"));d.appendChild(e.a);d.appendChild(n.a);d.appendChild(p.a);document.body.appendChild(d);r=e.a.offsetWidth;t=n.a.offsetWidth;u=p.a.offsetWidth;F();A(e,function(a){f=a;q()});y(e,J(c,'"'+c.family+'",sans-serif'));A(n,function(a){g=a;q()});y(n,J(c,'"'+c.family+'",serif'));A(p,function(a){h=
+      a;q()});y(p,J(c,'"'+c.family+'",monospace'))})})};window.FontFaceObserver=B;window.FontFaceObserver.prototype.check=window.FontFaceObserver.prototype.load=B.prototype.load;"undefined"!==typeof module&&(module.exports=window.FontFaceObserver);}());
+
+      (function( w ){
+        // if the class is already set, we're good.
+        if( w.document.documentElement.className.indexOf( "fonts-loaded" ) > -1 ){ return; }
+
+        var html = document.documentElement;
+        var font = new w.FontFaceObserver("Fira Sans", { weight: 500 });
+
+        font.load().then(function () {
+          html.classList.add('fonts-loaded');
+          sessionStorage.fontsLoaded = true;
+        }).catch(function () {
+          sessionStorage.fontsLoaded = false;
+        });
+
+        if (sessionStorage.fontsLoaded) {
+          html.classList.add('fonts-loaded');
+        }
+      }(this));
+    </script>
+
+    <script type="text/javascript" src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/global_main.js"></script>
+      <script type="text/javascript" src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/post_common_js.js"></script>
+  <script type="text/javascript" src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/all.js"></script>
+
+
+    
+    
+
+    <meta name="yandex-verification" content="67d46b975fa41645">
+    
+    <meta content="Хабрахабр" name="apple-mobile-web-app-title">
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://habrahabr.ru/images/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://habrahabr.ru/images/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://habrahabr.ru/images/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://habrahabr.ru/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://habrahabr.ru/images/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://habrahabr.ru/images/favicons/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="https://habrahabr.ru/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://habrahabr.ru/images/favicons/favicon-16x16.png" sizes="16x16">
+<meta name="application-name" content="Хабрахабр">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="mstile-144x144.png">
+
+      
+      <script>
+        var N = 5;
+        var ar_duo1 = Math.floor(Math.random()*N+1);
+      </script>
+      <script type="text/javascript" src="https://habracdn.net/habr/javascripts/1470318147/libs/adriver.core.2.js"></script>
+
+    <link title="Хабрахабр / Комментарии к публикации «ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax»" type="application/rss+xml" rel="alternate" href="https://habrahabr.ru/rss/post/176053/">
+
+    <script src="https://habracdn.net/habr/javascripts/1470318147/_parts/advertising.js"></script>
+
+<script type="text/javascript">
+
+  if (typeof adriver == 'undefined')
+  {
+    var adb1 = 'yes';
+  }
+
+    var user_type = 'guest';
+
+  var page_type = "publish_ugc";
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-726094-1',  'auto');
+  ga('create', 'UA-726094-24', 'auto', {'name': 'HGM'});
+
+  ga('require', 'displayfeatures');
+  ga('set', 'dimension1', user_type); // user type - guest/readonly/habrauser
+
+
+  ga('set', 'dimension4', adb1);
+
+  ga('set', 'dimension5', page_type);
+
+
+  if(typeof removeUtms === 'undefined') {
+    removeUtms = function(){};
+  }
+
+  ga('HGM.set', 'dimension1', user_type);
+  ga('HGM.set', 'dimension2', "habrahabr");
+  ga('HGM.send', 'pageview');
+
+  ga('send', 'pageview', { 'hitCallback': removeUtms });
+
+
+</script>
+
+
+    <script>
+  var adcm_config ={
+    id:1034,
+    platformId: 34,
+    
+    tags: ['hub_asp', 'hub_net', 'g_programming', 'g_windows_and_.net'],
+    init: function () {
+      window.adcm.call();
+    }
+  };
+</script>
+<script src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/adcm.js" async=""></script>
+  <script charset="utf-8" src="https://mc.yandex.ru/metrika/watch.js"></script></head>
+
+  <body>
+    <div class="layout_inner">
+      <div id="TMpanel">
+  <div class="container">
+    <div class="bmenu">
+      <a href="https://tmfeed.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_top_panel&amp;utm_campaign=tm_promo">TM Feed</a>
+      <a href="https://habrahabr.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_top_panel&amp;utm_campaign=tm_promo" class="current">Хабрахабр</a>
+      <a href="https://geektimes.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_top_panel&amp;utm_campaign=tm_promo">Geektimes</a>
+      <a href="https://toster.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_top_panel&amp;utm_campaign=tm_promo">Тостер</a>
+      <a href="https://moikrug.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_top_panel&amp;utm_campaign=tm_promo">Мой круг</a>
+      <a href="https://freelansim.ru/?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=head_link">Фрилансим</a>
+    </div>
+      <div class="bmenu_inner" style="display:inline-block!important;visibility:visible!important;">
+        <span class="bmenu__label">Спецпроекты:</span>
+        <span class="bmenu slink"></span>
+        <span id="adriver_banner_465568687"></span>
+      </div>
+  </div>
+</div>
+
+      <div id="layout">
+        <div id="navbar_overlay" class="hidden"></div>
+<div id="navbar">
+    <div class="nav_panel">
+        <a href="https://habrahabr.ru/" class="logo"></a>
+
+            <a href="https://habrahabr.ru/posts/" class="tab tab_menu" data-tab="menu_tab" title="Меню"><span class="g-icon g-icon-burger"></span></a>
+            <a href="https://habrahabr.ru/auth/login/" class="tab tab_login" id="login" title="Войти"><span class="g-icon g-icon-lock"></span></a>
+
+        <a href="https://habrahabr.ru/post/176053/#" class="scroll_to_up hidden scroll_to_up_for_guest" id="scroll_to_top" title="Наверх"></a>
+    </div>
+
+    <div class="nav_tabs_content ">
+        <div class="nav_tab hidden" id="menu_tab">
+          <div class="title">Разделы</div>
+          <form action="https://habrahabr.ru/search/#n" method="get" class="global_search_form">
+            <div>
+              <input type="text" name="q" placeholder="Поиск">
+            </div>
+          </form>
+          <div class="menu">
+              <a href="https://habrahabr.ru/posts/top/">Публикации</a>
+              <a href="https://habrahabr.ru/hubs/">Хабы</a>
+              <a href="https://habrahabr.ru/companies/">Компании</a>
+              <a href="https://habrahabr.ru/users/">Пользователи</a>
+              <a href="https://habrahabr.ru/sandbox/">Песочница</a>
+              <div class="line"></div>
+              <a href="https://toster.ru/?" class="new_window">Q&amp;A</a>
+              <a href="https://moikrug.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_left_menu&amp;utm_campaign=tm_promo" class="new_window">Вакансии</a>
+          </div>
+
+            
+                <div class="line"></div>
+                <div class="title">Спецпроекты</div>
+                <div class="menu">
+              <a href="http://bit.ly/27YDyuf" target="_blank">Device Lab от Google</a>
+              
+              <a href="http://bit.ly/29mQ14a" target="_blank">Малина для Админа</a>
+              </div>
+        </div>
+
+
+    </div>
+</div>
+
+        <div class="inner">
+
+          
+            <div class="profile-header js-user_3467">
+
+  <div class="profile-header__summary author-info author-info_profile ">
+    <a href="https://habrahabr.ru/users/chernikov/" class="author-info__image" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_top&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">
+        <img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/d5c4ba4e748593c0987c4f50358ac35c.jpg" class="author-info__image-pic">
+
+    </a>
+
+    <div class="author-info__desc">
+      <div class="author-info__username">
+         <a href="https://habrahabr.ru/users/chernikov/" class="author-info__name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_top&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">chernikov</a> 
+        <a href="https://habrahabr.ru/users/chernikov/" class="author-info__nickname" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_top&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">@chernikov</a>
+        
+      </div>
+        <div class="author-info__specialization">
+          Пользователь
+        </div>
+    </div>
+  </div>
+
+    <div class="profile-header__stats">
+
+      <div class="karma__widjet voting-wjt voting-wjt_user-profile js-karma  ">
+
+        <div class="voting-wjt__counter js-karma-mark voting-wjt__counter_positive " title="327 голосов">
+          <div class="voting-wjt__counter-score js-karma_num">177,9</div>
+          <div class="voting-wjt__label">карма</div>
+        </div>
+
+      </div>
+
+      <div class="statistic statistic_user-rating" title="Рейтинг пользователя">
+        <div class="statistic__value statistic__value_magenta">0,0</div>
+        <div class="statistic__label">рейтинг</div>
+      </div>
+
+    </div>
+
+
+</div>
+
+  <div class="content_wrapper column-wrapper_content">
+    <div class="column-wrapper js-sticky-wrapper">
+      <div class="content_left js-content_left">
+          <div class="tabs">
+    <ul class="tabs-menu tabs-menu_habrahabr">
+          <li class="tabs-menu__item tabs-menu__item_user-profile tabs-menu__item_inline">
+            <a href="https://habrahabr.ru/users/chernikov/" class="tab-item tab-item_stacked ">
+              <span class="tab-item__value stats">
+                <span class="stats__counters stats__counters_big">
+                  <strong class="counter"></strong>
+                </span>
+                <span class="stats__value">Профиль</span>
+            </span></a>
+          </li>
+          <li class="tabs-menu__item tabs-menu__item_user-profile tabs-menu__item_inline">
+            <a href="https://habrahabr.ru/users/chernikov/topics/" class="tab-item tab-item_stacked tab-item_current">
+              <span class="tab-item__value stats">
+                <span class="stats__counters stats__counters_big">
+                  <strong class="counter">22</strong>
+                </span>
+                <span class="stats__value">Публикации</span>
+            </span></a>
+          </li>
+          <li class="tabs-menu__item tabs-menu__item_user-profile tabs-menu__item_inline">
+            <a href="https://habrahabr.ru/users/chernikov/comments/" class="tab-item tab-item_stacked ">
+              <span class="tab-item__value stats">
+                <span class="stats__counters stats__counters_big">
+                  <strong class="counter">93</strong>
+                </span>
+                <span class="stats__value">Комментарии</span>
+            </span></a>
+          </li>
+          <li class="tabs-menu__item tabs-menu__item_user-profile tabs-menu__item_inline">
+            <a href="https://habrahabr.ru/users/chernikov/favorites/" class="tab-item tab-item_stacked ">
+              <span class="tab-item__value stats">
+                <span class="stats__counters stats__counters_big">
+                  <strong class="counter">217</strong>
+                </span>
+                <span class="stats__value">Избранное</span>
+            </span></a>
+          </li>
+          <li class="tabs-menu__item tabs-menu__item_user-profile tabs-menu__item_inline">
+            <a href="https://habrahabr.ru/users/chernikov/subscription/followers/" class="tab-item tab-item_stacked ">
+              <span class="tab-item__value stats">
+                <span class="stats__counters stats__counters_big">
+                  <strong class="counter">136</strong>
+                </span>
+                <span class="stats__value">Подписчики</span>
+            </span></a>
+          </li>
+    </ul>
+
+  </div>
+
+
+        <div class="post_show">
+          
+    <div class="post post_full" id="post_176053">
+  <div class="post__header">
+    <span class="post__time_published"> 9 апреля 2013 в 22:54</span>
+
+    <h1 class="post__title">
+      <a href="https://habrahabr.ru/flows/develop/" class="post__flow" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;flow&#39;, &#39;post page&#39;, &#39;Разработка&#39;); }">Разработка</a><span class="post__title-arrow">&nbsp;→</span>
+      <span>ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax</span>
+      
+
+
+
+
+<span class="flag flag_tutorial" title="Обучающий материал">tutorial</span>
+
+
+
+    </h1>
+
+      <div class="hubs">
+          <a href="https://habrahabr.ru/hub/asp/" class="hub " title="Вы не подписаны на этот хаб" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;hub&#39;, &#39;post page&#39;, &#39;ASP&#39;); }">ASP</a><span class="profiled_hub" title="Профильный хаб">*</span>, 
+          <a href="https://habrahabr.ru/hub/net/" class="hub " title="Вы не подписаны на этот хаб" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;hub&#39;, &#39;post page&#39;, &#39;.NET&#39;); }">.NET</a><span class="profiled_hub" title="Профильный хаб">*</span>
+      </div>
+  </div>
+
+  <div class="post__body post__body_full">
+    <div class="content html_format"><b>Цель урока</b>: Определить правила работы с html, js и css файлами. Bootstrap и дополнительный css. Структура js-файлов. Использование jQuery, основные моменты, изучение селекторов, событий и др. addClass, removeClass, attr, data, динамическое создание dom-объекта, ajax.<br>
+<br>
+Наконец мы приступаем к более детальному изучению клиентской части, которая уже в меньшей степени связана с asp.net mvc, но всё равно важна для веб-разработки.<br>
+<br>
+<a name="habracut"></a><br>
+<h5>Twitter Bootstrap и css </h5><br>
+Twitter Bootstrap – это css-фреймворк. Т.е. набор инструментов для создания блоков, кнопок, меток, форм и навигации. Наше приложение мы будем основывать на этом фрейморке. <br>
+<br>
+Подробнее тут:<br>
+<a href="http://twitter.github.com/bootstrap/">http://twitter.github.com/bootstrap/</a><br>
+Установим bootstrap:<br>
+<pre><code class="bash">Install-Package Twitter.Bootstrap
+</code></pre><br>
+<br>
+Удалим Jquery.UI:<br>
+<pre><code class="bash">Uninstall-Package Jquery.UI.Combined
+</code></pre><br>
+<br>
+Добавим в BundleConfig bootstap и уберем оттуда jquery.UI (App_Start/BundleConfig.cs):<br>
+<pre><code class="cs">public class BundleConfig
+    {
+        public static void RegisterBundles(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        "~/Scripts/jquery-1.*"));
+
+            
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+                        "~/Scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                        "~/Scripts/bootstrap*"));
+
+            bundles.Add(new StyleBundle("~/Content/css")
+                    .Include("~/Content/site.css")  /* не перепутайте порядок */
+                    .Include("~/Content/bootstrap*"));
+        }
+    }
+</code></pre><br>
+<br>
+Важно помнить про порядок приоритета задания стилей:<br>
+<br>
+<ul>
+<li>Наименее низким приоритетом обладают встроенные стили браузера</li>
+<li>Пользовательский стиль в браузере</li>
+<li>Наследуемые стили от родительских элементов</li>
+<li>Следующие css-стили заданные во внешних файлах, тут правило важнее (при прочих равных условиях), если файл содержащий правило находится после файла содержащий предыдущее. Это же правило относится и к взаимному расположению правил внутри документа.</li>
+<li>Далее по стоимости применения селекторов:<br>
+<ul>
+<li>Теги имеют наименьший приоритет: <code>h1, div, p</code></li>
+<li>Классы и псевдоклассы. Селектор:<code> .item { }, :hover { } </code></li>
+<li>Аттрибуты [attr=”value”]. Пример: <code>[type=”checkbox”] {}</code></li>
+<li>Идентификатор ID – наивысший приоритет. Типа<code> #main { }</code></li>
+</ul><br>
+</li>
+<li>Еще более высоким приоритетом является задание стиля прямо в style теге:<br>
+<pre><code class="html">&lt;div style=”width : 203px”&gt;&lt;/div&gt; 
+</code></pre><br>
+</li>
+<li>И наиболее высоким приоритетом является стиль с сопроводительным словом !important.</li>
+</ul><br>
+<br>
+Основная работа в задании стилей идет с помощью тегов, классов (псевдоклассов), и атрибутов. Использовать <code>!important</code> не рекомендуется, равно как и задавать стили в атрибуте style и использовать атрибут ID.<br>
+Для задания стилей будем использовать css-файл Site.css. Так как в bootstrap уже заданы стили для базовых форм, удалим этот блок и оставим файл (/Content/Site.css):<br>
+<pre><code class="css">/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+</code></pre><br>
+<br>
+Это css стили, которые используются для вывода ошибок в методах <code>Html.ValidationMessage()</code>, <code>Html.ValidationSummary()</code>.<br>
+Теперь давайте определим правила, по которым мы будем создавать свой стиль:<br>
+<ul>
+<li>Запрещено использовать селектор через id, типа <code>#Main</code>. Это связано с тем, что хотя браузеры и обрабатывают все элементы содержащий данный атрибут, но в правилах DOM атрибут ID должен быть уникальный во всей странице. </li>
+<li>Классы для офомления используют тип SmallCaps: some-class-name, все с маленькой буквы, для разделения используется “-”. Собственно, так, как это в самом CSS и используется. </li>
+<li>Классы, предназначенные только для управления (использование исключительно в js-коде) для разделения используют тип lowerCamelCase: someClassName. Собственно, как и соглашения по написанию кода в js или в jquery.</li>
+<li>Атрибуты id задаются типом UpperCamelCase: <code>id=”SomeButton”</code>.</li>
+<li>Не используйте классы общего значения, такие как <code>.list, .item, .button, .text, .user, .image, .container, .wrapper</code> на верхнем уровне.</li>
+<li>Не усложняйте слова. Не используйте конструкцию типа: <code>.main-container-left-part-wrapper-list.</code></li>
+<li>Задайте популярные стили если необходимо, делайте это в общем описании типа:<code> .error {color : red }, .left { float : left }.</code> </li>
+<li>Используйте каскадное описание от общего к частному:<br>
+<br>
+<pre><code class="css">.list
+{
+}
+
+    .list .item
+    {
+    }
+&lt;li&gt;используйте селекторы для задания глубины применения стиля
+    .list &gt; .item 
+    {
+    }
+</code></pre><br>
+</li>
+<li>и для тегов с множественным классом:<br>
+<pre><code class="css">.item.odd
+{
+}
+</code></pre><br>
+для<br>
+<pre><code class="html">&lt;div class="item odd"&gt;&lt;/div&gt;
+</code></pre><br>
+<br>
+</li>
+<li>используйте следующую структуру документа<br>
+<pre><code class="css">/* Главные определения стилей для сайта 
+    - основной шрифт
+    - междустрочное расстояние
+    - размер шрифта
+    - основные цвета ссылок и текста
+    - h1, h2, h3 ...
+    - a 
+    - p
+*/
+
+/* Вспомогательные классы:
+    - .error
+    - .field-validation-error и др.
+    - .show-me { border : 1px solid red; }
+    - .hidden {display : none; }
+    - .relative { position : relative; }
+    */
+
+/* Основные вспомогательные окна и стили
+    - .popup-window 
+    - .popup-window .close 
+    - .popup-window .wrapper
+    - .popup-window .header 
+    - .error-message
+    - .info-message
+    */
+
+/* Основные стили сайта
+    - header
+    - .logo
+    - .user-login
+    - nav.main-menu
+    - .main-content
+    - footer
+*/
+
+/*Главная страница */
+
+/* Страница входа */
+
+/* Страница ошибки */
+
+/* Остальные страницы… */
+</code></pre><br>
+</li>
+</ul><br>
+<br>
+<h5>Структура html-страницы.</h5><br>
+Подключим стили и js файлы к основному layout файлу (/Areas/Default/Views/Shared/_Layout.cshtml):<br>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width" /&gt;
+    &lt;title&gt;@ViewBag.Title&lt;/title&gt;
+    @Styles.Render("~/Content/css")
+    @RenderSection("styles", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="navbar navbar-fixed-top"&gt;
+        &lt;div class="navbar-inner"&gt;
+            &lt;div class="container"&gt;
+                &lt;ul class="nav nav-pills pull-right"&gt;
+                    @Html.Action("UserLogin", "Home")
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><br>
+<br>
+Что здесь происходит:<br>
+<ol>
+<li>Мы получаем request и по запросу мы определяем маршрут /Default/Home/Index. </li>
+<li>У данного контроллера/метода есть стандартный View – /Home/Index.cshtml</li>
+</ol><br>
+<br>
+В начале файла объявляется, что он будет включен в Layout:<br>
+<pre><code class="html">@{
+    ViewBag.Title = "LessonProject";
+    Layout = "~/Areas/Default/Views/Shared/_Layout.cshtml";
+}
+</code></pre><br>
+Указанный layout выведет данные с помощью <code>@RenderBody()</code>. Запускаем:<br>
+<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/072655b1163de9eb90791d6fc3899a19.jpg"><br>
+<br>
+Видно, что body заехал под панель навигации. В нашем файле переопределяем body (/Content/Site.css): <br>
+<pre><code class="css">body
+{
+    padding-top : 40px !important;
+}
+</code></pre><br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/7138f6e2945ff76202eec3d889776907.jpg"><br>
+<br>
+Гораздо лучше.<br>
+<br>
+Так как мы использовали классы для формы bootstap ранее, то регистрация у нас выглядит теперь так:<br>
+<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/b61508288490f8aee9120db277467ac9.jpg"><br>
+<br>
+Поправим выбор даты рождения, добавим классы в  <a href="https://habrahabr.ru/users/html/" class="user_link">Html</a>.DropDownList() (/Areas/Default/Views/User/Register.cshtml):<br>
+<br>
+<pre><code class="html">…
+&lt;div class="controls"&gt;
+                @Html.DropDownList("BirthdateDay", Model.BirthdateDaySelectList, new { @class = "select-day" })
+                @Html.DropDownList("BirthdateMonth", Model.BirthdateMonthSelectList, new { @class = "select-month" })
+                @Html.DropDownList("BirthdateYear", Model.BirthdateYearSelectList, new { @class = "select-year" })
+            &lt;/div&gt;
+</code></pre><br>
+<br>
+Так как вероятно, мы еще где-то будем использовать эту конструкцию по выбору даты (хотя не факт), то это более общее, чем частное (которое относится именно к регистрации) (/Content/Site.css):<br>
+<br>
+<pre><code class="css">.select-day
+{
+    width : 50px;
+}
+.select-month
+{
+    width : 90px;
+}
+.select-year
+{
+    width : 70px;
+}
+</code></pre><br>
+<br>
+Проверяем:<br>
+<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/52cb945a148637c9b1272a7424edc4b4.jpg"><br>
+<br>
+Уиии!<br>
+<br>
+<h5>Структура js файлов</h5><br>
+Переходим к описанию js файлов. Мы используем <b>jquery</b> как основной фреймворк по работе с клиентской частью кода. Один наш пользовательский js файл (назовем его /Scripts/common.js) будет вызываться всегда. В него будут добавлены те функции, которые будут присутствовать на любой странице. Остальные js-файлы будут вызываться опционально.<br>
+<br>
+Чтобы не путаться создадим 2 папки «admin» и «default» в /Scripts.<br>
+<br>
+Все файлы будут иметь уникальные имена, которые будут записаны в SmallCase формате, и будут относиться к определенной странице (в основном). Например: user-register.js – файл, который будет включен в страницу User/Register.cshtml:<br>
+<br>
+<pre><code class="html">@section scripts {
+       @Scripts.Render("/Scripts/default/user-register.js")
+}
+</code></pre><br>
+<br>
+Эта секция выведется в том месте, где описана в _Layout.cshtml (/Areas/Default/Views/Shared/_Layout.cshtml):<br>
+<pre><code class="html">…
+   @Scripts.Render("~/bundles/bootstrap")
+   @Scripts.Render("~/bundles/common")
+   @RenderSection("scripts", required: false)
+&lt;/body&gt;
+</code></pre><br>
+<br>
+В /App_Start/BundleConfig.cs тем временем добавим описание:<br>
+ <pre><code class="cs"> bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                        "~/Scripts/common.js"));
+</code></pre><br>
+<br>
+Все пользовательские js классы, за исключением плагинов, будут иметь следующую структуру:<br>
+<pre><code class="javascript">function FunctionName() {
+    _this = this;
+
+    this.init = function () {
+        /* установка обработки нажатий или иных манипуляций */
+        $("button").click(function () {
+            var id = $(this).attr("id");
+            _this.saySomething(id);
+        });
+    }
+
+    /* другие публичные методы*/
+    this.saySomething = function (id) {
+        alert("Пыщь-пыщь! : " + id);
+    }
+
+    /* другие приватные методы */
+    function saySomething (id) {
+        alert("Пыщь-пыщь! Но тссс!: " + id);
+    }
+
+ }
+
+var functionName = null;
+$().ready(function () {
+    functionName = new FunctionName();
+    functionName.init();
+});
+</code></pre><br>
+<br>
+Рассмотрим подробнее:<br>
+<ol>
+<li><code>function FunctionName</code> имеет имя в стиле UpperCamelCase по имени файла, в котором находится (<code>Common</code> и <code>UserRegister</code> в файлах common.js и user-register.js соответственно) </li>
+<li><code>_this = this;</code> Сохранение ссылки на данную функцию, чтобы была возможность использовать внутри delegate-функций</li>
+<li><code>this.init()</code> – внешняя (public) функция, где будет происходить инициализация обработки.</li>
+<li><code>var functionName = null</code> – создание глобальной переменной. Возможно использование из других файлов.</li>
+<li><code>$().ready()</code> – вызывается после того, как сформирована DOM-структура. JQuery функция. </li>
+<li><code>functionName = new FunctionName();</code> — создаем объект класса.</li>
+<li><code>functionName.init();</code> — инициализируем его.</li>
+</ol><br>
+<br>
+<h5>Минификация ресурсных файлов</h5><br>
+<br>
+Так как ресурсные файлы, со временем вырастают, и с другой стороны идет развитие мобильного интернета для мобильных устройств, в которых количество передаваемых данных играет не последнюю роль, минификация получения страницы сводится к следующим вещам:<br>
+<ul>
+<li>Уменьшение количества запросов к ресурсным файлам</li>
+<li>Уменьшение ресурсных файлов. </li>
+</ul><br>
+<br>
+Уменьшение количества-ва запросов к изображениям, особенно маленьким. Это делается двумя способами:<br>
+?<br>
+<ol>
+<li>Использование спрайта. На большой холст добавляется много элементов оформления сразу. После чего в css прописывают смещение и ширину\высоту части этого холста.<br>
+Например рисунок: <br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/a1c6bd27bdc7c9fb05f172ab886c14bb.png"><br>
+<br>
+И его использование в html:<br>
+<pre><code class="html">&lt;div class="label label-new sprite"&gt;&lt;/div&gt;
+</code></pre><br>
+И css:<br>
+<pre><code class="css">.sprite
+{
+    background: url("/Media/images/sprite.png");
+    overflow: hidden;
+    text-indent: -9999px;
+}
+.box .label
+    	{
+          position: absolute;
+          width: 29px;
+          right: -29px;
+          top: 35px;
+    	}
+
+    	.box .label-new
+    	{
+          background-position: 0 -15px;
+          height: 119px;
+}
+</code></pre><br>
+</li>
+<li>2. Использовать для очень маленьких изображений (иконок) объявления напрямую в css c помощью кодирования его в base64.<br>
+Для этого картинку переводят в base64, например на <a href="http://webcodertools.com/imagetobase64converter">http://webcodertools.com/imagetobase64converter</a><br>
+После чего добавляют в css по типу:<br>
+<pre><code class="css">background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAWCAYAAAABxvaqAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDhENzk1MDI1QkREMTFFMkE2QUNDMTBGODg2MjVENjAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDhENzk1MDM1QkREMTFFMkE2QUNDMTBGODg2MjVENjAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEOEQ3OTUwMDVCREQxMUUyQTZBQ0MxMEY4ODYyNUQ2MCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEOEQ3OTUwMTVCREQxMUUyQTZBQ0MxMEY4ODYyNUQ2MCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PlBqi0kAAAAwSURBVHjaYmBgYGBnghFccIIbRPCiEvwggg8LixfOBbN44AaACU4gZvgJIv4DBBgARTIDD2TeBRAAAAAASUVORK5CYII=);
+</code></pre><br>
+</li>
+</ol><br>
+<br>
+Конечно, при загрузке контентных иконок или изображений данный способ не применим. <br>
+<br>
+Для css и js применяется минификация файла, т.е. убираются пробелы и разделители и используются более краткие локальные переменные. Файл или изначально подготавливается минифицированным как для jquery библиотеки или минифицируется на сервере. <br>
+<br>
+Для включения минификации необходимо в Web.config файле изменить директиву compilation:<br>
+<pre><code class="xml">&lt;compilation debug="false" targetFramework="4.5" /&gt;
+</code></pre><br>
+<br>
+Или напрямую включить в /App_Start/BundleConfig.cs:<br>
+<br>
+<pre><code class="cs">BundleTable.EnableOptimizations = true;
+</code></pre><br>
+<br>
+Проверим:<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/077e7c820ade1cd084c026288d93be80.jpg"><br>
+<br>
+До оптимизации 527 КБ<br>
+<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/894e36b15ed7847acaaf2f9d7236fb5f.jpg"><br>
+<br>
+После оптимизации 251 КБ<br>
+<br>
+Т.е. больше, чем в 2 раза. На самом деле эта величина может быть как меньше, так и больше, в зависимости от того, какие ресурсы мы грузим. Если есть кеширование, то страница при дальнейшей работе загружает только незначительную часть новых файлов. <br>
+<br>
+Установка jQuery<br>
+Изначально jquery уже установлен, но если фреймворк обновился, а это делается часто, то очевидно, что необходимо обновить его:<br>
+Install-Package JQuery<br>
+<br>
+Далее, мы до этого убрали JQueryUI (<a href="http://jqueryui.com/">http://jqueryui.com/</a>), так как собираемся функции datepicker, modal использовать из того, что предлагает bootstrap. Но в JQueryUI есть необходимый нам функционал взаимодействия, т.е. Draggable, Droppable, Resizable, Selectable и Sortable. Установим их выборочно:<br>
+<ol>
+<li>Так как для Install-Package JQuery.UI.Interactions необходима версия jquery &lt; 1.6, то установим вручную.</li>
+<li>Выберем custom скачивание с сайта <a href="http://jqueryui.com/download/">jqueryui.com/download</a></li>
+<li>Выбираем только Сore и Interactions</li>
+<li>качиваем </li>
+<li>Переносим css-файлы в /Content/css</li>
+<li>Переносим js-файлы в /Scripts (jquery-1.9.1-min.js переносить нет необходимости)</li>
+<li>Подключаем в BundleConfig <br>
+<pre><code class="cs">	bundles.Add(new ScriptBundle("~/bundles/jqueryui")
+	.Include("~/Scripts/jquery-ui-1.*"));
+	bundles.Add(new StyleBundle("~/Content/css/jqueryui")
+.Include("~/Content/jquery-ui-1*"));
+</code></pre><br>
+</li>
+<li>При необходимости, объявляем на страницах.</li>
+<li>Готово!</li>
+</ol><br>
+<br>
+<h5>Firebug (Firefox) и Developer Tool (Chrome)</h5><br>
+Для удобства отладки в Firefox есть расширение Firebug, а в Chrome есть встроенный механизм Developer Tool. Я рассмотрю пример с Developer Tool. Вызывается по нажатию клавиш –<code>Shift-Ctrl-I</code>.<br>
+<br>
+Давайте изучим его:<br>
+<ul>
+<li>Вкладка Elements.<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/e082feba3a7e75107cf9f7a151115ba0.jpg"><br>
+Здесь, в левой части, мы можем увидет DOM-дерево элементов. В правой части — стили. Стили, как и элементы, можно редактировать на ходу, и изменения будут сразу же отображаться в браузере в редактируемой странице. Очень удобно, когда надо поправить расположение объектов на несколько пикселей. <br>
+<br>
+</li>
+<li>Вкладка Resources <br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/3e5eee2d91463b614f32a53f1facfee4.jpg"><br>
+В левой части располагаются все ресурсы, которые были загружены, а в правой можно просмотреть на них<br>
+<br>
+</li>
+<li>Вкладка Network<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/590f887a42048be144566a085d2fc444.jpg"><br>
+Показывает запросы и тайминг этих запросов. Обозначает разными цветами document, css, js файлы, изображения. Показывает размеры файлов. <br>
+При клике на запрос можно подробнее рассмотреть HTTP-запрос, например:<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/f7a5f1084549aeee10404c85914f751f.jpg"><br>
+<br>
+</li>
+<li>Вкладка Sources <br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/6f3c793e2936aeac582304cc501a5e59.jpg"><br>
+Одна из основных вкладок. Тут можно просматривать js-файлы, устанавливать точки останова, и выполнять отладку приложения. Горячие клавиши F9, F10, F11 как в VisualStudio для отладки. <br>
+<br>
+</li>
+<li>Вкладка Timeline<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/292bf9c99b148665e9bf178192e406e1.jpg"><br>
+Показывает происходящие события в браузере. Я ее никогда не использовал.<br>
+<br>
+</li>
+<li>Вкладка Profiles<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/2f30a468192074a5df6bced922bc5b6e.jpg"><br>
+Для профилирования, т.е. нахождения нетривиальных ошибок. Также, никогда не использовал.<br>
+<br>
+</li>
+<li>Вкладка Audits<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/3f42cd2c02181248b3cee509a85b3c26.jpg"><br>
+На этой вкладке можно проверить страницу на оптимизацию. Т.е. браузер рекомендует сделать некоторые действия, которые приведут к уменьшению кода передаваемого от сервера, сжатия, удаление лишних строк css.<br>
+<br>
+</li>
+<li>Вкладка Console<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/7f7f71deecc0d8733f29088f94af7eb5.jpg"><br>
+Одновременно и командная строка и окно вывода протоколирования. Для вывода лога нужно вызвать команду console.log(“message”).<br>
+<br>
+<i>Осторожно используйте эту команду в IE, так как когда консоль не открыта, то выдает ошибку. </i><br>
+</li>
+</ul><br>
+<br>
+<h5>Селекторы и обход</h5><br>
+JQuery – это инструмент, который помогает нам разрабатывать клиентский код под разные браузеры. К тому же является простой и логичной библиотекой. <br>
+<br>
+В основе всего лежит селектор. Селектор позволяет выбрать множество элементов, находящихся в DOM (document object model) и произвести над ними действия, такие как: назначить обработчик события, изменить местопложение, изменить атрибуты, удалить выбранные элементы, добавить в выбранные элементы текст или html, создать объект.<br>
+<br>
+Основное правило пишется как:<br>
+<br>
+<code>$([“правило селектора”][, область выбора]) </code><br>
+<br>
+Если область выбора не задана, то ищется по всему документу: $(document). Это корневой узел всего DOM.<br>
+Если область выбора задана, то ищется только в границе этого узла.<br>
+Правило селектора задается по принципам назначения css свойств:<br>
+<ul>
+<li><code>$(“div”) </code>– выбор всех div-элементов</li>
+<li><code>$(“.class”)</code> – выбор всех элементов с имеющимся классом class</li>
+<li><code>$(“.class .class1”)</code> – выбор всех элементов с имеющимся классом class1 содержащихся в классе class</li>
+<li><code>$(“.class.class1”)</code> – выбор всех элементов с имеющимся классом class1 и class </li>
+<li><code>$(“#Id1”)</code> – выбор элемента (одного) с id =Id1</li>
+<li><code>$(“[type=’password’]”)</code> – выбор элемента с атрибутом type=’password’</li>
+<li><code>$(“div”, $(“#MainPopup”))</code> – выбор всех элементов div содержащихся в элементе с id=MainPopup</li>
+<li><code>$(“input[type=’checkbox’]:checked”)</code> – выбор элементов ввода типа checkbox, которые отмечены галочкой.</li>
+</ul><br>
+Для проверки найден или нет элемент, можно использовать свойство length:<br>
+<pre><code class="javascript">if($("#Id1").length == 0) 
+        {
+            alert("Элемент не найден")
+        }
+</code></pre><br>
+Для продвижения вверх по дереву элементов от выбранного можно использовать функции .closest(), .parent() или .parents():<br>
+<ul>
+<li><code>parent()</code>– возвращает непосредственного родителя (и только его)</li>
+<li><code>parents(selector)</code> – возвращает множество всех родителей (если не указан селектор вплоть до body и html)</li>
+<li><code>closest(selector)</code> – возвращает ближайшей элемент, который соотвествует селектору, причем сам элемент может быть ним же.</li>
+</ul><br>
+ <br>
+<h5>События</h5><br>
+<br>
+Для обработки событий мы назначаем события на элементы селектора. Например:<br>
+<pre><code class="javascript">$(".button").click(function () {
+alert("Button clicked");
+       });
+</code></pre><br>
+Какие есть события:<br>
+<ul>
+<li>События браузера<br>
+<ul>
+<li><b>.error()</b> – произошла ошибка выполнения скрипта в браузере</li>
+<li><b>.resize()</b> – изменился размер контейнера, к которому данное событие было назначено. </li>
+<li><b>.scroll()</b> – контент внутри контейнера «проскроллили» (тут надо понимать автоматический скроллинг, т.е. если у элемента стиль назначен overflow:scroll и содержимое проскроллили).</li>
+</ul><br>
+</li>
+<li>Загрузки документа<br>
+<ul>
+<li><b>.load()</b> – загружен элемент. Например, при изменении (назначении) src у тега img.</li>
+<li><b>.ready()</b> – вызывается при окончании загрузки DOM документа. Мы его используем постоянно при инициализации классов.</li>
+<li><b>.uload() </b>– вызывается, когда пользователь хочет закрыть страницу. </li>
+</ul><br>
+</li>
+<li>События формы<br>
+<ul>
+<li><b>.blur()</b> – при потере фокуса у поля ввода</li>
+<li><b>.change()</b> – при изменении выбора у выпадающего списка или списка множественного выбора</li>
+<li><b>.focus()</b> – при приобретении фокуса у поля ввода</li>
+<li><b>.select()</b> – при выделении текста или части текста в поле ввода</li>
+<li><b>.submit()</b> – при подтверждении формы ввода</li>
+</ul><br>
+</li>
+<li>События клавиатуры<br>
+<ul>
+<li><b>.focusin()</b> – при приобретении фокуса (аналог focus)</li>
+<li><b>.focusout()</b> – при потере фокуса (аналог blur)</li>
+<li><b>.keydown()</b> – при нажатии клавиши в момент пока клавиша нажата</li>
+<li><b>.keypress()</b> – при нажатии и отпускании клавиши</li>
+<li><b>.keyup()</b> – при отпускании клавиши</li>
+</ul><br>
+</li>
+<li>События мыши<br>
+<ul>
+<li><b>.click()</b> – при клике левой кнопки мыши на элементе</li>
+<li><b>.dblclick()</b> – при двойном клике мыши</li>
+<li><b>.hover()</b> – при наведении мыши</li>
+<li><b>.mousedown(), .mouseup(), .mouseenter(), .mouseleave(), .mousemove(), .mouseout(), .mouseover()</b> – все эти события реагируют на соотвествующие действия мыши относительно элементов.</li>
+</ul><br>
+</li>
+</ul><br>
+<br>
+Надо помнить, что события не распространяются на вновь созданные элементы, хотя и подпадающие под выбор селектора, который выполнялся ранее. Но если мы, по второму разу проинициализируем, то на элементах, где уже была назначена обработка события, это событие будет выполняться дважды. <br>
+ <br>
+Для задания постоянной глобальной обработки нужно использовать следующую конструкцию:<br>
+<br>
+<pre><code class="javascript">$(document).on("click", ".button", function () {
+alert("Button clicked");
+});
+</code></pre><br>
+<br>
+<h5>Атрибуты и значения</h5><br>
+<br>
+Для работы с атрибутами элемента в основном используются функции:<br>
+<ul>
+<li><b>.val(value)</b> – задать значение атрибута value, для конструкции select\option – выбирает элемент </li>
+<li><b>.val() </b>– получить значение атрибута value, или значение, если это поле ввода</li>
+<li><b>.attr(“attr”)</b> – получить значение атрибута attr</li>
+<li><b>.attr(“attr”, “value”)</b> – задать значение value атрибуту attr </li>
+<li><b>.data(“id”)</b> – получить значение атрибута data-id</li>
+<li><b>.data(“id”, “20”)</b> – задать значение 20 атрибуту data-id</li>
+<li><b>.css(“width”, “120px”)</b> – задать значение стиля width:120px</li>
+<li><b>.css(“width”) </b>– получить значение width </li>
+<li><b>.addClass()/.removeClass()/.toggleClass()</b> – добавить/удалить/переключить класс в элементах селектора</li>
+</ul><br>
+<br>
+<h5>Основные манипуляции</h5><br>
+Для работы с элементами рассмотрим следующие функции:<br>
+<ul>
+<li><b>.show()\.hide() </b>– показать\скрыть</li>
+<li><b>.html(htmltext)</b> – в элементах innerHtml задать html текст </li>
+<li><b>.text(text)</b> – в тексте элементов задать text</li>
+<li><b>.empty()</b> – очистить элементы селектора</li>
+<li><b>.remove()</b> – удалить элементы селектора</li>
+<li><b>.append()</b> – добавить html-текст или элементы селектора после всех своих листьев</li>
+<li><b>.prepend()</b> — добавить html-текст или элементы селектора перед всеми своими листьями</li>
+<li><b>.after()/.before()</b> – вставить html-текст или элементы после элемента/перед элементом</li>
+<li><b>.appendTo()/.prependTo()</b> – добавить выбранный элемент в конец/начало листьев заданного элемента</li>
+</ul><br>
+<br>
+<h5>Ajax </h5><br>
+Рассмотрим основную и главную функцию (в 99% случаев я обходился только ею).<br>
+<pre><code class="javascript">$.ajax({
+     type: "GET",
+            url: "/ajaxUrl",
+            data: { id: id },
+            beforeSend: function () {
+                /* что-то сделать перед */
+            },
+            success: function (data) {
+                /* обработать результат */
+            },
+            error: function () {
+                /* обработать ошибку */
+            }
+        });
+</code></pre><br>
+<br>
+Есть и другие параметры, но к ним прибегать стоит в некоторых случаях.<br>
+Рассмотрим подробнее параметры:<br>
+<ul>
+<li><b>type.</b> GET или POST запрос.</li>
+<li><b>url.</b> Если его не задать, или будет по умолчанию, то ajax-запрос будет отправлен на текущую страницу</li>
+<li><b>data.</b> В формате json или get — подобная строка, типа «id=1&amp;value=2». Можно использовать серилизацию формы:<br>
+<pre><code class="javascript">data: $("form").serialize()
+</code></pre><br>
+<i>При этом надо помнить, что при передаче множества одинаковых значений чекбоксов нужно устанавливать параметр <br>
+<code>traditional : true</code></i><br>
+<b>beforeSend.</b> Событие, генерирующеся перед непосредственно отправкой формы.<br>
+<b>success.</b> Событие, которое обозначает, что всё хорошо и в data содержится результат выполнения<br>
+<b>error.</b> Событие, которое возникает, если ответ от сервера был отличный от 200 OK.<br>
+</li>
+</ul><br>
+<br>
+<h5>Ajax-login форма.</h5><br>
+Куча теории, пора бы и к практике переходить. Создадим вторую форму входа, которая будет способствовать быстрому входу на сайте. При клике на «Вход» мы переходим не на страницу Входа, вместо нее выскакивает попапокошко с предложением ввести логин прямо сейчас. При ошибочном вводе, форма выдает предупреждение. Обычную форму по адресу /Login оставляем, она нам понадобится. <br>
+Попап формы могут использоваться часто, так что будем считать это стандартной процедурой – вызвать Popup по адресу такому-то. Так как попап – всегда один, то создадим для него контейнер в _Layout.cshtml (/Areas/Default/Views/Shared/_Layout.cshtml):<br>
+<pre><code class="html">  &lt;div id="PopupWrapper"&gt;&lt;/div&gt;
+</code></pre><br>
+<br>
+Добавим функциональность в common.js (/Scripts/common.js):<br>
+<pre><code class="javascript">this.showPopup = function (url, callback)
+    {
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data)
+            {
+                $(".modal-backdrop").remove();
+                var popupWrapper = $("#PopupWrapper");
+                popupWrapper.empty();
+                popupWrapper.html(data);
+                var popup = $(".modal", popupWrapper);
+                $(".modal", popupWrapper).modal();
+                callback(popup);
+            }
+        });
+    }
+</code></pre><br>
+, где .modal() – это функция из bootstrap.js.<br>
+ <br>
+Так как Вход у нас на каждой странице, то следущую функциональность добавляем тоже в common.js:<br>
+ <pre><code class="javascript">  this.init = function () {
+        $("#LoginPopup").click(function () {
+            _this.showPopup("/Login/Ajax", function (modal)
+            {
+            });
+        });
+    }
+</code></pre><br>
+<br>
+Добавим в контроллере обработчик (/Areas/Default/Controller/LoginController.cs):<br>
+<pre><code class="cs">[HttpGet]
+        public ActionResult Ajax()
+        {
+            return View(new LoginView());
+        }
+
+        [HttpPost]
+        public ActionResult Ajax(LoginView loginView)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = Auth.Login(loginView.Email, loginView.Password, loginView.IsPersistent);
+                if (user != null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState["Password"].Errors.Add("Пароли не совпадают");
+            }
+            return View(loginView);
+        }
+</code></pre><br>
+<br>
+Он полностью аналогичен Index, только будет вызываться другой View – «Ajax», создадим его (/Areas/Default/Views/Login/Ajax.cshtml):<br>
+<br>
+<img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/2ce9b926a9d91a85780e355233ad495b.jpg"><br>
+<br>
+<pre><code class="html">@model LessonProject.Models.ViewModels.LoginView
+
+&lt;div class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true"&gt;
+    &lt;div class="modal-header"&gt;
+        &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;×&lt;/button&gt;
+        &lt;h3 id="myModalLabel"&gt;Login&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-body"&gt;
+        @using (Html.BeginForm("Ajax", "Login", FormMethod.Post, new { @class = "form-horizontal", id = "LoginForm" }))
+        {
+            &lt;fieldset&gt;
+                &lt;legend&gt;Вход&lt;/legend&gt;
+                &lt;div class="control-group"&gt;
+                    &lt;label class="control-label" for="Email"&gt;
+                        Email&lt;/label&gt;
+                    &lt;div class="controls"&gt;
+                        @Html.TextBox("Email", Model.Email, new { @class = "input-xlarge" })
+                        &lt;p class="help-block"&gt;Введите Email&lt;/p&gt;
+                        @Html.ValidationMessage("Email")
+                    &lt;/div&gt;
+
+                &lt;/div&gt;
+                &lt;div class="control-group"&gt;
+                    &lt;label class="control-label" for="Password"&gt;
+                        Пароль&lt;/label&gt;
+                    &lt;div class="controls"&gt;
+                        @Html.Password("Password", Model.Password, new { @class = "input-xlarge" })
+                        @Html.ValidationMessage("Password")
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/fieldset&gt;
+        }
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+        &lt;button class="btn" data-dismiss="modal" aria-hidden="true"&gt;Close&lt;/button&gt;
+        &lt;button class="btn btn-primary" id="LoginButton"&gt;Login&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><br>
+<br>
+Обратите внимание на id формы LoginForm и id кнопки LoginButton<br>
+<br>
+Изменим вызов в UserLogin.cshtml (/Areas/Default/Views/Home/UserLogin.cshtml):<br>
+<pre><code class="html">  &lt;li&gt;&lt;span class="btn btn-link" id="LoginPopup"&gt;Вход&lt;/span&gt;&lt;/li&gt;
+</code></pre><br>
+<br>
+В common.js добавим обработку LoginButton, при вызове установим обработчик события на $(“#LoginButton”).click(…) (/Scripts/common.js):<br>
+<pre><code class="javascript">this.init = function () {
+        $("#LoginPopup").click(function () {
+            _this.showPopup("/Login/Ajax", initLoginPopup);
+        });
+    }
+…
+   function initLoginPopup(modal) {
+        $("#LoginButton").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Login/Ajax",
+                data : $("#LoginForm").serialize(),
+                success: function (data) {
+                    showModalData(data);
+                    initLoginPopup(modal);
+                }
+            });
+        });
+    }
+
+    function showModalData(data, callback) {
+        $(".modal-backdrop").remove();
+        var popupWrapper = $("#PopupWrapper");
+        popupWrapper.empty();
+        popupWrapper.html(data);
+        var popup = $(".modal", popupWrapper);
+        $(".modal", popupWrapper).modal();
+        if (callback != undefined) {
+            callback(popup);
+        }
+    }
+</code></pre><br>
+<br>
+Обратите внимание на рекурсивный вызов <code>initLoginPopup</code>. И тут заключается дилемма. Так как при удачном входе нам не надо чтобы в PopupWrapper грузилась новая страница (или страница с ошибкой), а только чтобы страница обновилась. <br>
+ <br>
+Для этого сделаем хитрость. В /Areas/Default/Views/Shared/ добавим _Ok.cshtml, суть которого — перезагружать страницу:<br>
+<pre><code class="html">&lt;script&gt;
+    window.location.reload();
+&lt;/script&gt;
+</code></pre><br>
+При удачном входе мы загружаем этот View. При добавлении в дерево DOM в строке <br>
+<pre><code class="javascript">popupWrapper.html(data);
+</code></pre><br>
+скрипт запустится и перезагрузит страницу, не дожидаясь остальных вызовов. Изменим контроллер (/Areas/Default/Controllers/LoginController.cs):<br>
+<pre><code class="cs">var user = Auth.Login(loginView.Email, loginView.Password, loginView.IsPersistent);
+if (user != null)
+{
+    return View("_Ok");
+}
+</code></pre><br>
+<br>
+Проверяем, работает! <br>
+<br>
+<h5>Итог</h5><br>
+Мы рассмотрели основные принципы верстки и клиентской части, но это лишь малая толика того, что вообще можно знать о верстке, стилях и программировании в клиентской части.<br>
+Мы научились пользоваться отладчиком в Chrome и создавать ajax запрос. Подробнее рассмотрите этот вопрос в дальнейшем.<br>
+Полезные ссылки:<br>
+<a href="http://jquery.com/">http://jquery.com</a><br>
+<a href="http://habrahabr.ru/post/161895/">http://habrahabr.ru/post/161895/</a><br>
+<a href="http://habrahabr.ru/post/154687/">http://habrahabr.ru/post/154687/</a><br>
+<a href="http://twitter.github.com/bootstrap/">http://twitter.github.com/bootstrap/</a><br>
+<a href="http://habrahabr.ru/post/160177/">http://habrahabr.ru/post/160177/</a><br>
+<br>
+Все исходники находятся по адресу <a href="https://bitbucket.org/chernikov/lessons">https://bitbucket.org/chernikov/lessons</a></div>
+    
+    <div class="post__tags">
+  <ul class="tags icon_tag">
+      <li><a href="https://habrahabr.ru/search/?q=%5Basp.net%20mvc%5D&amp;target_type=posts" rel="tag">asp.net mvc</a>, </li>
+      <li><a href="https://habrahabr.ru/search/?q=%5B.net%5D&amp;target_type=posts" rel="tag">.net</a>, </li>
+      <li><a href="https://habrahabr.ru/search/?q=%5Bc%23%5D&amp;target_type=posts" rel="tag">c#</a>, </li>
+      <li><a href="https://habrahabr.ru/search/?q=%5Bbootstrap%5D&amp;target_type=posts" rel="tag">bootstrap</a>, </li>
+      <li><a href="https://habrahabr.ru/search/?q=%5Bhtml%5D&amp;target_type=posts" rel="tag">html</a>, </li>
+      <li><a href="https://habrahabr.ru/search/?q=%5Bcss%5D&amp;target_type=posts" rel="tag">css</a>, </li>
+      <li><a href="https://habrahabr.ru/search/?q=%5Bjquery%5D&amp;target_type=posts" rel="tag">jquery</a>, </li>
+      <li><a href="https://habrahabr.ru/search/?q=%5Bjavascript%5D&amp;target_type=posts" rel="tag">javascript</a></li>
+  </ul>
+</div>
+  </div>
+</div>
+
+
+        </div>
+      </div>
+
+      <div class="sidebar_right sidebar_content-area">
+            <div class="xyz_wrapper is_visible">
+    <div class="xyz_wrapper_inner">
+      <span class="xyz_wrapper_text">Реклама помогает поддерживать и&nbsp;развивать наши сервисы<br><br><a href="https://habrahabr.ru/adblock/" class="xyz_wrapper_button" target="_blank">Подробнее</a></span>
+      <div class="no_please_one_one_one" style="min-height: 250px;">
+        <!--  AdRiver code START. Type:AjaxJS Site: habrahabr BN:1 -->
+        <div id="adriver_banner_1096808718" style="background:#fff; width: 100%"></div>
+        <script type="text/javascript">
+          if ( typeof(adriver) !== 'undefined'){
+            new adriver("adriver_banner_1096808718", {sid:176776, bt:52, bn:1});
+          }
+        </script>
+        <!--  AdRiver code END  -->
+      </div>
+    </div>
+    <a href="https://special.habrahabr.ru/advertising/" class="firskill__label">Реклама</a>
+  </div>
+
+          
+
+  <div class="sidebar-block sidebar-block_top-hubs js-tophubs">
+    <h2 class="sidebar-block__title">Хабы</h2>
+    <div class="sidebar-block__content">
+      <ul class="content-list top-hubs">
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/c/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;C&#39;); }">C</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/opendata/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Открытые данные&#39;); }">Открытые данные</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/cpp/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;C++&#39;); }">C++</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/image_processing/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Обработка изображений&#39;); }">Обработка изображений</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/machine_learning/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Машинное обучение&#39;); }">Машинное обучение</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/compilers/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Компиляторы&#39;); }">Компиляторы</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/nodejs/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Node.JS&#39;); }">Node.JS</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/programming/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Программирование&#39;); }">Программирование</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/java/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;JAVA&#39;); }">JAVA</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/webdev/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Разработка веб-сайтов&#39;); }">Разработка веб-сайтов</a>
+          </li>
+      </ul>
+    </div>
+    <div class="sidebar-block__footer">
+      <a href="https://habrahabr.ru/flows/develop/hubs/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;all_hubs&#39;); }">Все хабы</a>
+    </div>
+  </div>
+
+
+            <div class="js-ad_sticky"><div class="xyz_wrapper">
+  <div class="xyz_wrapper_inner">
+    <span class="xyz_wrapper_text">Реклама помогает поддерживать и&nbsp;развивать наши сервисы<br><br><a href="https://habrahabr.ru/adblock/" class="xyz_wrapper_button" target="_blank">Подробнее</a></span>
+
+    <!-- Яндекс.Директ -->
+    <div id="yandex_ad" style="background: #fff;"></div>
+    <script type="text/javascript">
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            Ya.Direct.insertInto(149298, "yandex_ad", {
+                stat_id: 8,
+                ad_format: "direct",
+                font_family: "verdana",
+                type: "posterVertical",
+                border_type: "block",
+                limit: 2,
+                title_font_size: 3,
+                border_radius: true,
+                links_underline: false,
+                site_bg_color: "FFFFFF",
+                border_color: "FBE5C0",
+                title_color: "0066CC",
+                url_color: "006600",
+                text_color: "000000",
+                hover_color: "0066FF",
+                sitelinks_color: "0066CC",
+                favicon: true,
+                no_sitelinks: false
+            });
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.src = "//an.yandex.ru/system/context.js";
+        s.type = "text/javascript";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(window, document, "yandex_context_callbacks");
+    </script>
+
+
+  </div>
+  <a href="https://special.habrahabr.ru/advertising/" class="firskill__label">Реклама</a>
+</div>
+</div>
+
+            
+
+    <div class="live-broadcast live-broadcast_habrahabr broadcast js-broadcast">
+      <h2 class="live-broadcast__title">Похожие публикации</h2>
+        <ul class="content-list content-list_similar-posts">
+            <li class="content-list__item">
+              <a href="https://habrahabr.ru/post/175999/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }">ASP.NET MVC. Урок 0. Вступление</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/175999/#comments" class="content-list__item-counter icon_comments">62</a>
+            </li>
+            <li class="content-list__item">
+              <a href="https://habrahabr.ru/post/176001/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }">ASP.NET MVC Урок 1. Начало</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/176001/#comments" class="content-list__item-counter icon_comments">18</a>
+            </li>
+            <li class="content-list__item">
+              <a href="https://habrahabr.ru/post/176007/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }">ASP.NET MVC Урок 2. Dependency Injection</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/176007/#comments" class="content-list__item-counter icon_comments">15</a>
+            </li>
+            <li class="content-list__item">
+              <a href="https://habrahabr.ru/post/87532/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }">Планы на ASP.NET MVC 3</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/87532/#comments" class="content-list__item-counter icon_comments">17</a>
+            </li>
+            <li class="content-list__item">
+              <a href="https://habrahabr.ru/post/74061/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }">ASP.NET MVC 2: области (areas) — описание, использование</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/74061/#comments" class="content-list__item-counter icon_comments">8</a>
+            </li>
+        </ul>
+    </div>
+
+
+      </div>
+    </div>
+
+    <div class="column-wrapper">
+      <div class="content_left indented">
+        <div class="post-additionals">
+            <div class="infopanel_wrapper js-user_3467">
+    <ul class="postinfo-panel postinfo-panel_post" id="infopanel_post_176053">
+
+          <li class="postinfo-panel__item">
+            <div class="voting-wjt voting-wjt_infopanel js-voting  ">
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_plus js-plus" title="Голосовать могут только зарегистрированные пользователи.">
+                  <span>↑</span>
+                </button>
+
+              <div class="voting-wjt__counter voting-wjt__counter_positive  js-mark">
+                  <span class="voting-wjt__counter-score js-score" title="Общий рейтинг 133: ↑85 и ↓48">+37</span>
+              </div>
+
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_minus js-minus" title="Голосовать могут только зарегистрированные пользователи.">
+                  <span>↓</span>
+                </button>
+
+            </div>
+          </li>
+
+      <li class="postinfo-panel__item">
+        <div class="views-count_post" title="Просмотры публикации">93,5k</div>
+      </li>
+
+      <li class="postinfo-panel__item">
+        <div class="favorite-wjt favorite">
+            <button type="button" disabled="" class="favorite-wjt__button favorite-wjt__button_disabled" onclick="return false;" title="Только зарегистрированные пользователи могут добавлять публикации в избранное">
+              <span>Добавить в избранное</span>
+            </button>
+          <span class="favorite-wjt__counter js-favs_count" title="Количество пользователей, добавивших публикацию в избранное">212</span>
+        </div>
+      </li>
+
+
+
+
+      <!-- шеринг в соцсети -->
+        <li class="postinfo-panel__item postinfo-panel__item_socials  postinfo-panel__item_socials_right ">
+          <ul class="post-share">
+            <li class="post-share__item">
+              <a href="https://twitter.com/intent/tweet?text=ASP.NET+MVC+%D0%A3%D1%80%D0%BE%D0%BA+7.+Bootstrap%2C+jQuery%2C+Ajax+https://habr.ru/p/176053/+via+%40habrahabr+%23habr" class="post-share__item-link twitter" title="Опубликовать ссылку в Twitter" target="_blank"></a>
+            </li>
+            <li class="post-share__item">
+              <a href="https://vk.com/share.php?url=https://habrahabr.ru/post/176053/" class="post-share__item-link vkontakte" title="Опубликовать ссылку во ВКонтакте" onclick="window.open(this.href, &#39;Опубликовать ссылку во Вконтакте&#39;, &#39;width=800,height=300&#39;); return false"></a>
+            </li>
+            <li class="post-share__item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://habrahabr.ru/post/176053/" class="post-share__item-link facebook" title="Опубликовать ссылку в Facebook" onclick="window.open(this.href, &#39;Опубликовать ссылку в Facebook&#39;, &#39;width=640,height=436,toolbar=0,status=0&#39;); return false"></a>
+            </li>
+            <li class="post-share__item">
+              <a href="https://getpocket.com/edit?url=https://habrahabr.ru/post/176053/&amp;title=ASP.NET%20MVC%20%D0%A3%D1%80%D0%BE%D0%BA%207.%20Bootstrap,%20jQuery,%20Ajax" target="_blank" class="post-share__item-link pocket" title="Добавить ссылку в Pocket"></a>
+            </li>
+          </ul>
+        </li>
+
+      <!-- кнопка пожаловаться -->
+    </ul>
+  </div>
+
+              
+
+  <div class="author-info ">
+    <a href="https://habrahabr.ru/users/chernikov" class="author-info__image" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_bottom&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">
+        <img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/d5c4ba4e748593c0987c4f50358ac35c.jpg" class="author-info__image-pic">
+    </a>
+
+    <div class="author-info__desc js-user_3467">
+      <div class="author-info__username">
+          <a href="https://habrahabr.ru/users/chernikov" class="author-info__name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_bottom&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">chernikov</a>
+        <a href="https://habrahabr.ru/users/chernikov" class="author-info__nickname" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_bottom&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">@chernikov</a>
+
+        <div class="karma__widjet voting-wjt voting-wjt_small js-karma  " title="Карма пользователя">
+
+
+          <div class="voting-wjt__counter js-karma-mark voting-wjt__counter_positive " title="327 голосов">
+            <div class="voting-wjt__label">карма</div>
+            <div class="voting-wjt__counter-score js-karma_num">177,9</div>
+          </div>
+
+        </div>
+
+        <div class="user-rating" title="Рейтинг пользователя">
+          <span class="user-rating__label">рейтинг</span>
+          <span class="user-rating__value">0,0</span>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+        </div>
+
+          <div class="html_banner_wrap">
+    <!--  AdRiver code START. Type:AjaxJS Site: habrahabr PZ: 0 BN: 13 -->
+    <div class="html_banner" id="adriver_banner_1109509440">
+      <span class="html_banner_text">Реклама помогает поддерживать и&nbsp;развивать наши сервисы<br><br><a href="https://habrahabr.ru/adblock/" class="xyz_wrapper_button" target="_blank">Подробнее</a></span>
+      <img src="./ASP.NET MVC Урок 7. Bootstrap, jQuery, Ajax _ Хабрахабр_files/spacer.png" class="html_banner_spacer">
+    </div>
+    <a href="https://special.habrahabr.ru/advertising/" class="firskill__label">Реклама</a>
+
+    <script type="text/javascript">
+      function show_inner_banner_block300(name, url){
+        if( typeof(name) !== 'undefined'){
+          if ($('.tabs').length && $('.tabs').width() >= 620) { // блок расчитан на >= 620 пикселей
+            $('#adriver_banner_1109509440').html('<iframe src="https://special.habrahabr.ru/api/htmlblock/'+name+'/?iframe&url='+encodeURIComponent(url)+'" width="100%" height="240"></iframe>')
+          }
+        }
+      }
+
+      function loadAdriverBanner(){
+        var keyword = '';
+        var custom = [];
+        custom[7] = ar_duo1;
+
+        if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+         custom[1] = 'h_asp';  custom[2] = 'h_net';  custom[3] = 'f_develop'; 
+
+        if ( typeof(adriver) !== 'undefined'){
+          new adriver("adriver_banner_1109509440", {sid:176776, bt:52, bn:13, custom: custom, keyword: keyword})
+        }
+      }
+
+      var checkScrollPosition = function(){
+        var htmlBlock = $('#adriver_banner_1109509440');
+            scrollTop = $(window).scrollTop(),
+            scrollBottom = $(window).scrollTop() + $(window).height(),
+            blockTopPosition = htmlBlock.parent().offset().top,
+            adBannerHeight = htmlBlock.height();
+
+        if (scrollBottom > blockTopPosition){
+          loadAdriverBanner();
+          $(window).off('scroll', checkScrollPosition);
+        }
+      };
+
+      $(function(){
+        $(window).on('scroll', checkScrollPosition);
+        $(window).on('ready', checkScrollPosition);
+      });
+    </script>
+  </div>
+
+        
+
+  <div class="similar-posts similar-posts_full">
+    <h2 class="similar-posts__title_wrap">
+      <span class="similar-posts__title">Самое читаемое</span>
+        <span class="similar-posts__flow">
+          <a href="https://habrahabr.ru/flows/develop/" class="similar-posts__flow-link">Разработка</a>
+        </span>
+    </h2>
+    <div class="live-broadcast__tabs tabs" id="broadcast_tabs_posts">
+
+      <ul class="tabs__menu tabs__menu_posts menu menu_inline">
+        <li class="menu__item"><a href="https://habrahabr.ru/post/176053/#broadcast_posts_now" class="menu__item-tab">Сейчас</a></li>
+        <li class="menu__item"><a href="https://habrahabr.ru/post/176053/#broadcast_posts_today" class="menu__item-tab">Сутки</a></li>
+        <li class="menu__item"><a href="https://habrahabr.ru/post/176053/#broadcast_posts_week" class="menu__item-tab">Неделя</a></li>
+        <li class="menu__item"><a href="https://habrahabr.ru/post/176053/#broadcast_posts_month" class="menu__item-tab">Месяц</a></li>
+      </ul>
+
+        <div class="tabs__content tabs__content_reading" id="broadcast_posts_now">
+            <ul class="content-list content-list_posts content-list_most-reading">
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+25</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307268/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Супермедленный и супербыстрый бенчмарк</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">4,9k</span>
+                        <span class="inline-list__item favorites-count">18</span>
+                        <span class="inline-list__item comments-count">8</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+22</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307266/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Const и оптимизации в C</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">4,8k</span>
+                        <span class="inline-list__item favorites-count">31</span>
+                        <span class="inline-list__item comments-count">13</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+30</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307218/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Сколько нужно нейронов, чтобы узнать, разведён ли мост Александра Невского?</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">7k</span>
+                        <span class="inline-list__item favorites-count">56</span>
+                        <span class="inline-list__item comments-count">8</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+54</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307220/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Это маленькое чудо — алгоритм Кнута-Морриса-Пратта (КМП)</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">22,8k</span>
+                        <span class="inline-list__item favorites-count">199</span>
+                        <span class="inline-list__item comments-count">36</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+8</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307148/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Пишем микросервис на KoaJS 2 в стиле ES2017. Часть II: Минималистичный REST</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">2,2k</span>
+                        <span class="inline-list__item favorites-count">31</span>
+                        <span class="inline-list__item comments-count">1</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+        </div>
+        <div class="tabs__content tabs__content_reading" id="broadcast_posts_today">
+            <ul class="content-list content-list_posts content-list_most-reading">
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+54</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307220/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Это маленькое чудо — алгоритм Кнута-Морриса-Пратта (КМП)</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">22,8k</span>
+                        <span class="inline-list__item favorites-count">199</span>
+                        <span class="inline-list__item comments-count">36</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+30</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307236/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Аппроксимация числа Пи с помощью множества Мандельброта</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">9,3k</span>
+                        <span class="inline-list__item favorites-count">33</span>
+                        <span class="inline-list__item comments-count">4</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+4</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/company/mailru/blog/307168/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Прощай, объектно-ориентированное программирование</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">56,8k</span>
+                        <span class="inline-list__item favorites-count">177</span>
+                        <span class="inline-list__item comments-count">229</span>
+                      </span></div></div></li></ul></div></div></div></div></div></div></div></div></div></body></html>

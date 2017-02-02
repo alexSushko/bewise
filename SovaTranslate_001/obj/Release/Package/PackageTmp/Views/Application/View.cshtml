@@ -1,0 +1,57 @@
+﻿@model SovaTranslate_001.Models.order
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="center">
+@Html.Label("Название ")
+@Html.Label("name", Model.name)
+<br />
+@Html.Label("Описание ")
+@Html.Label("description", Model.description);
+<br />
+@Html.Label("Дата оформление ")
+@Html.Label("dateOfCompletion", Model.dateOfCompletion.Date.ToShortDateString())
+<br />
+@Html.Label("Конечная дата ")
+@Html.Label("deadline",Model.deadline.ToString().AsDateTime().Date.ToShortDateString())
+<br />
+@Html.Label("Статус")
+@if((bool)Model.isDone){@Html.Label("Done")}
+else{
+    if ((bool)Model.inProgress) { @Html.Label("In Progress")}
+                                                            else{
+        @Html.Label("Waiting")
+    }
+}<br />
+    @if (Model.totalCost != null && Model.totalCost != 0) { 
+        @Html.Label("Стоимость заказа:")
+        @Html.Label(Model.totalCost.ToString())
+    }
+<br />
+@Html.Label("Документы:")
+<table>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        </tr>
+@foreach (var doc in SovaTranslate_001.DataBase.GetAllDocumentsByOrder(Model.IdOrder))
+{
+    <tr>
+        @if(doc.isTranslate!=null&&(bool)doc.isTranslate){<td><a href="~/Content/file/@SovaTranslate_001.DataBase.GetUser((int)Model.idUser).name.Trim()/@doc.pathToDoc"</td>}
+        else
+        {<td></td>}
+        @if(doc.pathToDoc!=null){
+        <td><a href="~/Content/file/@SovaTranslate_001.DataBase.GetUser((int)Model.idUser).name.Trim()/@doc.pathToDoc">Document</a></td>
+        }else{<td></td>}
+        @if(doc.pathToDocView!=null){
+        <td><a href="~/Content/file/@doc.pathToDocView">Document</a></td>
+        }else{<td></td>}
+        
+    </tr>
+
+}
+    </table>
+
+    </div>

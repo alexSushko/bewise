@@ -1,0 +1,645 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0036)http://www.site-do.ru/js/jquery3.php -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery - Урок 3. Фильтры</title>
+<meta http-equiv="KEYWORDS" content="jQuery фильтры">
+<meta http-equiv="DESCRIPTION" content="В этом уроке по jQuery перечисленны фильтры селекторов.">
+
+        <link href="http://www.site-do.ru/favicon.ico" type="image/x-icon" rel="icon">
+        <link href="http://www.site-do.ru/favicon.ico" type="image/x-icon" rel="shortcut icon">
+        <link rel="stylesheet" type="text/css" href="./jQuery - Урок 3. Фильтры_files/style.css">
+        
+        <meta name="0f89d7d9c63fbbf3475ef03b1f24f084" content="">
+          <script type="text/javascript" async="" src="http://mc.yandex.ru/metrika/watch.js"></script><script src="http://an.yandex.ru/system/context.js" type="text/javascript" async=""></script><script src="http://an.yandex.ru/system/context.js" type="text/javascript" async=""></script><script src="./jQuery - Урок 3. Фильтры_files/jquery-latest.js"></script> <!-- подключаем последнюю версию jQuery -->
+        <script type="text/javascript" src="./jQuery - Урок 3. Фильтры_files/script.js"></script>
+        <script type="text/javascript" src="./jQuery - Урок 3. Фильтры_files/share.js" charset="utf8"></script>
+		<script type="text/javascript" src="./jQuery - Урок 3. Фильтры_files/openapi.js"></script>
+		<script type="text/javascript" src="./jQuery - Урок 3. Фильтры_files/openapi(1).js"></script>
+		<script type="text/javascript">VK.init({apiId: 2752181, onlyWidgets: true});</script>
+        <script type="text/javascript" src="./jQuery - Урок 3. Фильтры_files/scroll.js"></script>
+
+<meta property="fb:admins" content="{100000947815907}">
+<style type="text/css" id="ya_share_style">.b-share-form-button{font:86%/17px Verdana,Arial,sans-serif;display:-moz-inline-box;display:inline-block;position:relative;height:19px;margin:0 3px;padding:0 4px;cursor:default;white-space:nowrap;text-decoration:none!important;color:#000!important;border:none;outline:none;background:url("//yastatic.net/share/static/b-share-form-button.png") 0 -20px repeat-x}.b-share-form-button:link:hover,.b-share-form-button:visited:hover{color:#000!important}.b-share-form-button__before,.b-share-form-button__after{position:absolute;width:3px;height:19px;background:url("//yastatic.net/share/static/b-share-form-button.png")}.b-share-form-button__before{margin-left:-7px}.b-share-form-button__after{margin-left:4px;background-position:-3px 0}.b-share-form-button::-moz-focus-inner{border:none}button.b-share-form-button .b-share-form-button__before,button.b-share-form-button .b-share-form-button__after{margin-top:-1px}@-moz-document url-prefix(){button.b-share-form-button .b-share-form-button__after{margin-top:-2px;margin-left:6px}button.b-share-form-button .b-share-form-button__before{margin-top:-2px;margin-left:-9px}}SPAN.b-share-form-button:hover,.b-share-form-button_state_hover{background-position:0 -60px}SPAN.b-share-form-button:hover .b-share-form-button__before,.b-share-form-button_state_hover .b-share-form-button__before{background-position:0 -40px}SPAN.b-share-form-button:hover .b-share-form-button__after,.b-share-form-button_state_hover .b-share-form-button__after{background-position:-3px -40px}.b-share-form-button_state_pressed,.b-share-form-button_state_pressed .b-share-form-button_share{background-position:0 -100px!important}.b-share-form-button_state_pressed .b-share-form-button__before{background-position:0 -80px!important}.b-share-form-button_state_pressed .b-share-form-button__after{background-position:-3px -80px!important}button.b-share-form-button_state_pressed{overflow:visible}.b-share-form-button_icons{position:relative;padding:0;background-position:0 -20px!important}.b-share-form-button_icons .b-share-form-button__before{left:0;margin-left:-3px;background-position:0 0!important}.b-share-form-button_icons .b-share-form-button__after{z-index:-1;margin-left:0;background-position:-3px 0!important}.b-share-form-button_icons .b-share__handle{padding:2px!important}.b-share-form-button_icons .b-share__handle_more{position:relative;padding-right:6px!important;margin-right:-4px}.b-share-form-button_icons .b-share-icon{opacity:.5;background-image:url("//yastatic.net/share/static/b-share-icon_size_14.png")}.b-share-form-button_icons A.b-share__handle:hover .b-share-icon{opacity:1}.b-share{font:86%/1.4545em Arial,sans-serif;display:-moz-inline-box;display:inline-block;padding:1px 3px 1px 4px!important;vertical-align:middle}.b-share .b-share-form-button{font-size:1em}.b-share__text .b-share-icon{margin:0 5px 0 0;border:none}.b-share__text{margin-right:5px}.b-share__handle{float:left;height:16px;padding:5px 3px 5px 2px!important;cursor:pointer;text-align:left;text-decoration:none!important}.b-share__handle_cursor_default{cursor:default}.b-share__handle .b-share-form-button{margin-top:-2px}.b-share__hr{display:none;float:left;width:1px;height:26px;margin:0 3px 0 2px}a.b-share__handle:hover .b-share__text{text-decoration:underline;color:red}.b-share_bordered{padding:0 2px 0 3px!important;border:1px solid #E4E4E4;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.b-share_bordered .b-share__hr{display:inline;background:#E4E4E4}.b-share_link{margin:-8px 0}a.b-share_link{margin:0}.b-share_link .b-share__text{text-decoration:underline;color:#1A3DC1}.b-share-form-button_share{padding-left:26px!important;vertical-align:top}.b-share-form-button_share .b-share-form-button__before{margin-left:-29px}.b-share-form-button_share .b-share-form-button__icon{position:absolute;width:20px;height:17px;margin:1px 0 0 -23px;background:url("//yastatic.net/share/static/b-share-form-button_share__icon.png") 0 0 no-repeat}.b-share-pseudo-link{border-bottom:1px dotted;cursor:pointer;text-decoration:none!important}.b-share_font_fixed{font-size:11px}.b-share__handle_more{font-size:9px;margin-top:-1px;color:#7B7B7B}A.b-share__handle_more:hover{color:#000}.b-share__group{float:left}.b-share-icon{float:left;display:inline;overflow:hidden;width:16px;height:16px;padding:0!important;vertical-align:top;border:0;background:url("//yastatic.net/share/static/b-share-icon.png") 0 99px no-repeat}.b-share-icon_vkontakte,.b-share-icon_custom{background-position:0 0}.b-share-icon_yaru,.b-share-icon_yaru_photo,.b-share-icon_yaru_wishlist{background-position:0 -17px}.b-share-icon_lj{background-position:0 -34px}.b-share-icon_twitter{background-position:0 -51px}.b-share-icon_facebook{background-position:0 -68px}.b-share-icon_moimir{background-position:0 -85px}.b-share-icon_friendfeed{background-position:0 -102px}.b-share-icon_mail{background-position:0 -119px}.b-share-icon_html{background-position:0 -136px}.b-share-icon_postcard{background-position:0 -153px}.b-share-icon_odnoklassniki{background-position:0 -170px}.b-share-icon_blogger{background-position:0 -187px}.b-share-icon_delicious{background-position:0 -221px}.b-share-icon_gbuzz{background-position:0 -238px}.b-share-icon_linkedin{background-position:0 -255px}.b-share-icon_myspace{background-position:0 -272px}.b-share-icon_evernote{background-position:0 -289px}.b-share-icon_digg{background-position:0 -306px}.b-share-icon_juick{background-position:0 -324px}.b-share-icon_moikrug{background-position:0 -341px}.b-share-icon_yazakladki{background-position:0 -358px}.b-share-icon_liveinternet{background-position:0 -375px}.b-share-icon_tutby{background-position:0 -392px}.b-share-icon_diary{background-position:0 -409px}.b-share-icon_gplus{background-position:0 -426px}.b-share-icon_pocket{background-position:0 -443px}.b-share-icon_surfingbird{background-position:0 -460px}.b-share-icon_pinterest{background-position:0 -477px}.b-share-icon_renren{background-position:0 0}.b-share-icon_renren,.b-share-icon_sina_weibo{background:url("//yastatic.net/share/static/b-share-icon__china.png") no-repeat}.b-share-icon_sina_weibo{background-position:-18px 0}.b-share-icon_qzone{background-position:-36px 0}.b-share-icon_qzone,.b-share-icon_tencent_weibo{background:url("//yastatic.net/share/static/b-share-icon__china.png") no-repeat}.b-share-icon_tencent_weibo{background-position:-54px 0}.b-share_theme_counter .b-share{display:inline-block;vertical-align:middle;white-space:nowrap}.b-share-counter{font:14px Arial,sans-serif;line-height:18px;display:none;float:left;margin:3px 6px 3px 3px;color:#fff}.b-share_theme_counter .b-share_type_small .b-share-counter{font-size:11px;line-height:14px;margin:2px 6px 2px 1px}.b-share_theme_counter .b-share-btn__counter .b-share-counter{display:block}.b-share-btn__counter{text-decoration:none}.b-share_theme_counter .b-share-btn__wrap{position:relative;float:left;margin-left:5px}.b-share_theme_counter .b-share_type_small .b-share-btn__wrap{margin-left:4px}.b-share_theme_counter .b-share-btn__wrap:first-child{margin-left:0}.b-share_theme_counter .b-share__link{display:inline-block;cursor:pointer;-webkit-border-radius:3px;border-radius:3px}.b-share_theme_counter .b-share_type_small .b-share__link{-webkit-border-radius:2px;border-radius:2px}.b-share_theme_counter .b-share-icon{display:block;float:left;width:24px;height:24px;background-image:url("//yastatic.net/share/static/b-share_counter_large.png");background-position:-20px 0}.b-share_theme_counter .b-share_type_small .b-share-icon{width:18px;height:18px;background-image:url("//yastatic.net/share/static/b-share_counter_small.png")}.b-share_theme_counter .b-share-icon_facebook{background-position:0 0}.b-share_theme_counter .b-share-btn__facebook{background-color:#3c5a98}.b-share_theme_counter .b-share-btn__facebook:hover{background-color:#30487a}.b-share_theme_counter .b-share-btn__facebook:active{border-top:2px solid #24365a;background-color:#334d81}.b-share_theme_counter .b-share-icon_moimir{background-position:0 -29px}.b-share_theme_counter .b-share-btn__moimir{background-color:#226eb7}.b-share_theme_counter .b-share-btn__moimir:hover{background-color:#1b5892}.b-share_theme_counter .b-share-btn__moimir:active{border-top:2px solid #14426d;background-color:#1d5e9c}.b-share_theme_counter .b-share-icon_vkontakte{background-position:0 -58px}.b-share_theme_counter .b-share-btn__vkontakte{background-color:#48729e}.b-share_theme_counter .b-share-btn__vkontakte:hover{background-color:#3a5b7e}.b-share_theme_counter .b-share-btn__vkontakte:active{border-top:2px solid #2b445e;background-color:#3d6186}.b-share_theme_counter .b-share-icon_twitter{background-position:0 -87px}.b-share_theme_counter .b-share-btn__twitter{background-color:#00aced}.b-share_theme_counter .b-share-btn__twitter:hover{background-color:#008abe}.b-share_theme_counter .b-share-btn__twitter:active{border-top:2px solid #00668d;background-color:#0092ca}.b-share_theme_counter .b-share-icon_odnoklassniki{background-position:0 -116px}.b-share_theme_counter .b-share-btn__odnoklassniki{background-color:#ff9f4d}.b-share_theme_counter .b-share-btn__odnoklassniki:hover{background-color:#cc7f3e}.b-share_theme_counter .b-share-btn__odnoklassniki:active{border-top:2px solid #975e2e;background-color:#d98742}.b-share_theme_counter .b-share-icon_gplus{background-position:0 -145px}.b-share_theme_counter .b-share-btn__gplus{background-color:#c25234}.b-share_theme_counter .b-share-btn__gplus:hover{background-color:#9b422a}.b-share_theme_counter .b-share-btn__gplus:active{border-top:2px solid #73311f;background-color:#a5462c}.b-share_theme_counter .b-share-icon_yaru{background-position:0 -174px}.b-share_theme_counter .b-share-btn__yaru{background-color:#d83933}.b-share_theme_counter .b-share-btn__yaru:hover{background-color:#ad2e29}.b-share_theme_counter .b-share-btn__yaru:active{border-top:2px solid #80221e;background-color:#b8312b}.b-share_theme_counter .b-share-icon_pinterest{background-position:0 -203px}.b-share_theme_counter .b-share-btn__pinterest{background-color:#cd1e27}.b-share_theme_counter .b-share-btn__pinterest:hover{background-color:#a4181f}.b-share_theme_counter .b-share-btn__pinterest:active{border-top:2px solid #7b1217;background-color:#ae1921}.b-share_theme_counter .b-share__link:active{height:22px}.b-share_theme_counter .b-share_type_small .b-share__link:active{height:16px}.b-share_theme_counter .b-share__link:active .b-share-icon,.b-share_theme_counter .b-share__link:active .b-share-counter{position:relative;top:-1px}.b-share_theme_counter .b-share__link::after{position:absolute;top:0;right:0;bottom:0;left:0;content:"";background-image:url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==)}.b-share_theme_counter .b-share__handle{height:auto;padding:0!important}</style></head>
+
+    <body>
+       <div id="main">       
+        <div id="container">        
+            <div id="header">
+               <div id="headertext"></div>
+               <div id="headertext1"><b>Анализ сайта онлайн</b><br>
+			   <form method="post" action="http://www.site-do.ru/tools/analiz.php">
+				<b></b><input size="30" type="text" name="url" value=""><input type="submit" value="Анализ">
+				</form>
+				</div>
+               <div id="headertext1">создаем и раскручиваем сайт самостоятельно</div>
+            </div>
+            <div id="left"><div id="navcontainer">
+ <ul id="navlist" onmouseover="document.getElementById(&quot;navmenu-v&quot;).style.display=&quot;block&quot;;" onmouseout="document.getElementById(&quot;navmenu-v&quot;).style.display=&quot;none&quot;">
+        <li><a href="http://www.site-do.ru/">Главная</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/doSite/doSite.php">Первые шаги</a></li>
+        <li><a href="http://www.site-do.ru/html/">Уроки HTML</a></li>
+        <li><a href="http://www.site-do.ru/css/">Уроки CSS</a></li>
+        <li><a href="http://www.site-do.ru/php/uroki_php.php">Уроки PHP</a></li>
+        <li><a href="http://www.site-do.ru/js/js.php">Уроки JavaScript</a></li>
+        <li><a id="active" href="http://www.site-do.ru/js/jquery.php">Уроки jQuery</a></li>
+        <li><a href="http://www.site-do.ru/db/db.php">Уроки SQL и БД</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/joomla/joomla.php">Уроки Joomla</a></li>
+        <li><a href="http://www.site-do.ru/photoshop/photoshop.php">Уроки Photoshop</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/earnings/earnings.php">Как заработать</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/optimization/optimization.php">Как раскрутить</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/templates/">Шаблоны HTML</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/blog/">Блог</a></li>
+        <li><a rel="nofollow" href="http://www.site-do.ru/doSite/hosting-partner.php">Хостинг сайтов</a></li>
+    </ul>
+</div>
+
+
+   <script type="text/javascript" src="./jQuery - Урок 3. Фильтры_files/fix.js"></script>  <!-- подключаем наш скрипт -->
+   <link rel="stylesheet" type="text/css" href="./jQuery - Урок 3. Фильтры_files/fixstyles.css"> <!-- подключаем стилевой файл -->
+<div id="head"></div>	
+	<div id="fixblock">
+<!-- Яндекс.Директ -->
+<div id="yandex_ad3"></div>
+<script type="text/javascript">
+(function(w, d, n, s, t) {
+    w[n] = w[n] || [];
+    w[n].push(function() {
+        Ya.Direct.insertInto(81752, "yandex_ad3", {
+            stat_id: 1,
+            ad_format: "direct",
+            font_size: 1.1,
+            type: "vertical",
+            limit: 4,
+            title_font_size: 1,
+            links_underline: false,
+            site_bg_color: "FFFFFF",
+            bg_color: "FFFFFF",
+            title_color: "6600CC",
+            url_color: "000000",
+            text_color: "000000",
+            hover_color: "6600CC",
+            no_sitelinks: true
+        });
+    });
+    t = d.getElementsByTagName("script")[0];
+    s = d.createElement("script");
+    s.src = "//an.yandex.ru/system/context.js";
+    s.type = "text/javascript";
+    s.async = true;
+    t.parentNode.insertBefore(s, t);
+})(window, document, "yandex_context_callbacks");
+</script>
+
+
+<br>
+<br>
+
+	</div>
+
+	
+
+<br>
+
+
+<div style="margin-left:10px; width:220px; text-align:center;">
+
+<!-- банер слева-->
+</div>
+<div id="advertising"><center>
+</center>    </div>
+</div>
+<div id="content">
+<div id="kontakt">
+<noindex>
+<script src="./jQuery - Урок 3. Фильтры_files/cnt.share.js"></script>
+<div class="yashare-auto-init b-share_theme_counter" data-yasharelink="http://www.site-do.ru/js/jquery3.php" data-yasharetitle="" data-yasharedescription="" data-yashareimage="" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yasharetheme="counter" data-yasharetype="small"><span class="b-share b-share_type_small"><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte b-share-btn__counter" href="https://share.yandex.net/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span><span class="b-share-counter">15</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook b-share-btn__counter" href="https://share.yandex.net/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span><span class="b-share-counter">1</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="https://share.yandex.net/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="https://share.yandex.net/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="https://share.yandex.net/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="https://share.yandex.net/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span><span class="b-share-counter">0</span></a></span><iframe style="display: none" src="./jQuery - Урок 3. Фильтры_files/ya-share-cnt.html"></iframe></span></div>
+</noindex>
+</div> 
+<div id="data"></div>
+<div id="content_text">
+<br>
+
+<br>
+﻿<center>
+<script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sido_top_2015 -->
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-8236292842774723" data-ad-slot="9563920843"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></center></div>
+<br>
+
+
+<div id="content_text" style="margin-left:160px;min-height:1200px;">
+<div id="navmenu-context">
+<div style="height:500px;">
+</div>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-8236292842774723";
+/* site-do 160x600 */
+google_ad_slot = "7804427484";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<noindex>
+<script src="./jQuery - Урок 3. Фильтры_files/cnt.share.js"></script>
+<div class="yashare-auto-init b-share_theme_counter" data-yasharelink="http://www.site-do.ru/js/jquery3.php" data-yasharetitle="" data-yasharedescription="" data-yashareimage="" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yasharetheme="counter" data-yasharetype="small"><span class="b-share b-share_type_small"><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte b-share-btn__counter" href="https://share.yandex.net/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span><span class="b-share-counter">15</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook b-share-btn__counter" href="https://share.yandex.net/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span><span class="b-share-counter">1</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="https://share.yandex.net/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="https://share.yandex.net/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="https://share.yandex.net/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="https://share.yandex.net/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span><span class="b-share-counter">0</span></a></span><iframe style="display: none" src="./jQuery - Урок 3. Фильтры_files/ya-share-cnt(1).html"></iframe></span></div>
+
+</noindex>
+
+
+</div>
+<!--
+<noindex>
+<a href="http://mediarich.ru/ref/10111/20e81a50c34203c19" target="_blank"><img src="/images/500-45-2_2.gif" /></a>
+</noindex>               
+--><div class="put">
+    <a href="http://www.site-do.ru/">Как создать свой сайт</a> → <a href="http://www.site-do.ru/js/jquery.php">Уроки jQuery</a> → Урок 3. Фильтры
+</div>
+
+
+<h1>jQuery - Урок 3. Фильтры</h1>
+<ul>
+  <li><i class="teg">:first</i> - выбирает первый элемент соответствующего селектора.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("tr:first").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом первую строку таблицы.</li><br><br>
+
+<li><i class="teg">:last</i> - выбирает последний элемент соответствующего селектора.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("tr:last").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом последнюю строку таблицы.</li><br><br>
+
+<li><i class="teg">:even</i> - выбирает четные элементы, начиная с нуля.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("tr:even").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом все четные строки таблицы (т.к. нумерация идет с нуля, то зрительно кажется,
+что нечетные строки).</li><br><br>
+<li><i class="teg">:odd</i> - выбирает нечетные элементы, начиная с нуля.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("tr:odd").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом все нечетные строки таблицы (т.к. нумерация идет с нуля, то зрительно кажется,
+что четные строки).</li><br><br>
+<li><i class="teg">:eq(index)</i> - выбирает элемент по его индексу (начиная с нуля).<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("td:eq(2)").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом текст второй ячейки таблицы (т.к. нумерация идет с нуля, то зрительно кажется,
+что третьей ячейки).</li><br><br>
+<li><i class="teg">:gt(index)</i> - выбирает элементы с индексом больше указанного.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("td:gt(2)").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом текст во всех ячейках таблицы, начиная со второй (т.к. нумерация идет с нуля, то зрительно кажется,
+что с третьей ячейки).</li><br><br>
+
+<li><i class="teg">:lt(index)</i> - выбирает элементы с индексом меньше указанного.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("td:lt(4)").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом текст в первых пяти ячейках таблицы.</li><br><br>
+</ul>
+Как всегда, рассмотрим на примере. Давайте сделаем таблицу, у которой при желании можно будет поменять цвет строк:
+четные строки будут серыми, а нечетные - синими, а цвет шрифта ячеек, начиная с 5 будет желтым. Напоминаю, что нумерация
+идет с нуля, поэтому внешне четные и нечетные строки меняются местами, а 5 ячейка зрительно выглядит, как шестая.
+Этот нюанс нужно запомнить!
+<div class="resalt">
+    <h2>Фильтры jQuery</h2>
+    <table border="1" width="300">
+        <tbody><tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+        <tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+        <tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+    </tbody></table><br>
+    <input type="button" value="Поменять цвет" onclick="addColor3();">
+</div>
+Итак, html-код:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <h2>Фильтры jQuery</h2>
+    <table border="1" width="300">
+        <tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+        <tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+        <tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+    </table><br>
+    <input type="button" value="Поменять цвет" onclick="addColor3();">
+  </body>
+</html>
+    </xmp>
+</div>
+Код самой функции:
+<div class="kod">
+    <xmp>
+function addColor3(){
+  $("tr:even").css("background-color", "grey");
+  $("tr:odd").css("background-color", "blue");
+  $("td:gt(5)").css("color", "yellow");
+}
+    </xmp>
+</div>
+Продолжим <a href="http://www.site-do.ru/js/jquery3.php">изучение фильтров</a>.<br><br>
+
+<em>Фильтры контента</em><br><br>
+<ul>
+  <li><i class="teg">:header</i> - выбирает все элементы, которые являются заголовками (h1, h2...).<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(":header").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает все заголовки красными.</li><br><br>
+
+<li><i class="teg">:contains (text)</i> - выбирает элементы, которые содержат переданный текст (text).<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div:contains('New')").css("text-decoration", "underline");
+    </xmp>
+</div>
+Данная инструкция подчеркнет все элементы div-а, содержащие подстроку New.</li><br><br>
+
+<li><i class="teg">:empty</i> - выбирает все элементы, которые не содержат потомков (т.е. являются пустыми).<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("td:empty").text("Пусто");
+    </xmp>
+</div>
+Данная инструкция найдет все пустые <a href="http://www.site-do.ru/html/html9.php">ячейки таблицы</a> и вставит в них текст "Пусто".</li><br><br>
+
+<li><i class="teg">:has(selector)</i> - выбирает элементы, которые  содержат хотя бы один элемент, указанный в селекторе.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div:has(p)").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция найдет те div-ы, в которых есть хотя бы один параграф (p) и сделает текст в них курсивом.</li><br><br>
+
+<li><i class="teg">:parent</i> - выбирает родительские элементы, т.е. те, у которых есть потомки.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("td:parent").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция найдет все ячейки таблицы, в которых есть текст или еще что-либо, и сделает их шрифт курсивом.</li><br><br>
+
+<li><i class="teg">:animated</i> - выбирает элементы, которые в данный момент являются анимированными.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div:animated").css("border", "1px solid red");
+    </xmp>
+</div>
+Данная инструкция найдет анимированные div-ы и обведет их рамкой.</li>
+</ul><br><br>
+
+<em>Фильтры видимости</em><br><br>
+<ul>
+<li><i class="teg">:hidden</i> - выбирает все скрытые элементы и элементы input, имеющие тип "hidden".<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div:hidden").show();
+    </xmp>
+</div>
+Данная инструкция покажет все скрытые div-ы.</li><br><br>
+
+<li><i class="teg">:visible</i> - выбирает все видимые элементы.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div:visible").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста в видимых div-ах красным.</li><br><br>
+</ul>
+
+<em>Фильтры атрибутов</em><br><br>
+<ul>
+   <li><i class="teg">[attribute]</i> - выбирает все элементы с указанным атрибутом.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div[id]").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным во всех div-ах, у которых есть идентификатор (id).</li><br><br>
+
+<li><i class="teg">[attribute=value]</i> - выбирает элементы с  атрибутом, значение которого соответствует указанному.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[name='Main']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у input-а с именем "Main".</li><br><br>
+
+<li><i class="teg">[attribute!=value]</i> - выбирает элементы с  атрибутом, значение которого не соответствует указанному.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[name!='Main']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у всех input-ов, кроме input-а с именем "Main".</li><br><br>
+
+<li><i class="teg">[attribute^=value]</i> - выбирает все элементы, соответствующий атрибут которых начинается с указанного значения.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[name^='news']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у тех input-ов, атрибуты name которых начинаются с news.</li><br><br>
+
+<li><i class="teg">[attribute$=value]</i> - выбирает все элементы, соответствующий атрибут которых заканчивается указанным значением.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[name$='news']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у тех input-ов, атрибуты name которых заканчивается на  news.</li><br><br>
+
+<li><i class="teg">[attribute*=value]</i> - выбирает все элементы, соответствующий атрибут которых содержит в качестве подстроки
+указанное значение.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[name*='news']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у тех input-ов, атрибуты name которых содержат подустроку 'news',
+неважно вначале, в конце или середине.</li><br><br>
+
+<li><i class="teg">[selector1]...[selectorN]</i> - выбирает все элементы, которые имеют указанные атрибуты и соответствующие
+значения.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[id][name*='news']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у тех input-ов, у которых есть идентификатор и атрибуты name которых содержат
+подустроку 'news'.</li><br><br>
+</ul>
+
+<em>Фильтры форм</em><br><br>
+<ul>
+    <li><i class="teg">:enabled / :disabled</i> - выбирает все элементы, имеющие активное (enabled) / запрещенное (disabled)
+    состояние.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input:enabled").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным только у активных input-ов.</li><br><br>
+
+ <li><i class="teg">:checked</i> - выбирает все элементы, которые отмечены.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input:checked").lenght;
+    </xmp>
+</div>
+Данная инструкция сосчитает все отмеченные input-ы.</li><br><br>
+
+<li><i class="teg">:selected</i> - выбирает все выбранные элементы.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("select option:selected").lenght;
+    </xmp>
+</div>
+Данная инструкция сосчитает сколько выбрано элементов в списке.</li><br><br>
+</ul>
+
+<em>Фильтры потомков</em><br><br>
+<ul>
+    <li><i class="teg">:first-child</i> - выбирает  элементы, которые являются первыми потомками своих родителей.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div span:first-child").css("border", "1px solid blue");
+    </xmp>
+</div>
+Данная инструкция обведет рамкой  первый span в каждом div-е.</li><br><br>
+
+<li><i class="teg">:last-child</i> - выбирает  элементы, которые являются последними потомками своих родителей.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div span:last-child").css("border", "1px solid blue");
+    </xmp>
+</div>
+Данная инструкция обведет рамкой  последний span в каждом div-е.</li><br><br>
+
+<li><i class="teg">:only-child</i> - выбирает  элементы, которые являются единственными потомками своих родителей.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div button:only-child").css("border", "1px solid blue");
+    </xmp>
+</div>
+Данная инструкция обведет рамкой  те div-ы, которые имеют кнопку и при том только одну.</li><br><br>
+</ul>
+Вот мы и рассмотрели селекторы и фильтры jQuery, запоминать их необязательно, всегда можно вернуться в этот урок и воспользоваться
+им, как справочником. В следующий раз мы узнаем, как jQuery умеет работать со стилями CSS, а заодно и попрактикуемся
+задавать селекторы и фильтры.
+<br><br>
+
+<br><br>
+<span class="leftspan"> <a href="http://www.site-do.ru/js/jquery2.php">Предыдущий урок </a></span>
+<span class="leftspan"><a href="http://www.site-do.ru/js/jquery.php">Вернуться в раздел</a></span>
+<span class="leftspan"> <a href="http://www.site-do.ru/js/jquery4.php">Следующий урок </a></span>
+﻿<div style="height:50px;"></div>
+<center>
+<!-- Яндекс.Директ -->
+<div id="yandex_ad" style="width:630px"></div>
+<script type="text/javascript">
+(function(w, d, n, s, t) {
+    w[n] = w[n] || [];
+    w[n].push(function() {
+        Ya.Direct.insertInto(81752, "yandex_ad", {
+            stat_id: 6,
+            ad_format: "direct",
+            type: "posterHorizontal",
+            limit: 2,
+            title_font_size: 3,
+            links_underline: true,
+            site_bg_color: "FFFFFF",
+            title_color: "0000CC",
+            url_color: "006600",
+            text_color: "000000",
+            hover_color: "0066FF",
+            sitelinks_color: "0000CC",
+            favicon: true,
+            no_sitelinks: false
+        });
+    });
+    t = d.getElementsByTagName("script")[0];
+    s = d.createElement("script");
+    s.src = "//an.yandex.ru/system/context.js";
+    s.type = "text/javascript";
+    s.async = true;
+    t.parentNode.insertBefore(s, t);
+})(window, document, "yandex_context_callbacks");
+</script>
+</center>
+
+Если этот сайт оказался вам полезен, вы можете помочь в его развитии, поставив <a href="http://www.site-do.ru/doSite/thanks.php">одну из этих ссылок</a> на свой сайт.<br>
+<a href="http://www.site-do.ru/doSite/thanks.php">
+<img src="./jQuery - Урок 3. Фильтры_files/sitedo6.gif" alt="Уроки PHP"> <img src="./jQuery - Урок 3. Фильтры_files/sitedo5.gif" alt="Уроки PHP"> <img src="./jQuery - Урок 3. Фильтры_files/sitedo4.gif" alt="Уроки PHP"> <img src="./jQuery - Урок 3. Фильтры_files/sitedo3.gif" alt="Уроки PHP"> <img src="./jQuery - Урок 3. Фильтры_files/sitedo2.gif" alt="Уроки PHP"> <img src="./jQuery - Урок 3. Фильтры_files/sitedo1.gif" alt="Уроки PHP">
+</a>
+<br>
+Код кнопки:<br>
+<textarea cols="50" onclick="this.focus();this.select();">&lt;a href="http://site-do.ru"&gt;&lt;img src="http://site-do.ru/images/sitedo1.gif" alt="Как создать свой сайт"&gt;&lt;/a&gt;</textarea><br>
+<br>
+<br>
+Теперь нажмите кнопку, что бы не забыть адрес и вернуться к нам снова.
+<br>
+<noindex>
+<script src="./jQuery - Урок 3. Фильтры_files/cnt.share.js"></script>
+<div class="yashare-auto-init b-share_theme_counter" data-yasharelink="http://www.site-do.ru/js/jquery3.php" data-yasharetitle="" data-yasharedescription="" data-yashareimage="" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yasharetheme="counter" data-yasharetype="small"><span class="b-share b-share_type_small"><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte b-share-btn__counter" href="https://share.yandex.net/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span><span class="b-share-counter">15</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook b-share-btn__counter" href="https://share.yandex.net/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span><span class="b-share-counter">1</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="https://share.yandex.net/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="https://share.yandex.net/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link b-share-btn__moimir" href="https://share.yandex.net/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span><span class="b-share-counter">0</span></a></span><span class="b-share-btn__wrap"><a rel="nofollow" target="_blank" title="Google Plus" class="b-share__handle b-share__link b-share-btn__gplus" href="https://share.yandex.net/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.site-do.ru%2Fjs%2Fjquery3.php&amp;title=jQuery%20-%20%D0%A3%D1%80%D0%BE%D0%BA%203.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D1%8B" data-service="gplus"><span class="b-share-icon b-share-icon_gplus"></span><span class="b-share-counter">0</span></a></span><iframe style="display: none" src="./jQuery - Урок 3. Фильтры_files/ya-share-cnt(2).html"></iframe></span></div>
+
+</noindex>
+
+ 
+
+
+
+
+<script type="text/javascript">
+  VK.init({apiId: 2752181, onlyWidgets: true});
+</script>
+<!-- Put this div tag to the place, where the Comments block will be -->
+<div id="vk_comments" style="height: 972px; width: 728px; background: none;"><iframe name="fXD97553" frameborder="0" src="./jQuery - Урок 3. Фильтры_files/widget_comments.html" width="728" height="133" scrolling="no" id="vkwidget1" style="overflow: hidden; height: 972px;"></iframe></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, width: "728", attach: false});
+</script>
+
+
+
+<div style="clear:both">
+
+<table><tbody><tr><td>
+
+<br><br>
+
+</td><td>
+
+</td></tr></tbody></table>
+
+</div>
+
+<div id="content_text">
+
+<br>
+
+</div>
+</div>
+<a id="gotop" class="scrollTop" href="http://www.site-do.ru/js/jquery3.php#" onclick="top.goTop(); return false;" style="display: none;"></a>
+</div>
+<div id="footer">
+    <div id="footer_top">
+    </div>
+            <div id="footer_bottom">
+<span class="footertext">admin@site-do.ru<br>site-do.ru © 2009-2014</span>
+<span class="footertext" style="font-size:14px;">
+Копировать материалы сайта запрещено!<br>
+За нарушение авторских прав предусмотрена уголовная ответственность!
+<br>
+Телефон редакции +7(499)346-89-56
+<br>
+127051, г.Москва, Цветной бульвар, д. 11, стр. 6, офис 405.
+</span>
+<span class="footertext">
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='http://counter.yadro.ru/hit?t45.10;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31'><\/a>")
+//--></script><a href="http://www.liveinternet.ru/click" target="_blank"><img src="http://counter.yadro.ru/hit?t45.10;r;s1366*768*24;uhttp%3A//www.site-do.ru/js/jquery3.php;0.11227725311196712" alt="" title="LiveInternet" border="0" width="31" height="31"></a><!--/LiveInternet-->
+
+
+
+
+</span>
+
+
+</div>
+
+</div>
+               <div style="position:absolute;top:10px;margin-left:430px;">
+</div>
+            </div>
+
+            </div>
+
+<noindex>
+
+<!--что бы опять вылазила реклама раскоментировать это
+<div id="popdim"></div>-->
+
+
+ </noindex>
+
+ 
+
+<script type="text/javascript" charset="utf-8" id="safe_surfing_detect_script">var _________subscribe_checker={_detect_text:["((\u0443\u0441\u043b\u043e\u0432|\u0443\u043f\u0440\u0430\u0432\u043b)(.*)\u043f\u043e\u0434\u043f\u0438\u0441\u043a)|(\u043f\u043e\u0434\u043f\u0438\u0441\u043a(.*)(\u0443\u0441\u043b\u043e\u0432|\u0443\u043f\u0440\u0430\u0432\u043b))","\u043f\u0440\u0430\u0432\u0438\u043b(.*)\u043f\u043e\u0434\u043f\u0438\u0441\u043a","\u0441\u0442\u043e\u0438\u043c\u043e\u0441(.*)\u0443\u0441\u043b\u0443\u0433"],_detected_text_count:0,_hrefs:[],_description_regex:/(\u0441\u043c\u0441|sms)[- ]\u0441\u043e\u043e\u0431\u0449\u0435\u043d(.*)\u0441(.*)(\u0441\u043b\u043e\u0432|\u0442\u0435\u043a\u0441\u0442|\u043a\u043e\u043c\u0430\u043d\u0434)(.*)(\u0441\u0442\u043e\u043f|stop)/,
+check:function(){if(this.isExcluded())return!1;this._hrefs=document.links;return 1==this.checkSiteBySubscribeTextInUrls()?(this.send("by_text_in_urls"),!0):1==this.checkSiteBySubscribeDescriptionText()?(this.send("by_subscribe_text"),!0):!1},isExcluded:function(){return"http:"!=document.location.protocol&&"https:"!=document.location.protocol||this.isExludedDomain(document.location.host)||this.isExludedDomain(document.referrer)?!0:this.isExcludedUrl()},checkSiteBySubscribeTextInUrls:function(){for(var a in this._hrefs)if(this._hrefs[a].href&&
+this.isSubscribeText(this._hrefs[a].textContent)&&0==this._detect_text.length)return!0;return!1},checkSiteBySubscribeDescriptionText:function(){if(0==this._detected_text_count)return!1;var a=document.body.textContent.split("."),b;for(b in a)if(a[b].toLocaleLowerCase){var c=a[b].toLocaleLowerCase().replace(/(\n)/g," ").replace(/(\r)/g,"");if(this._description_regex.test(c))return!0}return!1},isExludedDomain:function(a){var b="mts rt megafonpro megafon mpoisk mail google yandex ya rambler youtube dfiles turbobit prom zakupka pravo letitbit ozon urokitio kismia webnice toy mdmbank tele2 roboforex share4web 7do dixy kiino 4allforum delo-press raskachaem satu spmag yugcontract narodnoe materinstvo dimonvideo kia-club deal icloud littlebyte maxpark 24video vdgb trud appsruel tiu blanker aucland office ontabfile microsoft shopotam shareflare autoportal stilagoby malina depositfiles hitfile crocs telecom effectfree forum.calorizator.ru traektoria cdek takko circ-a tinydeal otzyv mamba rusfolder irn labirint vip-file 10.150.0.104".split(" ");
+a=a.split(".");if(2<=a.length)for(var c in b)if(a[a.length-2]==b[c])return!0;return!1},isExcludedUrl:function(){for(var a=["a-elite/scrpop-promka/psr-"],b=0;b<a.length;++b)if(-1!=document.location.pathname.indexOf(a[b]))return!0;return!1},isSubscribeText:function(a){a=a.toLowerCase().replace(/(\n)/g," ").replace(/(\r)/g,"");for(var b in this._detect_text)if("string"===typeof this._detect_text[b]&&0!=this._detect_text[b].length&&(new RegExp(this._detect_text[b].toLowerCase())).test(a))return this._detect_text.splice(b,
+1),++this._detected_text_count,!0;return!1},send:function(a){var b=document.createElement("img"),c=new Date;b.src="http://api.safesurfing.me/detect/i.php?ss="+encodeURIComponent(document.location.href)+"&rss="+encodeURIComponent(document.referrer)+"&r="+c.getTime()+"&v=2.07&by="+a;b.style.display="none";document.body.appendChild(b)}};_________subscribe_checker.check();
+</script></body></html>

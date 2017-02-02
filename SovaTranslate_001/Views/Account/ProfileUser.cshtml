@@ -1,0 +1,42 @@
+﻿@model SovaTranslate_001.Models.user
+@{
+    ViewBag.Title = "ProfileUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProfileUser</h2>
+<div class="center">
+@Html.Label("Email","Email:")
+@Html.Label("Email",Model.email)
+<br />
+@Html.Label("Name","Name:")
+@Html.Label("Name",Model.name)
+<br />
+@Html.Label("Orders")<br />
+    <table>
+    <tr>
+        <th></th>
+        <th>Название</th>
+        <th>Статус</th>
+        </tr>
+    @foreach (var ord in SovaTranslate_001.DataBase.GetUserOrders(Model)) { 
+        
+        <tr>
+        <td>@Html.ActionLink("Просмотр", "View", "Application", new { idOrder = ord.IdOrder },null)</td>
+       
+            <td>@ord.name</td>
+        <td>@if((bool)ord.isDone){@Html.Label("Done")}
+else{
+    if ((bool)ord.inProgress) { @Html.Label("In Progress")}
+                                                            else{
+        @Html.Label("Waiting")
+    }
+}</td>
+       
+      
+        </tr>
+    }
+          </table>
+<br />
+    </div>
+

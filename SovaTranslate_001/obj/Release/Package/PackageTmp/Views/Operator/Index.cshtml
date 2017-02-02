@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Личный кабинет</h2>
+
+@Html.ActionLink("Заказы", "Orders",null,new{@class="btn btn-primary"})
+@Html.ActionLink("Необработаные заказы","ProcessingOfApplication",null,new{@class="btn btn-primary"})
+    

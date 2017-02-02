@@ -1,0 +1,38 @@
+﻿@model List<SovaTranslate_001.Models.user>
+@{
+    ViewBag.Title = "UsersList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UsersList</h2>
+<table>
+    <tr>
+        <th></th>
+        <th>
+        </th>
+        <th>Email</th>
+        <th>name</th>
+        <th></th>
+
+    </tr>
+    @foreach (var us in Model) { 
+     
+        <tr>
+       <td><a href="~/Account/ProfileUser/?id=@us.Id">Profile  </a></td>
+            @*<td>@Html.ActionLink("AddApplication", "AddApplication", "Manager", new { userId = @us.Id })</td>*@
+            <td><a href ="/Manager/AddApplication/?userId=@us.Id">Add Application</a></td>
+        <td>
+            @us.email
+        </td>
+        <td>
+            @us.name
+        </td>
+        <td>
+
+        </td>
+        
+    </tr>
+    }
+
+
+</table>

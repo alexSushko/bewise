@@ -1,0 +1,52 @@
+﻿@model SovaTranslate_001.Models.AuthModel
+@{
+    ViewBag.Title = "Login";
+}
+<h2>Вход</h2>
+<div class ="form-center">
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+       @if (Model != null&&Model.isError != null && Model.isError == true)
+       {
+           <div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong>Пользователя не существует</strong>Проверьте емеил и пароль.
+</div>
+       }
+        <div class="form-group">
+            <label class="control-label" for="Email">
+                Email
+            </label>
+            <div class="controls">
+                
+               @Html.ValidationMessageFor(r=>r.email)
+                 @Html.TextBoxFor(r=>r.email, new { @class = "form-control",@placeholder="Введите емеил"})
+                
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="FirstName">
+                Password
+            </label>
+            <div class="controls">
+                
+                @Html.ValidationMessageFor(r=>r.password)
+                
+                 @Html.PasswordFor(r=>r.password, new { @class = "form-control",@placeholder="Введите пароль"})
+
+           </div>
+        </div>
+       
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Вход
+            </button>
+            @Html.ActionLink("Отмена", "Index", "Home", null, new { @class = "btn" })
+        </div>
+    </fieldset>
+    
+    
+}
+    </div>
+    

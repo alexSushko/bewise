@@ -1,0 +1,29 @@
+﻿@model int
+@{
+    ViewBag.Title = "OrdersTranslations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="center">
+@Html.Label("Заказ#"+Model);
+    </div>
+@using (Html.BeginForm("AddTranslation", "Application", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+  @Html.Hidden("idOrder",Model)
+       
+    <div class="control-group">
+           
+                
+                @Html.TextBox("UploadedFiles",null,new { type = "file",multiple="true", @class = "input-xlarge" })
+              
+                
+        </div>
+        <div class="form-actions">
+             <div class="controls">
+            <button type="submit" class="btn btn-primary">
+                Добавить</button>
+                 </div>
+        </div>
+    
+
+}
+    

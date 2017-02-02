@@ -1,0 +1,85 @@
+﻿@model SovaTranslate_001.Models.RegisterApplicationForm
+@{
+    ViewBag.Title = "Register";
+}
+
+
+@using (Html.BeginForm("Apply", "Application", FormMethod.Post, new {enctype = "multipart/form-data"}))
+{
+    <fieldset>
+         <div class="form-group">
+            @if(Model.userId!=0){@Html.Hidden("userId",Model.userId)}
+            @Html.Label("Введите название заявки")
+            <div class="controls">
+                @Html.TextBox("name", Model.name, new {@class = "form-control" })
+                @Html.ValidationMessage("name")
+            </div>
+        </div>
+         <div class="form-group">
+            
+            @Html.Label("Введите описание заявки")
+            <div class="controls">
+                @Html.TextBox("description", Model.description, new { type = "text", @class = "form-control" })
+                @Html.ValidationMessage("description")
+            </div>
+        </div>
+         <div class="form-group">
+            
+            @Html.Label("Введите конечную дату выполнение заявки")
+            <div class="controls">
+              @*DateTime.Now.Year.ToString()+"-"+DateTime.Now.Month.ToString()+"-"+DateTime.Now.Day.ToString()*@
+                 @Html.TextBox("deadline", Model.deadline, new { type = "date", @class = "form-control" })
+                @Html.ValidationMessage("deadline")
+            </div>
+        </div>
+        
+        <div class="form-group">
+            
+            @Html.Label("Введите текст перевода или ссылку")
+            <div class="controls">
+                @Html.TextBox("text", Model.text, new { type = "text", @class = "form-control" })
+                @Html.ValidationMessage("text")
+            </div>
+        </div>
+        <div class="form-group">
+            
+            @Html.Label("Загрузите файл")
+            <div class="controls">
+                @Html.TextBox("UploadedFiles", Model.UploadedFiles, new { type = "file",multiple="true", @class = "form-control" })
+                @Html.ValidationMessage("UploadedFile")
+            </div>
+        </div><div class="form-group">
+            
+            @Html.Label("Язык:")
+            <div class="controls">
+                @foreach (var spec in SovaTranslate_001.DataBase.GetSpecialization(true)) { 
+                    @Html.RadioButton("Language", spec.IdSpecialization,spec.IdSpecialization==Model.Language)@spec.name<br />
+                    
+                }
+                @Html.ValidationMessage("language")
+            </div>
+        </div>
+        <div class="form-group">
+            
+            @Html.Label("Спецификации:")
+            <div class="controls">
+                @foreach (var spec in SovaTranslate_001.DataBase.GetSpecialization(false)) { 
+                    if(Model.spec!=null){
+                        <input type="checkbox" name="spec" value="@spec.IdSpecialization" />@spec.name<br />@*
+                    
+                    @Html.CheckBox("spec", Array.IndexOf(Model.spec, spec.name) != -1, new { value=@spec.name }) <br />*@
+                    
+                    }else{
+                          <input type="checkbox" name="spec" value="@spec.IdSpecialization" />@spec.name<br />
+                    }
+                    
+                }
+               
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Добавить</button>
+        </div>
+    </fieldset>
+}

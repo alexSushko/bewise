@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище sovadb001Model" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Хранилище sovadb001ModelContainer">
+    <EntitySet Name="user" EntityType="Хранилище sovadb001Model.user" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="email" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="roleid" Type="int" Nullable="false" />
+    <Property Name="password" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="cookies" Type="nchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+</Schema>

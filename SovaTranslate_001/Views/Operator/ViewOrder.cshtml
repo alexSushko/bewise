@@ -1,0 +1,66 @@
+﻿@model SovaTranslate_001.Models.orderTranslators
+@{
+    ViewBag.Title = "ViewOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewOrder</h2>
+@Html.Label("Заказ#"+Model.order.ToString());
+@using (Html.BeginForm("ViewOrder", "Operator", FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+  @Html.Hidden("idOrder",Model.order)
+       
+        <div class="control-group">
+            <div class="controls">
+                <table>
+    <tr>
+        <th></th>
+        <th>Имя</th>
+        <th>Репутация</th>
+        <th>Количество выполненых заказов</th>
+   <th> Адрес</th>
+      <th>  Номер телефона</th>
+        <th>Цена заказа</th>
+    </tr>
+    @foreach (var us in Model.translators) { 
+     
+        <tr>
+       <td>@*<a href="~/Account/ProfileUser/?id=@us.Id">Profile  </a></td>
+            <td>@Html.ActionLink("AddApplication", "AddApplication", "Manager", new { userId = @us.Id })</td>
+            <td><a href ="/Manager/AddApplication/?userId=@us.Id">Add Application</a>*@
+          @Html.RadioButton("idTranslator", us.IdTranslator)
+          
+       </td>
+        <td>
+            @us.user.name
+        </td>
+        <td>
+            @us.reputation
+        </td>
+            <td>
+                @us.countOfComplitedOrders
+           </td>
+            <td>
+            @us.user.email
+        </td>
+            <td>
+            @us.user.phoneNumber
+        </td>
+        <td>
+            @SovaTranslate_001.DataBase.GetCost(Model.order,us)
+        </td>
+        
+    </tr>
+    }
+
+
+</table>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Добавить</button>
+        </div>
+    
+
+}

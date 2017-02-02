@@ -1,0 +1,24 @@
+﻿@model SovaTranslate_001.Models.user
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ <div class="center">
+
+     <br />
+
+@Html.Label("Email:")
+@Html.Label("email",Model.email.ToString().Trim())
+<br />
+@Html.Label("Name:")
+@Html.Label("name",Model.name)
+<br />
+@Html.Label("Phone number:")
+@if(Model.phoneNumber!=null){
+@Html.Label(Model.phoneNumber)
+}
+<br />
+     
+@Html.ActionLink("Редактирование","Edit","Account")
+    </div>
+

@@ -1,0 +1,1 @@
+/**/ services.facebook.cb([{"like_count":0,"total_count":1,"share_count":1,"click_count":0}]);

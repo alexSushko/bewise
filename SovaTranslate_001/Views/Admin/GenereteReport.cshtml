@@ -1,0 +1,50 @@
+﻿@model SovaTranslate_001.Models.Report
+@{
+    ViewBag.Title = "GenereteReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Звіт</h2>
+<div class="center">
+       @Html.Label("Количество админов")
+    @Html.Label(Model.countadmin.ToString())<br />
+    @Html.Label("Количество менеджеров")
+    @Html.Label(Model.countmanager.ToString())<br />
+    @Html.Label("Количество операторов")
+    @Html.Label(Model.countoperator.ToString())<br />
+    @Html.Label("Количество клиентов")
+    @Html.Label(Model.countuser.ToString())<br />
+   <table>
+    <tr>
+        
+
+        <th>Название</th>
+        <th>Описание</th>
+        <th> Дата заполнение</th>
+      <th>  Дедлайн</th>
+        <th>Стоимость</th>
+    </tr>
+    @foreach (var o in Model.ord) { 
+     
+        <tr>
+      
+        <td>
+            @o.name
+        </td>
+        <td>
+            @o.description
+        </td>
+           <td>@o.dateOfCompletion.Date.ToShortDateString()</td>
+            <td>
+            @o.deadline.ToString().AsDateTime().Date.ToShortDateString()
+        </td>
+        <td>
+            @o.totalCost
+        </td>
+        
+    </tr>
+    }
+       <tr><td></td><td></td><td></td><td>Summ:</td><td>@Model.summarycost</td></tr>
+
+</table>
+</div>

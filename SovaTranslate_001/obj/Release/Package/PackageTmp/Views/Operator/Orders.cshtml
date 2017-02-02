@@ -1,0 +1,65 @@
+﻿@model List<SovaTranslate_001.Models.order>
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Orders</h2>
+<table>
+    <tr>
+        <th></th>
+
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Статус</th>
+   <th> Дата заполнение</th>
+      <th>  Дедлайн</th>
+
+    </tr>
+    @foreach (var us in Model) { 
+     
+        <tr>
+       <td>@*<a href="~/Account/ProfileUser/?id=@us.Id">Profile  </a></td>
+            <td>@Html.ActionLink("AddApplication", "AddApplication", "Manager", new { userId = @us.Id })</td>
+            <td><a href ="/Manager/AddApplication/?userId=@us.Id">Add Application</a>*@
+          @Html.ActionLink("Просмотреть", "View", "Application", new { idOrder = us.IdOrder },null)
+           @Html.ActionLink("Перевод", "OrdersTranslations", "Operator", new { idOrder = us.IdOrder }, null)
+           @if (!us.isDone)
+           {
+              
+           @Html.ActionLink("Переводчики", "ViewOrder", "Operator", new { idOrder = us.IdOrder }, null)
+               
+           }
+
+       </td>
+        <td>
+            @us.name
+        </td>
+        <td>
+            @us.description
+        </td>
+            <td>
+            @if(us.isDone) {
+                @Html.Label("Выполнена")
+            }
+            else if((bool)@us.inProgress) { 
+               @Html.Label("В процессе")
+            }else {
+            @Html.Label("Не выполнена")
+        
+            }</td>
+            <td>
+            @us.dateOfCompletion.ToShortDateString()
+        </td>
+            <td>
+            @us.deadline.ToString().AsDateTime().Date.ToShortDateString()
+        </td>
+        <td>
+
+        </td>
+        
+    </tr>
+    }
+
+
+</table>

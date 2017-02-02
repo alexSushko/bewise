@@ -1,0 +1,61 @@
+﻿@model SovaTranslate_001.Models.user
+@{
+    ViewBag.Title = "AddTranslator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+<h2>AddTranslator</h2>
+<div class="center">
+    @Html.Label("Имя переводчика")
+@Html.Label(Model.name)<br />
+@Html.Label("Специализации")<br />
+ @Html.Hidden("IdUser",Model.Id)
+    </div>
+@using(Html.BeginForm("AddTranslatorSave","Admin",FormMethod.Post)){
+     <table>
+    <tr>
+       
+        <th>Название</th>
+        <th>Сложность</th>
+        <th>Цена</th>
+        
+
+    </tr>
+        @foreach(var spec in SovaTranslate_001.DataBase.GetSpecializations())
+        {
+            @Html.Hidden("specializationTr", spec.IdSpecialization);
+            <tr>
+        @*        <td>
+            <input type="checkbox" name="" /></td>*@<td>
+            @Html.Label(spec.name)</td>
+                <td>@Html.Label(@spec.complexity.ToString())</td><td>
+            @Html.Label("Price:")<input type="number" name ="price" value="0"/>
+                    </td>
+             </tr>
+
+        }
+    </table>
+    <div class="center">
+     @Html.Label("Add Specialization")<br />
+@Html.Label("Specialization name") <br />
+     <input class="text" name="specializationTrAdd"/>
+     
+    <br /> @Html.Label("IsLanguage")<input type="checkbox" name="isL" value ="true" />
+         
+ <div class="control-group">
+     @Html.Label("Complaxity")<br />
+     <input type="number" name ="complexity" />
+
+ </div>
+    <div class="control-group">
+     @Html.Label("Price")<br />
+     <input type="number" name ="pricespec" />
+
+ </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Register
+            </button>
+            @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn" })
+        </div>
+ </div>  
+}

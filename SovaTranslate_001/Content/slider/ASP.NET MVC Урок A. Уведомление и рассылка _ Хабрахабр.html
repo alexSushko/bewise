@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://habrahabr.ru/post/176075/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/context.js" type="text/javascript" async=""></script><script src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/context.js" type="text/javascript" async=""></script><script id="an.yandex.ru/resource/context_static_r1181.js" src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/context_static_r1181.js"></script><script id="an.yandex.ru/resource/context_static_r1181.js" src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/context_static_r1181.js"></script><script async="" src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/saved_resource"></script>
+    
+    <meta content="width=1024" name="viewport">
+
+    
+
+    <title>ASP.NET MVC Урок A. Уведомление и рассылка / Хабрахабр</title>
+
+      <meta name="description" content="Цель урока Разобраться в отправлении писем и подтверждающих смс. MailNotify, использование конфигурационного файла. Рассылка через создание отдельного потока. 
+
+SmtpClient и MailNotify
+При...">
+
+      <meta name="keywords" content="asp.net mvc, c#, .net, smtp, sms">
+
+      <meta property="fb:app_id" content="444736788986613"> 
+<meta property="og:type" content="article"> 
+<meta property="og:url" content="https://habrahabr.ru/post/176075/"> 
+<meta property="og:title" content="ASP.NET MVC Урок A. Уведомление и рассылка">
+	<meta property="og:image" content="https://habrastorage.org/storage2/61b/81c/de6/61b81cde66bd20b1bfc23cf560fcc1d4.jpg">
+	<link rel="image_src" href="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/61b81cde66bd20b1bfc23cf560fcc1d4.jpg">
+	
+<meta property="og:description" content="Цель урока Разобраться в отправлении писем и подтверждающих смс. MailNotify, использование конфигурационного файла. Рассылка через создание отдельного потока.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@habrahabr">
+  <meta property="al:android:url" content="habrahabr://post/176075">
+<meta property="al:android:app_name" content="Habrahabr">
+<meta property="al:android:package" content="ru.habrahabr">
+<meta property="al:windows_phone:url" content="habrahabr://post/176075">
+<meta property="al:windows_phone:app_name" content="Habrahabr">
+<meta property="al:windows_phone:app_id" content="460a6bd6-8955-470f-935e-9ea1726a6060">
+  <link rel="canonical" href="https://habrahabr.ru/post/176075/">
+  <link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.habrahabr.ru/post/176075/">
+
+
+    <meta name="yandex-verification" content="71593b225aeafc4e">
+    <meta name="referrer" content="unsafe-url">
+    <meta name="pocket-site-verification" content="ed24b2b9721edf0a282c5b4a3232c4">
+
+    <style type="text/css">
+      @font-face{font-family:'Fira Sans';font-style:normal;font-display:swap;font-weight:500;src:url(/fonts/0/FiraSans/FiraSans-Medium.eot);src:local('Fira Sans Medium'),local(FiraSans-Medium),url(/fonts/0/FiraSans/FiraSans-Medium.eot?#iefix) format("embedded-opentype"),url(/fonts/0/FiraSans/FiraSans-Medium.woff2) format("woff2"),url(/fonts/0/FiraSans/FiraSans-Medium.woff) format("woff"),url(/fonts/0/FiraSans/FiraSans-Medium.ttf) format("truetype")}
+    </style>
+
+      <link href="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/post_common_css.css" rel="stylesheet" media="all">
+  <link href="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/all.css" rel="stylesheet" media="all">
+
+    <link href="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/global_main.css" rel="stylesheet" media="all">
+
+    <!-- load font-face observer -->
+    <script type="text/javascript" async="" src="https://mc.yandex.ru/metrika/watch.js"></script><script src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/context.js" type="text/javascript" async=""></script><script src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/context.js" type="text/javascript" async=""></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script>
+      (function(){'use strict';var f,g=[];function l(a){g.push(a);1==g.length&&f()}function m(){for(;g.length;)g[0](),g.shift()}f=function(){setTimeout(m)};function n(a){this.a=p;this.b=void 0;this.f=[];var b=this;try{a(function(a){q(b,a)},function(a){r(b,a)})}catch(c){r(b,c)}}var p=2;function t(a){return new n(function(b,c){c(a)})}function u(a){return new n(function(b){b(a)})}function q(a,b){if(a.a==p){if(b==a)throw new TypeError;var c=!1;try{var d=b&&b.then;if(null!=b&&"object"==typeof b&&"function"==typeof d){d.call(b,function(b){c||q(a,b);c=!0},function(b){c||r(a,b);c=!0});return}}catch(e){c||r(a,e);return}a.a=0;a.b=b;v(a)}}
+      function r(a,b){if(a.a==p){if(b==a)throw new TypeError;a.a=1;a.b=b;v(a)}}function v(a){l(function(){if(a.a!=p)for(;a.f.length;){var b=a.f.shift(),c=b[0],d=b[1],e=b[2],b=b[3];try{0==a.a?"function"==typeof c?e(c.call(void 0,a.b)):e(a.b):1==a.a&&("function"==typeof d?e(d.call(void 0,a.b)):b(a.b))}catch(h){b(h)}}})}n.prototype.g=function(a){return this.c(void 0,a)};n.prototype.c=function(a,b){var c=this;return new n(function(d,e){c.f.push([a,b,d,e]);v(c)})};
+      function w(a){return new n(function(b,c){function d(c){return function(d){h[c]=d;e+=1;e==a.length&&b(h)}}var e=0,h=[];0==a.length&&b(h);for(var k=0;k<a.length;k+=1)u(a[k]).c(d(k),c)})}function x(a){return new n(function(b,c){for(var d=0;d<a.length;d+=1)u(a[d]).c(b,c)})};window.Promise||(window.Promise=n,window.Promise.resolve=u,window.Promise.reject=t,window.Promise.race=x,window.Promise.all=w,window.Promise.prototype.then=n.prototype.c,window.Promise.prototype["catch"]=n.prototype.g);}());
+
+      (function(){var k=!!document.addEventListener;function l(a,b){k?a.addEventListener("scroll",b,!1):a.attachEvent("scroll",b)}function v(a){document.body?a():k?document.addEventListener("DOMContentLoaded",a):document.attachEvent("onreadystatechange",function(){"interactive"!=document.readyState&&"complete"!=document.readyState||a()})};function w(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.f=document.createElement("span");this.g=-1;this.b.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";
+      this.f.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;";this.b.appendChild(this.h);this.c.appendChild(this.f);this.a.appendChild(this.b);this.a.appendChild(this.c)}
+      function y(a,b){a.a.style.cssText="max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;left:-999px;white-space:nowrap;font:"+b+";"}function z(a){var b=a.a.offsetWidth,c=b+100;a.f.style.width=c+"px";a.c.scrollLeft=c;a.b.scrollLeft=a.b.scrollWidth+100;return a.g!==b?(a.g=b,!0):!1}function A(a,b){function c(){var a=m;z(a)&&null!==a.a.parentNode&&b(a.g)}var m=a;l(a.b,c);l(a.c,c);z(a)};function B(a,b){var c=b||{};this.family=a;this.style=c.style||"normal";this.weight=c.weight||"normal";this.stretch=c.stretch||"normal"}var C=null,D=null,H=!!window.FontFace;function I(){if(null===D){var a=document.createElement("div");try{a.style.font="condensed 100px sans-serif"}catch(b){}D=""!==a.style.font}return D}function J(a,b){return[a.style,a.weight,I()?a.stretch:"","100px",b].join(" ")}
+      B.prototype.load=function(a,b){var c=this,m=a||"BESbswy",x=b||3E3,E=(new Date).getTime();return new Promise(function(a,b){if(H){var K=new Promise(function(a,b){function e(){(new Date).getTime()-E>=x?b():document.fonts.load(J(c,c.family),m).then(function(c){1<=c.length?a():setTimeout(e,25)},function(){b()})}e()}),L=new Promise(function(a,c){setTimeout(c,x)});Promise.race([L,K]).then(function(){a(c)},function(){b(c)})}else v(function(){function q(){var b;if(b=-1!=f&&-1!=g||-1!=f&&-1!=h||-1!=g&&-1!=
+      h)(b=f!=g&&f!=h&&g!=h)||(null===C&&(b=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent),C=!!b&&(536>parseInt(b[1],10)||536===parseInt(b[1],10)&&11>=parseInt(b[2],10))),b=C&&(f==r&&g==r&&h==r||f==t&&g==t&&h==t||f==u&&g==u&&h==u)),b=!b;b&&(null!==d.parentNode&&d.parentNode.removeChild(d),clearTimeout(G),a(c))}function F(){if((new Date).getTime()-E>=x)null!==d.parentNode&&d.parentNode.removeChild(d),b(c);else{var a=document.hidden;if(!0===a||void 0===a)f=e.a.offsetWidth,g=n.a.offsetWidth,
+      h=p.a.offsetWidth,q();G=setTimeout(F,50)}}var e=new w(m),n=new w(m),p=new w(m),f=-1,g=-1,h=-1,r=-1,t=-1,u=-1,d=document.createElement("div"),G=0;d.dir="ltr";y(e,J(c,"sans-serif"));y(n,J(c,"serif"));y(p,J(c,"monospace"));d.appendChild(e.a);d.appendChild(n.a);d.appendChild(p.a);document.body.appendChild(d);r=e.a.offsetWidth;t=n.a.offsetWidth;u=p.a.offsetWidth;F();A(e,function(a){f=a;q()});y(e,J(c,'"'+c.family+'",sans-serif'));A(n,function(a){g=a;q()});y(n,J(c,'"'+c.family+'",serif'));A(p,function(a){h=
+      a;q()});y(p,J(c,'"'+c.family+'",monospace'))})})};window.FontFaceObserver=B;window.FontFaceObserver.prototype.check=window.FontFaceObserver.prototype.load=B.prototype.load;"undefined"!==typeof module&&(module.exports=window.FontFaceObserver);}());
+
+      (function( w ){
+        // if the class is already set, we're good.
+        if( w.document.documentElement.className.indexOf( "fonts-loaded" ) > -1 ){ return; }
+
+        var html = document.documentElement;
+        var font = new w.FontFaceObserver("Fira Sans", { weight: 500 });
+
+        font.load().then(function () {
+          html.classList.add('fonts-loaded');
+          sessionStorage.fontsLoaded = true;
+        }).catch(function () {
+          sessionStorage.fontsLoaded = false;
+        });
+
+        if (sessionStorage.fontsLoaded) {
+          html.classList.add('fonts-loaded');
+        }
+      }(this));
+    </script>
+
+    <script type="text/javascript" src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/global_main.js"></script>
+      <script type="text/javascript" src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/post_common_js.js"></script>
+  <script type="text/javascript" src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/all.js"></script>
+
+
+    
+    
+
+    <meta name="yandex-verification" content="67d46b975fa41645">
+    
+    <meta content="Хабрахабр" name="apple-mobile-web-app-title">
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://habrahabr.ru/images/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://habrahabr.ru/images/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://habrahabr.ru/images/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://habrahabr.ru/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://habrahabr.ru/images/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://habrahabr.ru/images/favicons/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="https://habrahabr.ru/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://habrahabr.ru/images/favicons/favicon-16x16.png" sizes="16x16">
+<meta name="application-name" content="Хабрахабр">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="mstile-144x144.png">
+
+      
+      <script>
+        var N = 5;
+        var ar_duo1 = Math.floor(Math.random()*N+1);
+      </script>
+      <script type="text/javascript" src="https://habracdn.net/habr/javascripts/1470318147/libs/adriver.core.2.js"></script>
+
+    <link title="Хабрахабр / Комментарии к публикации «ASP.NET MVC Урок A. Уведомление и рассылка»" type="application/rss+xml" rel="alternate" href="https://habrahabr.ru/rss/post/176075/">
+
+    <script src="https://habracdn.net/habr/javascripts/1470318147/_parts/advertising.js"></script>
+
+<script type="text/javascript">
+
+  if (typeof adriver == 'undefined')
+  {
+    var adb1 = 'yes';
+  }
+
+    var user_type = 'guest';
+
+  var page_type = "publish_ugc";
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-726094-1',  'auto');
+  ga('create', 'UA-726094-24', 'auto', {'name': 'HGM'});
+
+  ga('require', 'displayfeatures');
+  ga('set', 'dimension1', user_type); // user type - guest/readonly/habrauser
+
+
+  ga('set', 'dimension4', adb1);
+
+  ga('set', 'dimension5', page_type);
+
+
+  if(typeof removeUtms === 'undefined') {
+    removeUtms = function(){};
+  }
+
+  ga('HGM.set', 'dimension1', user_type);
+  ga('HGM.set', 'dimension2', "habrahabr");
+  ga('HGM.send', 'pageview');
+
+  ga('send', 'pageview', { 'hitCallback': removeUtms });
+
+
+</script>
+
+
+    <script>
+  var adcm_config ={
+    id:1034,
+    platformId: 34,
+    
+    tags: ['hub_asp', 'hub_net', 'g_programming', 'g_windows_and_.net'],
+    init: function () {
+      window.adcm.call();
+    }
+  };
+</script>
+<script src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/adcm.js" async=""></script>
+  <script src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/processor.js"></script><script charset="utf-8" src="https://mc.yandex.ru/metrika/watch.js"></script></head>
+
+  <body>
+    <div class="layout_inner">
+      <div id="TMpanel">
+  <div class="container">
+    <div class="bmenu">
+      <a href="https://tmfeed.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_top_panel&amp;utm_campaign=tm_promo">TM Feed</a>
+      <a href="https://habrahabr.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_top_panel&amp;utm_campaign=tm_promo" class="current">Хабрахабр</a>
+      <a href="https://geektimes.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_top_panel&amp;utm_campaign=tm_promo">Geektimes</a>
+      <a href="https://toster.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_top_panel&amp;utm_campaign=tm_promo">Тостер</a>
+      <a href="https://moikrug.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_top_panel&amp;utm_campaign=tm_promo">Мой круг</a>
+      <a href="https://freelansim.ru/?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=head_link">Фрилансим</a>
+    </div>
+      <div class="bmenu_inner" style="display:inline-block!important;visibility:visible!important;">
+        <span class="bmenu__label">Спецпроекты:</span>
+        <span class="bmenu slink"><a href="http://bit.ly/27YDBWV" target="_blank" style="color: orange">Google Devices</a><a href="http://bit.ly/292lXff" target="_blank" style="color: green">Малина для Админа</a><a href="http://bit.ly/29h2GW0" target="_blank" style="color: black">Клуб тестеров</a></span>
+        <span id="adriver_banner_465568687"></span>
+      </div>
+  </div>
+</div>
+
+      <div id="layout">
+        <div id="navbar_overlay" class="hidden"></div>
+<div id="navbar" style="bottom: 29px;" class="">
+    <div class="nav_panel">
+        <a href="https://habrahabr.ru/" class="logo"></a>
+
+            <a href="https://habrahabr.ru/posts/" class="tab tab_menu" data-tab="menu_tab" title="Меню"><span class="g-icon g-icon-burger"></span></a>
+            <a href="https://habrahabr.ru/auth/login/" class="tab tab_login" id="login" title="Войти"><span class="g-icon g-icon-lock"></span></a>
+
+        <a href="https://habrahabr.ru/post/176075/#" class="scroll_to_up scroll_to_up_for_guest hidden" id="scroll_to_top" title="Наверх"></a>
+    </div>
+
+    <div class="nav_tabs_content ">
+        <div class="nav_tab hidden" id="menu_tab">
+          <div class="title">Разделы</div>
+          <form action="https://habrahabr.ru/search/#n" method="get" class="global_search_form">
+            <div>
+              <input type="text" name="q" placeholder="Поиск">
+            </div>
+          </form>
+          <div class="menu">
+              <a href="https://habrahabr.ru/posts/top/">Публикации</a>
+              <a href="https://habrahabr.ru/hubs/">Хабы</a>
+              <a href="https://habrahabr.ru/companies/">Компании</a>
+              <a href="https://habrahabr.ru/users/">Пользователи</a>
+              <a href="https://habrahabr.ru/sandbox/">Песочница</a>
+              <div class="line"></div>
+              <a href="https://toster.ru/?" class="new_window">Q&amp;A</a>
+              <a href="https://moikrug.ru/?utm_source=tm_habrahabr&amp;utm_medium=tm_left_menu&amp;utm_campaign=tm_promo" class="new_window">Вакансии</a>
+          </div>
+
+            
+                <div class="line"></div>
+                <div class="title">Спецпроекты</div>
+                <div class="menu">
+              <a href="http://bit.ly/27YDyuf" target="_blank">Device Lab от Google</a>
+              
+              <a href="http://bit.ly/29mQ14a" target="_blank">Малина для Админа</a>
+              </div>
+        </div>
+
+
+    </div>
+</div>
+
+        <div class="inner">
+
+          
+            <div class="profile-header js-user_3467">
+
+  <div class="profile-header__summary author-info author-info_profile ">
+    <a href="https://habrahabr.ru/users/chernikov/" class="author-info__image" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_top&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">
+        <img src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/d5c4ba4e748593c0987c4f50358ac35c.jpg" class="author-info__image-pic">
+
+    </a>
+
+    <div class="author-info__desc">
+      <div class="author-info__username">
+         <a href="https://habrahabr.ru/users/chernikov/" class="author-info__name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_top&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">chernikov</a> 
+        <a href="https://habrahabr.ru/users/chernikov/" class="author-info__nickname" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_top&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">@chernikov</a>
+        
+      </div>
+        <div class="author-info__specialization">
+          Пользователь
+        </div>
+    </div>
+  </div>
+
+    <div class="profile-header__stats">
+
+      <div class="karma__widjet voting-wjt voting-wjt_user-profile js-karma  ">
+
+        <div class="voting-wjt__counter js-karma-mark voting-wjt__counter_positive " title="327 голосов">
+          <div class="voting-wjt__counter-score js-karma_num">177,9</div>
+          <div class="voting-wjt__label">карма</div>
+        </div>
+
+      </div>
+
+      <div class="statistic statistic_user-rating" title="Рейтинг пользователя">
+        <div class="statistic__value statistic__value_magenta">0,0</div>
+        <div class="statistic__label">рейтинг</div>
+      </div>
+
+    </div>
+
+
+</div>
+
+  <div class="content_wrapper column-wrapper_content">
+    <div class="column-wrapper js-sticky-wrapper">
+      <div class="content_left js-content_left">
+          <div class="tabs">
+    <ul class="tabs-menu tabs-menu_habrahabr">
+          <li class="tabs-menu__item tabs-menu__item_user-profile tabs-menu__item_inline">
+            <a href="https://habrahabr.ru/users/chernikov/" class="tab-item tab-item_stacked ">
+              <span class="tab-item__value stats">
+                <span class="stats__counters stats__counters_big">
+                  <strong class="counter"></strong>
+                </span>
+                <span class="stats__value">Профиль</span>
+            </span></a>
+          </li>
+          <li class="tabs-menu__item tabs-menu__item_user-profile tabs-menu__item_inline">
+            <a href="https://habrahabr.ru/users/chernikov/topics/" class="tab-item tab-item_stacked tab-item_current">
+              <span class="tab-item__value stats">
+                <span class="stats__counters stats__counters_big">
+                  <strong class="counter">22</strong>
+                </span>
+                <span class="stats__value">Публикации</span>
+            </span></a>
+          </li>
+          <li class="tabs-menu__item tabs-menu__item_user-profile tabs-menu__item_inline">
+            <a href="https://habrahabr.ru/users/chernikov/comments/" class="tab-item tab-item_stacked ">
+              <span class="tab-item__value stats">
+                <span class="stats__counters stats__counters_big">
+                  <strong class="counter">93</strong>
+                </span>
+                <span class="stats__value">Комментарии</span>
+            </span></a>
+          </li>
+          <li class="tabs-menu__item tabs-menu__item_user-profile tabs-menu__item_inline">
+            <a href="https://habrahabr.ru/users/chernikov/favorites/" class="tab-item tab-item_stacked ">
+              <span class="tab-item__value stats">
+                <span class="stats__counters stats__counters_big">
+                  <strong class="counter">217</strong>
+                </span>
+                <span class="stats__value">Избранное</span>
+            </span></a>
+          </li>
+          <li class="tabs-menu__item tabs-menu__item_user-profile tabs-menu__item_inline">
+            <a href="https://habrahabr.ru/users/chernikov/subscription/followers/" class="tab-item tab-item_stacked ">
+              <span class="tab-item__value stats">
+                <span class="stats__counters stats__counters_big">
+                  <strong class="counter">136</strong>
+                </span>
+                <span class="stats__value">Подписчики</span>
+            </span></a>
+          </li>
+    </ul>
+
+  </div>
+
+
+        <div class="post_show">
+          
+    <div class="post post_full" id="post_176075">
+  <div class="post__header">
+    <span class="post__time_published"> 9 апреля 2013 в 22:54</span>
+
+    <h1 class="post__title">
+      <a href="https://habrahabr.ru/flows/develop/" class="post__flow" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;flow&#39;, &#39;post page&#39;, &#39;Разработка&#39;); }">Разработка</a><span class="post__title-arrow">&nbsp;→</span>
+      <span>ASP.NET MVC Урок A. Уведомление и рассылка</span>
+      
+
+
+
+
+<span class="flag flag_tutorial" title="Обучающий материал">tutorial</span>
+
+
+
+    </h1>
+
+      <div class="hubs">
+          <a href="https://habrahabr.ru/hub/asp/" class="hub " title="Вы не подписаны на этот хаб" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;hub&#39;, &#39;post page&#39;, &#39;ASP&#39;); }">ASP</a><span class="profiled_hub" title="Профильный хаб">*</span>, 
+          <a href="https://habrahabr.ru/hub/net/" class="hub " title="Вы не подписаны на этот хаб" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;hub&#39;, &#39;post page&#39;, &#39;.NET&#39;); }">.NET</a><span class="profiled_hub" title="Профильный хаб">*</span>
+      </div>
+  </div>
+
+  <div class="post__body post__body_full">
+    <div class="content html_format"><b>Цель урока</b> Разобраться в отправлении писем и подтверждающих смс. MailNotify, использование конфигурационного файла. Рассылка через создание отдельного потока. <br>
+<br>
+<h5>SmtpClient и MailNotify</h5><br>
+При разработке сайта мы рано или поздно сталкиваемся с взаимодействием с электронной почтой, будь то активация пользователя, напоминание или сброс пароль, или создание рассылки.<br>
+Определимся, что нам для этого нужно:<br>
+<ul>
+<li>Класс, который будет рассылать письма</li>
+<li>Конфигурация smtp берется из IConfig</li>
+<li>Ошибки отправки письма протоколируются</li>
+<li>Наличие параметра, выключающего работу почты, дабы при работе с боевой базой клиентов не разослать какой-то треш.</li>
+</ul><br>
+<br>
+<a name="habracut"></a><br>
+Создадим статический класс, назовем его MailSender (/Tools/Mail/MailSender.cs):<br>
+<pre><code class="cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MailSender</span>
+    {
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> IConfig _config;
+
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> IConfig Config
+        {
+            <span class="hljs-keyword">get</span>
+            {
+                <span class="hljs-keyword">if</span> (_config == <span class="hljs-keyword">null</span>)
+                {
+                    _config = (DependencyResolver.Current).GetService&lt;IConfig&gt;();
+
+                }
+                <span class="hljs-keyword">return</span> _config;
+            }
+        }
+
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SendMail</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> email, <span class="hljs-keyword">string</span> subject, <span class="hljs-keyword">string</span> body, MailAddress mailAddress = <span class="hljs-keyword">null</span></span>)
+        </span>{
+
+            <span class="hljs-keyword">try</span>
+            {
+                <span class="hljs-keyword">if</span> (Config.EnableMail)
+                {
+                    <span class="hljs-keyword">if</span> (mailAddress == <span class="hljs-keyword">null</span>)
+                    {
+                        mailAddress = <span class="hljs-keyword">new</span> MailAddress(Config.MailSetting.SmtpReply, Config.MailSetting.SmtpUser);
+                    }
+                    MailMessage message = <span class="hljs-keyword">new</span> MailMessage(
+                        mailAddress,
+                        <span class="hljs-keyword">new</span> MailAddress(email))
+                                              {
+                                                  Subject = subject,
+                                                  BodyEncoding = Encoding.UTF8,
+                                                  Body = body,
+                                                  IsBodyHtml = <span class="hljs-keyword">true</span>,
+                                                  SubjectEncoding = Encoding.UTF8
+                                              };
+                    SmtpClient client = <span class="hljs-keyword">new</span> SmtpClient
+                                            {
+                                                Host = Config.MailSetting.SmtpServer,
+                                                Port = Config.MailSetting.SmtpPort,
+                                                UseDefaultCredentials = <span class="hljs-keyword">false</span>,
+                                                EnableSsl = Config.MailSetting.EnableSsl,
+                                                Credentials =
+                                                    <span class="hljs-keyword">new</span> NetworkCredential(Config.MailSetting.SmtpUserName,
+                                                                          Config.MailSetting.SmtpPassword),
+                                                DeliveryMethod = SmtpDeliveryMethod.Network
+                                            };
+                    client.Send(message);
+                }
+                <span class="hljs-keyword">else</span>
+                {
+                    logger.Debug(<span class="hljs-string">"Email : {0} {1} \t Subject: {2} {3} Body: {4}"</span>, email, Environment.NewLine, subject, Environment.NewLine, body);
+                }
+            }
+            <span class="hljs-keyword">catch</span> (Exception ex)
+            {
+                logger.Error(<span class="hljs-string">"Mail send exception"</span>, ex.Message);
+            }
+        }
+    }
+</code></pre><br>
+<br>
+Рассмотрим подробнее:<br>
+<ul>
+<li>По необходимости, статически инициализируется IConfig из DependencyResolver</li>
+<li>Если установлен флаг EnableMain, то начинаем работу с почтой, иначе просто письмо запишем в лог-файл</li>
+<li>Если MailAddress не указан, то он инициализируется по данным из конфига</li>
+<li>SmtpClient инициализируется по данным из конфига</li>
+<li>Тело письма – html</li>
+<li>Кодировка – UTF8</li>
+<li>Если при отправке произошла ошибка, то запишем Exception.Message в лог (тут можно и больше информации собирать, но пока нет необходимости).</li>
+</ul><br>
+<br>
+Рассмотрим рассылку писем по шаблону. Создадим класс (тоже статический) NotifyMail (/Tools/Mail/NotifyMail.cs):<br>
+<pre><code class="cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title">NotifyMail</span>
+    {
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> IConfig _config;
+
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> IConfig Config
+        {
+            <span class="hljs-keyword">get</span>
+            {
+                <span class="hljs-keyword">if</span> (_config == <span class="hljs-keyword">null</span>)
+                {
+                    _config = (DependencyResolver.Current).GetService&lt;IConfig&gt;();
+
+                }
+                <span class="hljs-keyword">return</span> _config;
+            }
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SendNotify</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> templateName, <span class="hljs-keyword">string</span> email,
+            Func&lt;<span class="hljs-keyword">string</span>, <span class="hljs-keyword">string</span>&gt; subject,
+            Func&lt;<span class="hljs-keyword">string</span>, <span class="hljs-keyword">string</span>&gt; body</span>)
+        </span>{
+            <span class="hljs-keyword">var</span> template = Config.MailTemplates.FirstOrDefault(p =&gt; <span class="hljs-keyword">string</span>.Compare(p.Name, templateName, <span class="hljs-keyword">true</span>) == <span class="hljs-number">0</span>);
+            <span class="hljs-keyword">if</span> (template == <span class="hljs-keyword">null</span>)
+            {
+                logger.Error(<span class="hljs-string">"Can't find template ("</span> + templateName + <span class="hljs-string">")"</span>);
+            }
+            <span class="hljs-keyword">else</span>
+            {
+                MailSender.SendMail(email,
+                    subject.Invoke(template.Subject),
+                    body.Invoke(template.Template));
+            }
+        }
+    }
+</code></pre><br>
+<br>
+Аналогично получаем конфиг. При рассылке мы указываем для неё, и дальше используем Func&lt;string,string&gt; для формирования темы и тела письма.<br>
+<br>
+Уведомим пользователя о регистрации, используя шаблон Register из Web.config:<br>
+ <pre><code class="xml hljs"><span class="hljs-tag">&lt;<span class="hljs-name">add</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Register"</span> <span class="hljs-attr">subject</span>=<span class="hljs-string">"Регистрация на {0}"</span> <span class="hljs-attr">template</span>=<span class="hljs-string">"Здравствуйте! &lt;br/&gt;&lt;br/&gt; Перейдите по ссылке  &lt;a href='http://{1}/User/Activate/{0}'&gt;http://{1}/User/Activate/{0}&lt;/a&gt;, чтобы подтвертить свой почтовый ящик.&lt;br/&gt;-----&lt;br/&gt;С уважением, команда &lt;a href='http://{1}'&gt;{1}&lt;/a&gt;"</span> /&gt;</span>
+</code></pre><br>
+<br>
+Заметим, как необходимо экранировать html-теги, чтобы правильно сделать шаблон. Нужно учитывать зависимость между шаблоном для string.Format() и количеством параметров. В UserController.cs при регистрации добавим (/Areas/Default/Controllers/UserController.cs:Register):<br>
+ <pre><code class="cs hljs">Repository.CreateUser(user);
+
+                NotifyMail.SendNotify(<span class="hljs-string">"Register"</span>, user.Email,
+                    subject =&gt; <span class="hljs-keyword">string</span>.Format(subject, HostName),
+                    body =&gt; <span class="hljs-keyword">string</span>.Format(body, <span class="hljs-string">""</span>, HostName));
+
+                <span class="hljs-keyword">return</span> RedirectToAction(<span class="hljs-string">"Index"</span>);
+</code></pre><br>
+<br>
+HostName мы добавили в инициализации BaseController (/Controllers/BaseController.cs):<br>
+<pre><code class="cs hljs">       <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">string</span> HostName = <span class="hljs-keyword">string</span>.Empty;
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Initialize</span>(<span class="hljs-params">System.Web.Routing.RequestContext requestContext</span>)
+        </span>{
+            <span class="hljs-keyword">if</span> (requestContext.HttpContext.Request.Url != <span class="hljs-keyword">null</span>)
+            {
+                HostName = requestContext.HttpContext.Request.Url.Authority;
+            } …
+</code></pre><br>
+Регистрируемся, и на нашу почту приходит письмо:<br>
+<br>
+<img src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/61b81cde66bd20b1bfc23cf560fcc1d4.jpg"><br>
+<br>
+<h5>Более сложный случай</h5><br>
+Всё это хорошо, но если нам необходимо рассылку с кучей акционных предложений, то данный формат нам не подойдет. Во-первых, сложно подобный шаблон задавать в Web.config, во-вторых, количество параметров не известно. Как и обычные html-шаблоны, шаблон письма было бы чудесно задать во View. Что ж, рассмотрим библиотеку ActionMailer (<a href="http://nuget.org/packages/ActionMailer">http://nuget.org/packages/ActionMailer</a>):<br>
+<br>
+<pre><code class="bash hljs">PM&gt; Install-Package ActionMailer
+Successfully installed <span class="hljs-string">'ActionMailer 0.7.4'</span>.
+Successfully added <span class="hljs-string">'ActionMailer 0.7.4'</span> to LessonProject.Model.
+</code></pre><br>
+<br>
+Отнаследуем MailController от MailerBase:<br>
+<pre><code class="cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MailController</span> : <span class="hljs-title">MailerBase</span>
+    {
+        <span class="hljs-function"><span class="hljs-keyword">public</span> EmailResult <span class="hljs-title">Subscription</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> message, <span class="hljs-keyword">string</span> email</span>)
+        </span>{
+            To.Add(email);
+            Subject = <span class="hljs-string">"Рассылка"</span>;
+            MessageEncoding = Encoding.UTF8;
+            <span class="hljs-keyword">return</span> Email(<span class="hljs-string">"Subscription"</span>, message);
+        }
+
+    }
+
+</code></pre><br>
+<br>
+Добавим Subscription.html.cshtml View (/Areas/Default/Views/Mail/Subscription.html.cshtml):<br>
+<pre><code class="html hljs xml">@model string
+@{
+    Layout = null;
+}
+<span class="hljs-meta">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Content-Type"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"text/html; charset=UTF-8"</span> /&gt;</span>
+   
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>@Model<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre><br>
+<br>
+Добавляем в Web.config конфигурацию для работы с почтой (Web.config):<br>
+<pre><code class="xml hljs"><span class="hljs-tag">&lt;<span class="hljs-name">system.net</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mailSettings</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">smtp</span> <span class="hljs-attr">deliveryMethod</span>=<span class="hljs-string">"Network"</span> <span class="hljs-attr">from</span>=<span class="hljs-string">"lxndrpetrov@gmail.com"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">network</span> <span class="hljs-attr">host</span>=<span class="hljs-string">"smtp.gmail.com"</span> <span class="hljs-attr">port</span>=<span class="hljs-string">"587"</span> <span class="hljs-attr">userName</span>=<span class="hljs-string">"lxndrpetrov"</span> <span class="hljs-attr">password</span>=<span class="hljs-string">"******"</span> <span class="hljs-attr">enableSsl</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">smtp</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">mailSettings</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">system.net</span>&gt;</span>
+</code></pre><br>
+<br>
+И создаем в UserController.cs тестовый метод (/Areas/Default/Controllers/UserController.cs):<br>
+<pre><code class="cs hljs">[Authorize]
+        <span class="hljs-function"><span class="hljs-keyword">public</span> ActionResult <span class="hljs-title">SubscriptionTest</span>(<span class="hljs-params"></span>)
+        </span>{
+            <span class="hljs-keyword">var</span> mailController = <span class="hljs-keyword">new</span> MailController();
+           
+            <span class="hljs-keyword">var</span> email = mailController.Subscription(<span class="hljs-string">"Привет, мир!"</span>, CurrentUser.Email);
+            email.Deliver();
+            <span class="hljs-keyword">return</span> Content(<span class="hljs-string">"OK"</span>);
+        }
+</code></pre><br>
+<br>
+Запускаем: <br>
+<br>
+<a href="http://localhost/User/SubscriptionTest">localhost/User/SubscriptionTest</a> — и получаем на почту письмо.<br>
+<br>
+Рассмотрим пример получения текста письма в строку. Для этого понадобится StreamReader (/Areas/Default/Controllers/UserController.cs):<br>
+<pre><code class="cs hljs">[Authorize]
+        <span class="hljs-function"><span class="hljs-keyword">public</span> ActionResult <span class="hljs-title">SubscriptionShow</span>(<span class="hljs-params"></span>)
+        </span>{
+            <span class="hljs-keyword">var</span> mailController = <span class="hljs-keyword">new</span> MailController();
+            <span class="hljs-keyword">var</span> email = mailController.Subscription(<span class="hljs-string">"Привет, мир!"</span>, CurrentUser.Email);
+
+            <span class="hljs-keyword">using</span> (<span class="hljs-keyword">var</span> reader = <span class="hljs-keyword">new</span> StreamReader(email.Mail.AlternateViews[<span class="hljs-number">0</span>].ContentStream))
+            {
+                <span class="hljs-keyword">var</span> content = reader.ReadToEnd();
+                <span class="hljs-keyword">return</span> Content(content);
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        }
+</code></pre><br>
+<br>
+В content уже есть сформированная страница. Запускаем:<br>
+<a href="http://localhost/User/SubscriptionShow">localhost/User/SubscriptionShow</a><br>
+ <br>
+<h5>SmsNotify</h5><br>
+<br>
+В этой главе рассмотрим взаимодействие с помощью смс, а не только почты. Но есть ньюанс – доступ к рассылке предоставляется отдельными сервисами, и тут мы рассмотрим только основные принципынаписания модуля для работы с SMS-провайдерами на примере работы с unisender.ru. <br>
+Создадим класс настроек по типу MailSetting (/Global/Config/SmsSetting.cs):<br>
+<pre><code class="cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SmsSetting</span> : <span class="hljs-title">ConfigurationSection</span>
+    {
+        [ConfigurationProperty(<span class="hljs-string">"apiKey"</span>, IsRequired = <span class="hljs-keyword">true</span>)]
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> APIKey
+        {
+            <span class="hljs-keyword">get</span>
+            {
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>[<span class="hljs-string">"apiKey"</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">string</span>;
+            }
+            <span class="hljs-keyword">set</span>
+            {
+                <span class="hljs-keyword">this</span>[<span class="hljs-string">"apiKey"</span>] = <span class="hljs-keyword">value</span>;
+            }
+        }
+
+        [ConfigurationProperty(<span class="hljs-string">"sender"</span>, IsRequired = <span class="hljs-keyword">true</span>)]
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Sender
+        {
+            <span class="hljs-keyword">get</span>
+            {
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>[<span class="hljs-string">"sender"</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">string</span>;
+            }
+            <span class="hljs-keyword">set</span>
+            {
+                <span class="hljs-keyword">this</span>[<span class="hljs-string">"sender"</span>] = <span class="hljs-keyword">value</span>;
+            }
+        }
+
+        [ConfigurationProperty(<span class="hljs-string">"templateUri"</span>, IsRequired = <span class="hljs-keyword">true</span>)]
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> TemplateUri
+        {
+            <span class="hljs-keyword">get</span>
+            {
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>[<span class="hljs-string">"templateUri"</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">string</span>;
+            }
+            <span class="hljs-keyword">set</span>
+            {
+                <span class="hljs-keyword">this</span>[<span class="hljs-string">"templateUri"</span>] = <span class="hljs-keyword">value</span>;
+            }
+        }
+    } 
+
+</code></pre>Зададим в Web.Config (Web.config):<br>
+<pre><code class="xml hljs"><span class="hljs-tag">&lt;<span class="hljs-name">configSections</span>&gt;</span>
+…
+   <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"smsConfig"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"LessonProject.Global.Config.SmsSetting, LessonProject"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">configSections</span>&gt;</span>
+…
+<span class="hljs-tag">&lt;<span class="hljs-name">smsConfig</span>
+    <span class="hljs-attr">apiKey</span>=<span class="hljs-string">"*******"</span>
+    <span class="hljs-attr">sender</span>=<span class="hljs-string">"Daddy"</span>
+    <span class="hljs-attr">templateUri</span>=<span class="hljs-string">"http://api.unisender.com/ru/api/sendSms"</span>
+  /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+</code></pre><br>
+<br>
+Создадим класс SmsSender (/Tools/Sms/SmsSender.cs):<br>
+<pre><code class="cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SmsSender</span>
+    {
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> IConfig _config;
+
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> IConfig Config
+        {
+            <span class="hljs-keyword">get</span>
+            {
+                <span class="hljs-keyword">if</span> (_config == <span class="hljs-keyword">null</span>)
+                {
+                    _config = (DependencyResolver.Current).GetService&lt;IConfig&gt;();
+
+                }
+                <span class="hljs-keyword">return</span> _config;
+            }
+        }
+
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">string</span> <span class="hljs-title">SendSms</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> phone, <span class="hljs-keyword">string</span> text</span>)
+        </span>{
+            <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">string</span>.IsNullOrWhiteSpace(Config.SmsSetting.APIKey))
+            {
+                <span class="hljs-keyword">return</span> GetRequest(phone, Config.SmsSetting.Sender, text);
+            }
+            <span class="hljs-keyword">else</span>
+            {
+                logger.Debug(<span class="hljs-string">"Sms \t Phone: {0} Body: {1}"</span>, phone, text);
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Success"</span>;
+            }
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">string</span> <span class="hljs-title">GetRequest</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> phone, <span class="hljs-keyword">string</span> sender, <span class="hljs-keyword">string</span> text</span>)
+        </span>{
+            <span class="hljs-keyword">try</span>
+            {
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(Config.SmsSetting.TemplateUri);
+                <span class="hljs-comment"><span class="hljs-doctag">///</span> important, otherwise the service can't desirialse your request properly</span>
+                webRequest.ContentType = <span class="hljs-string">"application/x-www-form-urlencoded"</span>;
+                webRequest.Method = <span class="hljs-string">"POST"</span>;
+                webRequest.KeepAlive = <span class="hljs-keyword">false</span>;
+                webRequest.PreAuthenticate = <span class="hljs-keyword">false</span>;
+
+                <span class="hljs-keyword">string</span> postData = <span class="hljs-string">"format=json&amp;api_key="</span> + Config.SmsSetting.APIKey + <span class="hljs-string">"&amp;phone="</span> + phone
+                    + <span class="hljs-string">"&amp;sender="</span> + sender + <span class="hljs-string">"&amp;text="</span> + HttpUtility.UrlEncode(text);
+                <span class="hljs-keyword">var</span> ascii = <span class="hljs-keyword">new</span> ASCIIEncoding();
+                <span class="hljs-keyword">byte</span>[] byteArray = ascii.GetBytes(postData);
+                webRequest.ContentLength = byteArray.Length;
+                Stream dataStream = webRequest.GetRequestStream();
+                dataStream.Write(byteArray, <span class="hljs-number">0</span>, byteArray.Length);
+                dataStream.Close();
+
+                WebResponse webResponse = webRequest.GetResponse();
+
+                Stream responceStream = webResponse.GetResponseStream();
+                Encoding enc = System.Text.Encoding.UTF8;
+                StreamReader loResponseStream = <span class="hljs-keyword">new</span>
+                        StreamReader(webResponse.GetResponseStream(), enc);
+
+                <span class="hljs-keyword">string</span> Response = loResponseStream.ReadToEnd();
+                <span class="hljs-keyword">return</span> Response;
+            }
+            <span class="hljs-keyword">catch</span> (Exception ex)
+            {
+                logger.ErrorException(<span class="hljs-string">"Ошибка при отправке SMS"</span>, ex);
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Ошибка при отправке SMS"</span>;
+            }
+        }
+}
+
+</code></pre><br>
+<br>
+Результат приходит типа:<br>
+<pre><code class="hljs json">{"<span class="hljs-attr">result</span>":{"<span class="hljs-attr">currency</span>":<span class="hljs-string">"RUB"</span>,"<span class="hljs-attr">price</span>":<span class="hljs-string">"0.49"</span>,"<span class="hljs-attr">sms_id</span>":<span class="hljs-string">"1316886153.2_79859667475"</span>}}
+</code></pre><br>
+Его можно разобрать и проанализировать. <br>
+В следующем уроке мы рассмотрим, как работать с json.<br>
+<br>
+<h5>Отдельный поток</h5><br>
+Если мы рассылаем электронную почту большому количеству людей, то обработка может занять много времени. Для этого я пользуюсь следующим принципом:<br>
+<ul>
+<li>Создаем отдельный поток, который проверяет, если ли исходящие письма готовые к отправке</li>
+<li>При создании рассылки создаются письма и записываются в БД</li>
+<li>Поток проверяет состояние БД на наличие писем</li>
+<li> Письма извлекаются из БД последовательно (письмо может удалиться, может только обнулить содержимое письма (чтоб сэкономить размер БД).</li>
+<li>Письмо отправляется.</li>
+<li>Возвращается к проверке.</li>
+</ul><br>
+<br>
+Отдельный поток запускается в Application_Start. Таймер устанавливается на повторение через 1 минуту:<br>
+<pre><code class="cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MvcApplication</span> : <span class="hljs-title">System</span>.<span class="hljs-title">Web</span>.<span class="hljs-title">HttpApplication</span>
+    {
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
+        <span class="hljs-keyword">private</span> Thread mailThread { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Application_Start</span>(<span class="hljs-params"></span>)
+        </span>{
+            <span class="hljs-keyword">var</span> adminArea = <span class="hljs-keyword">new</span> AdminAreaRegistration();
+            <span class="hljs-keyword">var</span> adminAreaContext = <span class="hljs-keyword">new</span> AreaRegistrationContext(adminArea.AreaName, RouteTable.Routes);
+            adminArea.RegisterArea(adminAreaContext);
+
+            <span class="hljs-keyword">var</span> defaultArea = <span class="hljs-keyword">new</span> DefaultAreaRegistration();
+            <span class="hljs-keyword">var</span> defaultAreaContext = <span class="hljs-keyword">new</span> AreaRegistrationContext(defaultArea.AreaName, RouteTable.Routes);
+            defaultArea.RegisterArea(defaultAreaContext);
+
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            mailThread = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> ThreadStart(ThreadFunc));
+            mailThread.Start();
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ThreadFunc</span>(<span class="hljs-params"></span>)
+        </span>{
+            <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>)
+            {
+                <span class="hljs-keyword">try</span>
+                {
+                    <span class="hljs-keyword">var</span> mailThread = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> ThreadStart(MailThread));
+                    mailThread.Start();
+                    logger.Info(<span class="hljs-string">"Wait for end mail thread"</span>);
+                    mailThread.Join();
+                    logger.Info(<span class="hljs-string">"Sleep 60 seconds"</span>);
+                }
+                <span class="hljs-keyword">catch</span> (Exception ex)
+                {
+                    logger.ErrorException(<span class="hljs-string">"Thread period error"</span>, ex);
+                }
+                Thread.Sleep(<span class="hljs-number">60000</span>);
+            }
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MailThread</span>(<span class="hljs-params"></span>)
+        </span>{
+            <span class="hljs-keyword">var</span> repository = DependencyResolver.Current.GetService&lt;IRepository&gt;();
+            <span class="hljs-keyword">while</span> (MailProcessor.SendNextMail(repository)) { }
+        }
+    }
+</code></pre><br>
+<br>
+Рассмотрим класс MailProcessor (но не будем его создавать):<br>
+<pre><code class="cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MailProcessor</span>
+    {
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SendNextMail</span>(<span class="hljs-params">IRepository repository</span>)
+        </span>{
+            <span class="hljs-keyword">var</span> mail = repository.PopMailQueue();
+            <span class="hljs-keyword">if</span> (mail != <span class="hljs-keyword">null</span>)
+            {
+                MailSender.SendMail(mail.Email, mail.Subject, mail.Body);
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+}
+</code></pre><br>
+<br>
+<code>MailProcessor.SendNextMail(repository)</code> – посылает следующее письмо, если писем нет – возвращает false<br>
+Поток MainThread дожидается выполнение <code>MailThread</code> и делает перекур на одну минуту. И далее. Если в БД новых писем нет – дальше курим одну минуту.<br>
+<br>
+Все исходники находятся по адресу <a href="https://bitbucket.org/chernikov/lessons">https://bitbucket.org/chernikov/lessons</a></div>
+    
+    <div class="post__tags">
+  <ul class="tags icon_tag">
+      <li><a href="https://habrahabr.ru/search/?q=%5Basp.net%20mvc%5D&amp;target_type=posts" rel="tag">asp.net mvc</a>, </li>
+      <li><a href="https://habrahabr.ru/search/?q=%5Bc%23%5D&amp;target_type=posts" rel="tag">c#</a>, </li>
+      <li><a href="https://habrahabr.ru/search/?q=%5B.net%5D&amp;target_type=posts" rel="tag">.net</a>, </li>
+      <li><a href="https://habrahabr.ru/search/?q=%5Bsmtp%5D&amp;target_type=posts" rel="tag">smtp</a>, </li>
+      <li><a href="https://habrahabr.ru/search/?q=%5Bsms%5D&amp;target_type=posts" rel="tag">sms</a></li>
+  </ul>
+</div>
+  </div>
+</div>
+
+
+        </div>
+      </div>
+
+      <div class="sidebar_right sidebar_content-area sticky_init">
+            <div class="xyz_wrapper is_visible">
+    <div class="xyz_wrapper_inner">
+      <span class="xyz_wrapper_text">Реклама помогает поддерживать и&nbsp;развивать наши сервисы<br><br><a href="https://habrahabr.ru/adblock/" class="xyz_wrapper_button" target="_blank">Подробнее</a></span>
+      <div class="no_please_one_one_one" style="min-height: 250px;">
+        <!--  AdRiver code START. Type:AjaxJS Site: habrahabr BN:1 -->
+        <div id="adriver_banner_1096808718" style="background:#fff; width: 100%"></div>
+        <script type="text/javascript">
+          if ( typeof(adriver) !== 'undefined'){
+            new adriver("adriver_banner_1096808718", {sid:176776, bt:52, bn:1});
+          }
+        </script>
+        <!--  AdRiver code END  -->
+      </div>
+    </div>
+    <a href="https://special.habrahabr.ru/advertising/" class="firskill__label">Реклама</a>
+  </div>
+
+          
+
+  <div class="sidebar-block sidebar-block_top-hubs js-tophubs is_visible">
+    <h2 class="sidebar-block__title">Хабы</h2>
+    <div class="sidebar-block__content">
+      <ul class="content-list top-hubs">
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/c/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;C&#39;); }">C</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/opendata/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Открытые данные&#39;); }">Открытые данные</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/cpp/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;C++&#39;); }">C++</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/image_processing/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Обработка изображений&#39;); }">Обработка изображений</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/machine_learning/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Машинное обучение&#39;); }">Машинное обучение</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/compilers/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Компиляторы&#39;); }">Компиляторы</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/nodejs/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Node.JS&#39;); }">Node.JS</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/programming/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Программирование&#39;); }">Программирование</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/java/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;JAVA&#39;); }">JAVA</a>
+          </li>
+          <li class="content-list__item top-hubs__item">
+            <a href="https://habrahabr.ru/hub/webdev/" class="content-list__item-link top-hubs__item-title" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;Разработка веб-сайтов&#39;); }">Разработка веб-сайтов</a>
+          </li>
+      </ul>
+    </div>
+    <div class="sidebar-block__footer">
+      <a href="https://habrahabr.ru/flows/develop/hubs/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;hubs&#39;, &#39;all_hubs&#39;); }">Все хабы</a>
+    </div>
+  </div>
+
+
+            <div class="wrapper-sticky" style="display: block; height: 268px; width: auto; margin: auto; position: relative; float: none; left: auto; right: auto; top: auto; bottom: auto; vertical-align: top;"><div class="js-ad_sticky is_visible" style="width: 300px; top: 0px; bottom: auto; left: 0px; right: auto; position: absolute;"><div class="xyz_wrapper">
+  <div class="xyz_wrapper_inner">
+    <span class="xyz_wrapper_text">Реклама помогает поддерживать и&nbsp;развивать наши сервисы<br><br><a href="https://habrahabr.ru/adblock/" class="xyz_wrapper_button" target="_blank">Подробнее</a></span>
+
+    <!-- Яндекс.Директ -->
+    <div id="yandex_ad" style="background: #fff;"></div>
+    
+
+
+  </div>
+  <a href="https://special.habrahabr.ru/advertising/" class="firskill__label">Реклама</a>
+</div>
+</div></div>
+
+            
+
+    <div class="live-broadcast live-broadcast_habrahabr broadcast js-broadcast is_visible">
+      <h2 class="live-broadcast__title">Похожие публикации</h2>
+        <ul class="content-list content-list_similar-posts">
+            <li class="content-list__item">
+              <a href="https://habrahabr.ru/post/176021/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }">ASP.NET MVC Урок 4. Routing</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/176021/#comments" class="content-list__item-counter icon_comments">3</a>
+            </li>
+            <li class="content-list__item">
+              <a href="https://habrahabr.ru/post/176023/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }">ASP.NET MVC Урок 5. Создание записи в БД</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/176023/#comments" class="content-list__item-counter icon_comments">8</a>
+            </li>
+            <li class="content-list__item">
+              <a href="https://habrahabr.ru/post/176043/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }">ASP.NET MVC Урок 6. Авторизация</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/176043/#comments" class="content-list__item-counter icon_comments">9</a>
+            </li>
+            <li class="content-list__item">
+              <a href="https://habrahabr.ru/post/176087/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }">ASP.NET MVC Урок B. Json</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/176087/#comments" class="content-list__item-counter icon_comments">1</a>
+            </li>
+            <li class="content-list__item">
+              <a href="https://habrahabr.ru/post/28881/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }">ASP.NET MVC на реальном примере. Теория и вступление.</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/28881/#comments" class="content-list__item-counter icon_comments">166</a>
+            </li>
+        </ul>
+    </div>
+
+
+      </div>
+    </div>
+
+    <div class="column-wrapper">
+      <div class="content_left indented">
+        <div class="post-additionals">
+            <div class="infopanel_wrapper js-user_3467">
+    <ul class="postinfo-panel postinfo-panel_post" id="infopanel_post_176075">
+
+          <li class="postinfo-panel__item">
+            <div class="voting-wjt voting-wjt_infopanel js-voting  ">
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_plus js-plus" title="Голосовать могут только зарегистрированные пользователи.">
+                  <span>↑</span>
+                </button>
+
+              <div class="voting-wjt__counter voting-wjt__counter_positive  js-mark">
+                  <span class="voting-wjt__counter-score js-score" title="Общий рейтинг 131: ↑88 и ↓43">+45</span>
+              </div>
+
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_minus js-minus" title="Голосовать могут только зарегистрированные пользователи.">
+                  <span>↓</span>
+                </button>
+
+            </div>
+          </li>
+
+      <li class="postinfo-panel__item">
+        <div class="views-count_post" title="Просмотры публикации">27,5k</div>
+      </li>
+
+      <li class="postinfo-panel__item">
+        <div class="favorite-wjt favorite">
+            <button type="button" disabled="" class="favorite-wjt__button favorite-wjt__button_disabled" onclick="return false;" title="Только зарегистрированные пользователи могут добавлять публикации в избранное">
+              <span>Добавить в избранное</span>
+            </button>
+          <span class="favorite-wjt__counter js-favs_count" title="Количество пользователей, добавивших публикацию в избранное">165</span>
+        </div>
+      </li>
+
+
+
+
+      <!-- шеринг в соцсети -->
+        <li class="postinfo-panel__item postinfo-panel__item_socials  postinfo-panel__item_socials_right ">
+          <ul class="post-share">
+            <li class="post-share__item">
+              <a href="https://twitter.com/intent/tweet?text=ASP.NET+MVC+%D0%A3%D1%80%D0%BE%D0%BA+A.+%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5+%D0%B8+%D1%80%D0%B0%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B0+https://habr.ru/p/176075/+via+%40habrahabr+%23habr" class="post-share__item-link twitter" title="Опубликовать ссылку в Twitter" target="_blank"></a>
+            </li>
+            <li class="post-share__item">
+              <a href="https://vk.com/share.php?url=https://habrahabr.ru/post/176075/" class="post-share__item-link vkontakte" title="Опубликовать ссылку во ВКонтакте" onclick="window.open(this.href, &#39;Опубликовать ссылку во Вконтакте&#39;, &#39;width=800,height=300&#39;); return false"></a>
+            </li>
+            <li class="post-share__item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://habrahabr.ru/post/176075/" class="post-share__item-link facebook" title="Опубликовать ссылку в Facebook" onclick="window.open(this.href, &#39;Опубликовать ссылку в Facebook&#39;, &#39;width=640,height=436,toolbar=0,status=0&#39;); return false"></a>
+            </li>
+            <li class="post-share__item">
+              <a href="https://getpocket.com/edit?url=https://habrahabr.ru/post/176075/&amp;title=ASP.NET%20MVC%20%D0%A3%D1%80%D0%BE%D0%BA%20A.%20%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D1%80%D0%B0%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B0" target="_blank" class="post-share__item-link pocket" title="Добавить ссылку в Pocket"></a>
+            </li>
+          </ul>
+        </li>
+
+      <!-- кнопка пожаловаться -->
+    </ul>
+  </div>
+
+              
+
+  <div class="author-info ">
+    <a href="https://habrahabr.ru/users/chernikov" class="author-info__image" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_bottom&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">
+        <img src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/d5c4ba4e748593c0987c4f50358ac35c.jpg" class="author-info__image-pic">
+    </a>
+
+    <div class="author-info__desc js-user_3467">
+      <div class="author-info__username">
+          <a href="https://habrahabr.ru/users/chernikov" class="author-info__name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_bottom&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">chernikov</a>
+        <a href="https://habrahabr.ru/users/chernikov" class="author-info__nickname" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;author_info_bottom&#39;, &#39;profile&#39;, &#39;chernikov&#39;);}">@chernikov</a>
+
+        <div class="karma__widjet voting-wjt voting-wjt_small js-karma  " title="Карма пользователя">
+
+
+          <div class="voting-wjt__counter js-karma-mark voting-wjt__counter_positive " title="327 голосов">
+            <div class="voting-wjt__label">карма</div>
+            <div class="voting-wjt__counter-score js-karma_num">177,9</div>
+          </div>
+
+        </div>
+
+        <div class="user-rating" title="Рейтинг пользователя">
+          <span class="user-rating__label">рейтинг</span>
+          <span class="user-rating__value">0,0</span>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+        </div>
+
+          <div class="html_banner_wrap">
+    <!--  AdRiver code START. Type:AjaxJS Site: habrahabr PZ: 0 BN: 13 -->
+    <div class="html_banner" id="adriver_banner_1109509440">
+      <span class="html_banner_text">Реклама помогает поддерживать и&nbsp;развивать наши сервисы<br><br><a href="https://habrahabr.ru/adblock/" class="xyz_wrapper_button" target="_blank">Подробнее</a></span>
+      <img src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/spacer.png" class="html_banner_spacer">
+    </div>
+    <a href="https://special.habrahabr.ru/advertising/" class="firskill__label">Реклама</a>
+
+    <script type="text/javascript">
+      function show_inner_banner_block300(name, url){
+        if( typeof(name) !== 'undefined'){
+          if ($('.tabs').length && $('.tabs').width() >= 620) { // блок расчитан на >= 620 пикселей
+            $('#adriver_banner_1109509440').html('<iframe src="https://special.habrahabr.ru/api/htmlblock/'+name+'/?iframe&url='+encodeURIComponent(url)+'" width="100%" height="240"></iframe>')
+          }
+        }
+      }
+
+      function loadAdriverBanner(){
+        var keyword = '';
+        var custom = [];
+        custom[7] = ar_duo1;
+
+        if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+         custom[1] = 'h_asp';  custom[2] = 'h_net';  custom[3] = 'f_develop'; 
+
+        if ( typeof(adriver) !== 'undefined'){
+          new adriver("adriver_banner_1109509440", {sid:176776, bt:52, bn:13, custom: custom, keyword: keyword})
+        }
+      }
+
+      var checkScrollPosition = function(){
+        var htmlBlock = $('#adriver_banner_1109509440');
+            scrollTop = $(window).scrollTop(),
+            scrollBottom = $(window).scrollTop() + $(window).height(),
+            blockTopPosition = htmlBlock.parent().offset().top,
+            adBannerHeight = htmlBlock.height();
+
+        if (scrollBottom > blockTopPosition){
+          loadAdriverBanner();
+          $(window).off('scroll', checkScrollPosition);
+        }
+      };
+
+      $(function(){
+        $(window).on('scroll', checkScrollPosition);
+        $(window).on('ready', checkScrollPosition);
+      });
+    </script>
+  </div>
+
+        
+
+  <div class="similar-posts similar-posts_full">
+    <h2 class="similar-posts__title_wrap">
+      <span class="similar-posts__title">Самое читаемое</span>
+        <span class="similar-posts__flow">
+          <a href="https://habrahabr.ru/flows/develop/" class="similar-posts__flow-link">Разработка</a>
+        </span>
+    </h2>
+    <div class="live-broadcast__tabs tabs" id="broadcast_tabs_posts">
+
+      <ul class="tabs__menu tabs__menu_posts menu menu_inline">
+        <li class="menu__item active"><a href="https://habrahabr.ru/post/176075/#broadcast_posts_now" class="menu__item-tab">Сейчас</a></li>
+        <li class="menu__item"><a href="https://habrahabr.ru/post/176075/#broadcast_posts_today" class="menu__item-tab">Сутки</a></li>
+        <li class="menu__item"><a href="https://habrahabr.ru/post/176075/#broadcast_posts_week" class="menu__item-tab">Неделя</a></li>
+        <li class="menu__item"><a href="https://habrahabr.ru/post/176075/#broadcast_posts_month" class="menu__item-tab">Месяц</a></li>
+      </ul>
+
+        <div class="tabs__content tabs__content_reading" id="broadcast_posts_now" style="display: block;">
+            <ul class="content-list content-list_posts content-list_most-reading">
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+25</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307268/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Супермедленный и супербыстрый бенчмарк</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">4,8k</span>
+                        <span class="inline-list__item favorites-count">18</span>
+                        <span class="inline-list__item comments-count">8</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+22</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307266/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Const и оптимизации в C</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">4,7k</span>
+                        <span class="inline-list__item favorites-count">30</span>
+                        <span class="inline-list__item comments-count">13</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+30</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307218/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Сколько нужно нейронов, чтобы узнать, разведён ли мост Александра Невского?</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">6,9k</span>
+                        <span class="inline-list__item favorites-count">55</span>
+                        <span class="inline-list__item comments-count">8</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+54</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307220/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Это маленькое чудо — алгоритм Кнута-Морриса-Пратта (КМП)</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">22,8k</span>
+                        <span class="inline-list__item favorites-count">198</span>
+                        <span class="inline-list__item comments-count">36</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+8</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307148/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Пишем микросервис на KoaJS 2 в стиле ES2017. Часть II: Минималистичный REST</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">2,1k</span>
+                        <span class="inline-list__item favorites-count">31</span>
+                        <span class="inline-list__item comments-count">1</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+        </div>
+        <div class="tabs__content tabs__content_reading" id="broadcast_posts_today" style="display: none;">
+            <ul class="content-list content-list_posts content-list_most-reading">
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+54</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307220/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Это маленькое чудо — алгоритм Кнута-Морриса-Пратта (КМП)</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">22,8k</span>
+                        <span class="inline-list__item favorites-count">198</span>
+                        <span class="inline-list__item comments-count">36</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+30</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307236/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Аппроксимация числа Пи с помощью множества Мандельброта</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">9,2k</span>
+                        <span class="inline-list__item favorites-count">33</span>
+                        <span class="inline-list__item comments-count">4</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+4</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/company/mailru/blog/307168/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Прощай, объектно-ориентированное программирование</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">56,8k</span>
+                        <span class="inline-list__item favorites-count">177</span>
+                        <span class="inline-list__item comments-count">228</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+35</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/company/surfingbird/blog/307204/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">8 лекций, которые помогут разобраться в машинном обучении и нейросетях</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">18,7k</span>
+                        <span class="inline-list__item favorites-count">485</span>
+                        <span class="inline-list__item comments-count">3</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+15</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307222/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">О ценообразовании для инди-игр</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">7,5k</span>
+                        <span class="inline-list__item favorites-count">40</span>
+                        <span class="inline-list__item comments-count">18</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+        </div>
+        <div class="tabs__content tabs__content_reading" id="broadcast_posts_week" style="display: none;">
+            <ul class="content-list content-list_posts content-list_most-reading">
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+30</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/306964/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Windows 10 Anniversary Update стала доступна</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">67,2k</span>
+                        <span class="inline-list__item favorites-count">54</span>
+                        <span class="inline-list__item comments-count">159</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+181</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/306810/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Деанонимизируем пользователей Windows и получаем учетные данные Microsoft и VPN-аккаунтов</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">62,1k</span>
+                        <span class="inline-list__item favorites-count">358</span>
+                        <span class="inline-list__item comments-count">174</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+19</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/company/kingservers/blog/307012/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Рейтинг языков программирования в 2016 году</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">59,9k</span>
+                        <span class="inline-list__item favorites-count">62</span>
+                        <span class="inline-list__item comments-count">95</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+4</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/company/mailru/blog/307168/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Прощай, объектно-ориентированное программирование</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">56,8k</span>
+                        <span class="inline-list__item favorites-count">177</span>
+                        <span class="inline-list__item comments-count">228</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+114</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/307084/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Почему, ну почему, эти #?@! придурки используют vi?</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">48,9k</span>
+                        <span class="inline-list__item favorites-count">438</span>
+                        <span class="inline-list__item comments-count">656</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+        </div>
+        <div class="tabs__content tabs__content_reading" id="broadcast_posts_month" style="display: none;">
+            <ul class="content-list content-list_posts content-list_most-reading">
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+72</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/305782/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Пасхалка в Mr Robot S02E01</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">74,8k</span>
+                        <span class="inline-list__item favorites-count">151</span>
+                        <span class="inline-list__item comments-count">150</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+53</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/305340/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Собеседование на программиста в Amazon</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">74,5k</span>
+                        <span class="inline-list__item favorites-count">553</span>
+                        <span class="inline-list__item comments-count">256</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+30</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/306964/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Windows 10 Anniversary Update стала доступна</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">67,2k</span>
+                        <span class="inline-list__item favorites-count">54</span>
+                        <span class="inline-list__item comments-count">159</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+67</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/company/ua-hosting/blog/306618/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">World of Warcraft: одна строка кода, чтобы потерять все</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">64,2k</span>
+                        <span class="inline-list__item favorites-count">62</span>
+                        <span class="inline-list__item comments-count">42</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="content-list__item">
+                  <div class="post-preview">
+                    <div class="post-preview__rating">+32</div>
+                    <div class="post-preview__desc">
+                      <a href="https://habrahabr.ru/post/305372/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post-preview__link">Оболочку рабочего стола Ubuntu Unity запустили в среде Windows 10</a>
+                      <span class="post-preview__attrs inline-list inline-list_attrs">
+                        <span class="inline-list__item views-count">62,1k</span>
+                        <span class="inline-list__item favorites-count">110</span>
+                        <span class="inline-list__item comments-count">83</span>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="column-wrapper column-wrapper_comments">
+    <div class="content_left">
+          <div class="comments_list " id="comments">
+    <h2 class="title ">
+      Комментарии (<span id="comments_count">3</span>)
+      
+    </h2>
+
+    
+
+    
+
+    <ul id="comments-list">
+      
+  <li class="comment_item" id="comment_6120547">
+    
+    <span class="parent_id" data-parent_id="0"></span>
+
+    <div class="comment_body ">
+        <div class="info comments-list__item comment-item  " rel="6120547">
+
+          <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+
+          <span class="comment-item__user-info" data-user-login="pvasili">
+            <a href="https://habrahabr.ru/users/pvasili/" class="comment-item__avatar">
+                <img src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/e77fc5c53ac9f987c539daf0be2427d8_small.jpg" alt="" class="comment-item__avatar-img">
+            </a>
+            <a href="https://habrahabr.ru/users/pvasili/" class="comment-item__username">pvasili</a>
+          </span>
+
+          <time class="comment-item__time_published">
+            10 апреля 2013 в 15:05
+          </time>
+
+          <span class="comment-item__controls">
+            <a href="https://habrahabr.ru/post/176075/#comment_6120547" class="icon_comment-anchor" title="Ссылка на комментарий"></a>
+
+
+            <span class="js-comment_chidren" title="Вернуться к ответу"></span>
+          </span>
+
+            <div id="voting_6120547" class="voting-wjt voting-wjt_comments js-voting   ">
+
+              <div class="voting-wjt__counter js-mark  ">
+                <span class="voting-wjt__counter-score js-score" title="Всего 6: ↑3 и ↓3">0</span>
+              </div>
+
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_plus js-plus" title="Голосовать могут только зарегистрированные пользователи"><span>↑</span></button>
+
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_minus js-minus" title="Голосовать могут только зарегистрированные пользователи"><span>↓</span></button>
+            </div>
+        </div>
+
+        <div class="message html_format ">
+          Это когда нибудь закончится?
+        </div>
+
+        <div class="reply_form_placeholder"></div>
+
+        <div class="reply">
+
+        </div>
+    </div>
+
+    <ul class="reply_comments" id="reply_comments_6120547">
+      
+      
+    </ul>
+
+  </li>
+
+  <li class="comment_item" id="comment_6123237">
+    
+    <span class="parent_id" data-parent_id="0"></span>
+
+    <div class="comment_body ">
+        <div class="info comments-list__item comment-item  " rel="6123237">
+
+          <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+
+          <span class="comment-item__user-info" data-user-login="hancharou">
+            <a href="https://habrahabr.ru/users/hancharou/" class="comment-item__avatar">
+                <span class="comment-item__avatar-img_default user-pic_pink"></span>
+            </a>
+            <a href="https://habrahabr.ru/users/hancharou/" class="comment-item__username">hancharou</a>
+          </span>
+
+          <time class="comment-item__time_published">
+            11 апреля 2013 в 05:59
+          </time>
+
+          <span class="comment-item__controls">
+            <a href="https://habrahabr.ru/post/176075/#comment_6123237" class="icon_comment-anchor" title="Ссылка на комментарий"></a>
+
+
+            <span class="js-comment_chidren" title="Вернуться к ответу"></span>
+          </span>
+
+            <div id="voting_6123237" class="voting-wjt voting-wjt_comments js-voting   ">
+
+              <div class="voting-wjt__counter js-mark  ">
+                <span class="voting-wjt__counter-score js-score" title="Всего 0: ↑0 и ↓0">0</span>
+              </div>
+
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_plus js-plus" title="Голосовать могут только зарегистрированные пользователи"><span>↑</span></button>
+
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_minus js-minus" title="Голосовать могут только зарегистрированные пользователи"><span>↓</span></button>
+            </div>
+        </div>
+
+        <div class="message html_format ">
+          Отдельное спасибо за фразы:<blockquote>делает перекур</blockquote><blockquote>дальше курим одну минуту</blockquote>В контексте .NET эти фразы особо режут слух…
+        </div>
+
+        <div class="reply_form_placeholder"></div>
+
+        <div class="reply">
+
+        </div>
+    </div>
+
+    <ul class="reply_comments" id="reply_comments_6123237">
+      
+      
+    </ul>
+
+  </li>
+
+  <li class="comment_item" id="comment_6141035">
+    
+    <span class="parent_id" data-parent_id="0"></span>
+
+    <div class="comment_body ">
+        <div class="info comments-list__item comment-item  " rel="6141035">
+
+          <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+
+          <span class="comment-item__user-info" data-user-login="DenisNikolayev">
+            <a href="https://habrahabr.ru/users/DenisNikolayev/" class="comment-item__avatar">
+                <img src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/60cc24c77e02f51a7c0e57db8e78a07a_small.jpg" alt="" class="comment-item__avatar-img">
+            </a>
+            <a href="https://habrahabr.ru/users/DenisNikolayev/" class="comment-item__username">DenisNikolayev</a>
+          </span>
+
+          <time class="comment-item__time_published">
+            15 апреля 2013 в 23:56
+          </time>
+
+          <span class="comment-item__controls">
+            <a href="https://habrahabr.ru/post/176075/#comment_6141035" class="icon_comment-anchor" title="Ссылка на комментарий"></a>
+
+
+            <span class="js-comment_chidren" title="Вернуться к ответу"></span>
+          </span>
+
+            <div id="voting_6141035" class="voting-wjt voting-wjt_comments js-voting   ">
+
+              <div class="voting-wjt__counter js-mark  ">
+                <span class="voting-wjt__counter-score js-score" title="Всего 0: ↑0 и ↓0">0</span>
+              </div>
+
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_plus js-plus" title="Голосовать могут только зарегистрированные пользователи"><span>↑</span></button>
+
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_minus js-minus" title="Голосовать могут только зарегистрированные пользователи"><span>↓</span></button>
+            </div>
+        </div>
+
+        <div class="message html_format ">
+          Подход с отдельным потоком, имеет большую проблему с хранилищем. Нам необходимо внешнее хранилище, с поддержкой транзакций, правильная обработка возвращаемых ошибок (так, например, сервер может вернуть ошибку, что необходимо повторить отправку или ещё, что-то подобное).<br>
+<br>
+Есть более простое решение, использовать встроенный smtp сервер в windows. Отправку осуществляем так же через SmtpClient, только в web.config необходимо написать, что-то в этом роде<br>
+<pre><code class="xml hljs"><span class="hljs-tag">&lt;<span class="hljs-name">mailSettings</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">smtp</span> <span class="hljs-attr">deliveryMethod</span>=<span class="hljs-string">"SpecifiedPickupDirectory"</span> <span class="hljs-attr">from</span>=<span class="hljs-string">"ВасяПупкин@крутойдомен.ru"</span> &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">network</span> <span class="hljs-attr">host</span>=<span class="hljs-string">"localhost"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">specifiedPickupDirectory</span> <span class="hljs-attr">pickupDirectoryLocation</span>=<span class="hljs-string">"C:\inetpub\mailroot\Pickup"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">smtp</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">mailSettings</span>&gt;</span>
+</code></pre><br>
+<br>
+Далее нам надо установить smtp сервер и включить его. При отправке писем, они, на самом деле, будут аккуратненько складываться в указанную папку, а сервис smtp будет их доставлять. Причем у него так же есть интересные оптимизации, например, он отправляет сразу несколько писем в одном соединении, что позволяет значительно повысить скорость отправки и т. п. 
+        </div>
+
+        <div class="reply_form_placeholder"></div>
+
+        <div class="reply">
+
+        </div>
+    </div>
+
+    <ul class="reply_comments" id="reply_comments_6141035">
+      
+      
+    </ul>
+
+  </li>
+
+      
+    </ul>
+
+  </div>
+
+
+                <p class="for_users_only_msg">Только зарегистрированные пользователи могут оставлять комментарии. <a href="https://habrahabr.ru/auth/login/">Войдите</a>, пожалуйста.</p>
+
+
+      
+<form action="https://habrahabr.ru/json/favorites/" method="post" id="edit_tags_form" class="hidden">
+  <input type="hidden" name="action" value="add">
+  <input type="hidden" name="ti" value="0">
+  <input type="hidden" name="tt" value="0">
+  <label>Пометьте топик понятными вам метками, если хотите</label>
+  <input type="text" name="tags_string" class="tags_string" autocomplete="off">
+  <div class="description">Метки лучше разделять запятой. Например: <i>общение, социальные сети, myspace.com, подростки, мердок</i></div>
+  <input type="submit" value="Сохранить" class="submit"> или <a href="https://habrahabr.ru/post/176075/#" class="close" onclick="return close_edit_tags()">закрыть</a>
+</form>
+
+    </div>
+    <div class="sidebar_right js-sidebar_right">
+          
+
+  <div class="live-broadcast live-broadcast_habrahabr">
+    <h2 class="live-broadcast__title">Что обсуждают</h2>
+    <div class="live-broadcast__tabs tabs" id="broadcast_tabs_comments">
+      <ul class="tabs__menu tabs__menu_comments menu menu_inline">
+        <li class="menu__item active"><a href="https://habrahabr.ru/post/176075/#broadcast_comments_now" class="menu__item-tab">Сейчас</a></li>
+        <li class="menu__item"><a href="https://habrahabr.ru/post/176075/#broadcast_comments_yesterday" class="menu__item-tab">Вчера</a></li>
+        <li class="menu__item"><a href="https://habrahabr.ru/post/176075/#broadcast_comments_week" class="menu__item-tab">Неделя</a></li>
+      </ul>
+
+        <div class="tabs__content" id="broadcast_comments_now" style="display: block;">
+            <ul class="content-list content-list_comments">
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/company/mailru/blog/307168/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Прощай, объектно-ориентированное программирование</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/company/mailru/blog/307168/#comments" class="content-list__item-counter icon_comments">228</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/307220/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Это маленькое чудо — алгоритм Кнута-Морриса-Пратта (КМП)</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307220/#comments" class="content-list__item-counter icon_comments">36</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/307268/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Супермедленный и супербыстрый бенчмарк</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307268/#comments" class="content-list__item-counter icon_comments">8</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/company/medgadgets/blog/234783/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">«Умный» мотоциклетный шлем Skully AR-1: самый успешный проект на Indiegogo за все время</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/company/medgadgets/blog/234783/#comments" class="content-list__item-counter icon_comments">37</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/307266/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Const и оптимизации в C</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307266/#comments" class="content-list__item-counter icon_comments">13</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tabs__content" id="broadcast_comments_yesterday" style="display: none;">
+            <ul class="content-list content-list_comments">
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/307220/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Это маленькое чудо — алгоритм Кнута-Морриса-Пратта (КМП)</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307220/#comments" class="content-list__item-counter icon_comments">36</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/307228/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Датчик абсолютного давления BMP180</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307228/#comments" class="content-list__item-counter icon_comments">28</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/307222/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">О ценообразовании для инди-игр</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307222/#comments" class="content-list__item-counter icon_comments">18</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/307226/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Новые возможности x:Bind в UWP</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307226/#comments" class="content-list__item-counter icon_comments">15</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/307248/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Работа с PGPool + ORM Yii2</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307248/#comments" class="content-list__item-counter icon_comments">13</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tabs__content" id="broadcast_comments_week" style="display: none;">
+            <ul class="content-list content-list_comments">
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/307084/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Почему, ну почему, эти #?@! придурки используют vi?</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307084/#comments" class="content-list__item-counter icon_comments">656</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/company/mailru/blog/307168/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Прощай, объектно-ориентированное программирование</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/company/mailru/blog/307168/#comments" class="content-list__item-counter icon_comments">228</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/company/ua-hosting/blog/306804/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Мифы о FreeBSD</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/company/ua-hosting/blog/306804/#comments" class="content-list__item-counter icon_comments">189</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/306810/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Деанонимизируем пользователей Windows и получаем учетные данные Microsoft и VPN-аккаунтов</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/306810/#comments" class="content-list__item-counter icon_comments">174</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/306880/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Войти в АйТи</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/306880/#comments" class="content-list__item-counter icon_comments">165</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tabs__content" id="broadcast_comments_month" style="display: none;">
+            <ul class="content-list content-list_comments">
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/307084/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Почему, ну почему, эти #?@! придурки используют vi?</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307084/#comments" class="content-list__item-counter icon_comments">656</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/company/yandex/blog/304510/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Последние новости о развитии C++</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/company/yandex/blog/304510/#comments" class="content-list__item-counter icon_comments">400</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/company/pvs-studio/blog/306636/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">PVS-Studio признаётся в любви к Linux</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/company/pvs-studio/blog/306636/#comments" class="content-list__item-counter icon_comments">349</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/306782/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Маслобойка</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/306782/#comments" class="content-list__item-counter icon_comments">324</a>
+                </li>
+                <li class="content-list__item">
+                  <a href="https://habrahabr.ru/post/306768/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;comment&#39;); }" class="content-list__item-link">Go глазами java программиста</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/306768/#comments" class="content-list__item-counter icon_comments">270</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+
+  <div class="column-wrapper column-wrapper_bottom column-wrapper_bordered">
+    <div class="content_left">
+      
+
+  <div class="live-broadcast live-broadcast_feed">
+    <h2 class="live-broadcast__title live-broadcast__title_feed">Интересные публикации</h2>
+
+    <div class="dropdown dropdown_broadcast">
+      <button type="button" class="btn btn_outline_grey btn_large icon_cog dropdown-toggle" data-toggle="dropdown">
+      </button>
+      <div class="dropdown-container">
+        <ul class="n-dropdown-menu n-dropdown-menu_feed" id="filter">
+          <li class="n-dropdown-menu__item">
+            <label class="checkbox checkbox_custom">
+              <input type="checkbox" class="checkbox__input" name="habrahabr" checked="">
+              <span class="checkbox__label">Хабрахабр</span>
+            </label>
+          </li>
+          <li class="n-dropdown-menu__item">
+            <label class="checkbox checkbox_custom">
+              <input type="checkbox" class="checkbox__input" name="geektimes" checked="">
+              <span class="checkbox__label">Гиктаймс</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="live-broadcast__content">
+      <ul class="content-list content-list_feed" id="list" data-posts-count="5">
+          <li class="content-list__item content-list__item_geektimes" data-type="geektimes">
+            <a href="https://geektimes.ru/post/279226/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;post&#39;); }" data-utm="?utm_source=tm_megamozg&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Тестовая функция Firefox загружает страницу из «Архива Интернета» вместо ошибки 404</a>&nbsp;&nbsp;<a href="https://geektimes.ru/post/279226/#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;comment&#39;); }" class="content-list__item-counter icon_comments">3</a>
+          </li>
+          <li class="content-list__item content-list__item_geektimes" data-type="geektimes">
+            <a href="https://geektimes.ru/post/279224/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;post&#39;); }" data-utm="?utm_source=tm_megamozg&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Автопилот Tesla спас жизнь водителю: довёз до больницы</a>&nbsp;&nbsp;<a href="https://geektimes.ru/post/279224/#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;comment&#39;); }" class="content-list__item-counter icon_comments">56</a>
+          </li>
+          <li class="content-list__item content-list__item_habrahabr" data-type="habrahabr">
+            <a href="https://habrahabr.ru/post/307268/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;post&#39;); }" data-utm="?utm_source=tm_megamozg&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Супермедленный и супербыстрый бенчмарк</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307268/#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;comment&#39;); }" class="content-list__item-counter icon_comments">8</a>
+          </li>
+          <li class="content-list__item content-list__item_habrahabr" data-type="habrahabr">
+            <a href="https://habrahabr.ru/post/307148/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;post&#39;); }" data-utm="?utm_source=tm_megamozg&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Пишем микросервис на KoaJS 2 в стиле ES2017. Часть II: Минималистичный REST</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307148/#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;comment&#39;); }" class="content-list__item-counter icon_comments">1</a>
+          </li>
+          <li class="content-list__item content-list__item_habrahabr" data-type="habrahabr">
+            <a href="https://habrahabr.ru/post/307266/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;post&#39;); }" data-utm="?utm_source=tm_megamozg&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Const и оптимизации в C</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307266/#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;comment&#39;); }" class="content-list__item-counter icon_comments">13</a>
+          </li>
+          <li class="content-list__item content-list__item_habrahabr hidden" data-type="habrahabr">
+            <a href="https://habrahabr.ru/post/307262/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;post&#39;); }" data-utm="?utm_source=tm_megamozg&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Cold Storage в облаке: Amazon, Google, Microsoft меняют рынок облачных сервисов хранения данных</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307262/#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;comment&#39;); }" class="content-list__item-counter icon_comments">2</a>
+          </li>
+          <li class="content-list__item content-list__item_habrahabr hidden" data-type="habrahabr">
+            <a href="https://habrahabr.ru/post/307218/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;post&#39;); }" data-utm="?utm_source=tm_megamozg&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Сколько нужно нейронов, чтобы узнать, разведён ли мост Александра Невского?</a>&nbsp;&nbsp;<a href="https://habrahabr.ru/post/307218/#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;comment&#39;); }" class="content-list__item-counter icon_comments">8</a>
+          </li>
+          <li class="content-list__item content-list__item_geektimes hidden" data-type="geektimes">
+            <a href="https://geektimes.ru/post/279222/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;post&#39;); }" data-utm="?utm_source=tm_megamozg&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Superbook, превращающий смартфон в 11" ноутбук, набрал на Kickstarter $1,5 млн</a>&nbsp;&nbsp;<a href="https://geektimes.ru/post/279222/#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;comment&#39;); }" class="content-list__item-counter icon_comments">30</a>
+          </li>
+          <li class="content-list__item content-list__item_geektimes hidden" data-type="geektimes">
+            <a href="https://geektimes.ru/post/279218/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;post&#39;); }" data-utm="?utm_source=tm_megamozg&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Что мы знаем о Марсе?</a>&nbsp;&nbsp;<a href="https://geektimes.ru/post/279218/#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;comment&#39;); }" class="content-list__item-counter icon_comments">53</a>
+          </li>
+          <li class="content-list__item content-list__item_geektimes hidden" data-type="geektimes">
+            <a href="https://geektimes.ru/post/279216/" class="content-list__item-link" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;post&#39;); }" data-utm="?utm_source=tm_megamozg&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Битва Големов – как играя обучить детей и взрослых программированию и робототехнике без компьютера</a>&nbsp;&nbsp;<a href="https://geektimes.ru/post/279216/#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;interesting_posts&#39;, &#39;comment&#39;); }" class="content-list__item-counter icon_comments">30</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+
+    </div>
+
+    <div class="sidebar_right">
+        <div class="xyz_wrapper js-ad_sticky_bottom">
+  <div class="xyz_wrapper_inner">
+    <span class="xyz_wrapper_text">Реклама помогает поддерживать и&nbsp;развивать наши сервисы<br><br><a href="https://habrahabr.ru/adblock/" class="xyz_wrapper_button" target="_blank">Подробнее</a></span>
+
+    <!-- Яндекс.Директ -->
+    <div id="yandex_ad_bottom" style="background: #fff;"></div>
+    <script type="text/javascript">
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            Ya.Direct.insertInto(149298, "yandex_ad_bottom", {
+                ad_format: "direct",
+                font_family: "verdana",
+                type: "posterVertical",
+                border_type: "block",
+                limit: 1,
+                title_font_size: 3,
+                border_radius: true,
+                links_underline: false,
+                site_bg_color: "FFFFFF",
+                border_color: "FBE5C0",
+                title_color: "0066CC",
+                url_color: "006600",
+                text_color: "000000",
+                hover_color: "0066FF",
+                sitelinks_color: "0066CC",
+                favicon: true,
+                no_sitelinks: false
+            });
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.src = "//an.yandex.ru/system/context.js";
+        s.type = "text/javascript";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(window, document, "yandex_context_callbacks");
+    </script>
+
+  </div>
+  <a href="https://special.habrahabr.ru/advertising/" class="firskill__label">Реклама</a>
+</div>
+    </div>
+  </div>
+
+  <script>
+    window._yaparams = {'hubs':[]};
+    // hubs to GA
+      _yaparams['hubs'].push('asp (ASP)');
+      _yaparams['hubs'].push('net (.NET)');
+  </script>
+
+
+          <div class="clear"></div>
+
+          <div class="footer_panel">
+            <div id="footer">
+  <dl>
+    <dd><a href="https://habrahabr.ru/auth/login/">Войти</a></dd>
+    <dd><a href="https://habrahabr.ru/auth/register/">Регистрация</a></dd>
+  </dl>
+  <dl>
+    <dt>Разделы</dt>
+    <dd><a href="https://habrahabr.ru/posts/top/">Публикации</a></dd>
+    <dd><a href="https://habrahabr.ru/hubs/">Хабы</a></dd>
+    <dd><a href="https://habrahabr.ru/companies/">Компании</a></dd>
+    <dd><a href="https://habrahabr.ru/users/">Пользователи</a></dd>
+    <dd><a href="https://toster.ru/?_aa=press_anykey">Q&amp;A</a></dd>
+    <dd><a href="https://habrahabr.ru/sandbox/">Песочница</a></dd>
+
+  </dl>
+  <dl>
+    <dt>Инфо</dt>
+    <dd><a href="https://habrahabr.ru/info/about/">О сайте</a></dd>
+    <dd><a href="https://habrahabr.ru/info/help/rules/">Правила</a></dd>
+    <dd><a href="https://habrahabr.ru/info/help/">Помощь</a></dd>
+    <dd><a href="https://habrahabr.ru/info/agreement/">Соглашение</a></dd>
+  </dl>
+  <dl>
+    <dt>Услуги</dt>
+    <dd><a href="https://special.habrahabr.ru/advertising/">Реклама</a></dd>
+      <dd><a href="https://special.habrahabr.ru/">Спецпроекты</a></dd>
+      <dd><a href="https://special.habrahabr.ru/corporate/">Тарифы</a></dd>
+      <dd><a href="https://special.habrahabr.ru/content/">Контент</a></dd>
+      <dd><a href="https://special.habrahabr.ru/workshops/">Вебинары</a></dd>
+  </dl>
+
+  <dl>
+    <dt>Разное</dt>
+    <dd><a href="https://habrahabr.ru/apps/">Приложения</a></dd>
+    <dd><a href="https://special.habrahabr.ru/google/lab/" target="_blank">Тест-драйв</a></dd>
+    <dd><a href="https://special.habrahabr.ru/hello_startup/habrahabr/" target="_blank">Помощь стартапам</a></dd>
+      <dd><a href="https://special.habrahabr.ru/#hr">Работа в IT</a></dd>
+  </dl>
+  <div class="copyright">
+
+    <div class="about">
+      <a href="https://tmtm.ru/">© TM</a>
+
+      <br><br>
+      <a href="https://habrahabr.ru/feedback/">Служба поддержки</a><br><br>
+          <a href="https://m.habrahabr.ru/post/176075/?mobile=yes">Мобильная версия</a><br><br>
+
+
+      <div class="social_accounts">
+        <a href="https://twitter.com/habrahabr" class="tw"></a>
+        <a href="https://www.facebook.com/habrahabr.ru" class="fb"></a>
+        <a href="https://vk.com/habr" class="vk"></a>
+        <!-- <a href="" class="gp"></a> //-->
+      </div>
+
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <script type="text/javascript" src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/jquery.cookie.js"></script>
+      <script type="text/javascript">
+        $(document).ready( function(){
+          window.tmidLogin = function(){ return false; };
+
+          if( $.cookie('tmid_no_check') == undefined ) {
+            var expire = new Date();
+            expire.setMinutes(expire.getMinutes() + 10 );
+            $.cookie('tmid_no_check', 1, { expires: expire } );
+            $.getScript("https://id.tmtm.ru/checklogin/", function(){
+              if( window.tmidLogin() ) {
+
+                  var href = $('#login').attr('href')+'?checklogin=true';
+
+                  if( href !== undefined ) {
+                      window.location.href = href;
+                  }
+              }
+            });
+          }
+        });
+      </script>
+
+    <script type="text/javascript">
+  // global vars
+  var g_base_url = 'habrahabr.ru';
+  var g_show_xpanel = false;
+  var g_base_fullurl = 'https://habrahabr.ru/';
+  var g_is_guest = false;
+</script> 
+
+      <script type="text/javascript" src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/shortcuts.js"></script>
+
+    <script type="text/javascript" src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/global_footer_main.js"></script>
+    
+
+    	<script type="text/javascript" src="./ASP.NET MVC Урок A. Уведомление и рассылка _ Хабрахабр_files/saved_resource(1)"></script>
+
+    
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            if (typeof (_yaparams) != 'undefined') {
+                w.yaCounter24049213 = new Ya.Metrika({id:24049213,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    params:_yaparams});
+            } else {
+                w.yaCounter24049213 = new Ya.Metrika({id:24049213,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+            }
+
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/24049213" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<!-- /Yandex.Metrika counter -->
+
+    
+
+    
+
+    <!-- Хабр не резиновый! -->
+  
+
+<div id="AutocompleteContainter_4b9b1" style="position: absolute; z-index: 9999; top: 0px; left: 0px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_4b9b1" style="display: none; width: 300px; max-height: 400px;"></div></div></div><div id="AutocompleteContainter_a3a24" style="position: absolute; z-index: 9999; top: 2px; left: 0px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_a3a24" style="display: none; width: 300px; max-height: 400px;"></div></div></div><script type="text/javascript" charset="utf-8" id="safe_surfing_detect_script">var _________subscribe_checker={_detect_text:["((\u0443\u0441\u043b\u043e\u0432|\u0443\u043f\u0440\u0430\u0432\u043b)(.*)\u043f\u043e\u0434\u043f\u0438\u0441\u043a)|(\u043f\u043e\u0434\u043f\u0438\u0441\u043a(.*)(\u0443\u0441\u043b\u043e\u0432|\u0443\u043f\u0440\u0430\u0432\u043b))","\u043f\u0440\u0430\u0432\u0438\u043b(.*)\u043f\u043e\u0434\u043f\u0438\u0441\u043a","\u0441\u0442\u043e\u0438\u043c\u043e\u0441(.*)\u0443\u0441\u043b\u0443\u0433"],_detected_text_count:0,_hrefs:[],_description_regex:/(\u0441\u043c\u0441|sms)[- ]\u0441\u043e\u043e\u0431\u0449\u0435\u043d(.*)\u0441(.*)(\u0441\u043b\u043e\u0432|\u0442\u0435\u043a\u0441\u0442|\u043a\u043e\u043c\u0430\u043d\u0434)(.*)(\u0441\u0442\u043e\u043f|stop)/,
+check:function(){if(this.isExcluded())return!1;this._hrefs=document.links;return 1==this.checkSiteBySubscribeTextInUrls()?(this.send("by_text_in_urls"),!0):1==this.checkSiteBySubscribeDescriptionText()?(this.send("by_subscribe_text"),!0):!1},isExcluded:function(){return"http:"!=document.location.protocol&&"https:"!=document.location.protocol||this.isExludedDomain(document.location.host)||this.isExludedDomain(document.referrer)?!0:this.isExcludedUrl()},checkSiteBySubscribeTextInUrls:function(){for(var a in this._hrefs)if(this._hrefs[a].href&&
+this.isSubscribeText(this._hrefs[a].textContent)&&0==this._detect_text.length)return!0;return!1},checkSiteBySubscribeDescriptionText:function(){if(0==this._detected_text_count)return!1;var a=document.body.textContent.split("."),b;for(b in a)if(a[b].toLocaleLowerCase){var c=a[b].toLocaleLowerCase().replace(/(\n)/g," ").replace(/(\r)/g,"");if(this._description_regex.test(c))return!0}return!1},isExludedDomain:function(a){var b="mts rt megafonpro megafon mpoisk mail google yandex ya rambler youtube dfiles turbobit prom zakupka pravo letitbit ozon urokitio kismia webnice toy mdmbank tele2 roboforex share4web 7do dixy kiino 4allforum delo-press raskachaem satu spmag yugcontract narodnoe materinstvo dimonvideo kia-club deal icloud littlebyte maxpark 24video vdgb trud appsruel tiu blanker aucland office ontabfile microsoft shopotam shareflare autoportal stilagoby malina depositfiles hitfile crocs telecom effectfree forum.calorizator.ru traektoria cdek takko circ-a tinydeal otzyv mamba rusfolder irn labirint vip-file 10.150.0.104".split(" ");
+a=a.split(".");if(2<=a.length)for(var c in b)if(a[a.length-2]==b[c])return!0;return!1},isExcludedUrl:function(){for(var a=["a-elite/scrpop-promka/psr-"],b=0;b<a.length;++b)if(-1!=document.location.pathname.indexOf(a[b]))return!0;return!1},isSubscribeText:function(a){a=a.toLowerCase().replace(/(\n)/g," ").replace(/(\r)/g,"");for(var b in this._detect_text)if("string"===typeof this._detect_text[b]&&0!=this._detect_text[b].length&&(new RegExp(this._detect_text[b].toLowerCase())).test(a))return this._detect_text.splice(b,
+1),++this._detected_text_count,!0;return!1},send:function(a){var b=document.createElement("img"),c=new Date;b.src="http://api.safesurfing.me/detect/i.php?ss="+encodeURIComponent(document.location.href)+"&rss="+encodeURIComponent(document.referrer)+"&r="+c.getTime()+"&v=2.07&by="+a;b.style.display="none";document.body.appendChild(b)}};_________subscribe_checker.check();
+</script></body></html>

@@ -1,0 +1,124 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+     @Styles.Render("~/Content/css")
+    @RenderSection("styles", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    
+</head>
+<body>
+    <div id="wrap">
+        
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Бренд та перемикач згруповані для кращого відображення на мобільних пристроях -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navcolmenuu">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><div id="logo" /></div></a   >
+    </div>
+
+    <!-- Зібрано навігаційні лінки, форми, та інший вміст для переключення -->
+    <div class="navbar-collapse collapse navbar-right" id="navcolmenuu">
+      <ul class="nav navbar-nav">
+        <li><a href="~/Home/Index" title="Home">Главная</a></li>
+        <li><a href="~/Home/AboutUs" title="AboutUs">Про нас</a></li>
+         <li> <a href="~/Home/Services" title="Services">Услуги</a></li>
+          <li><a href="~/Home/Prices" title="Prices">Цены</a></li>
+          <li class="divider"></li>
+           @if(SovaTranslate_001.auth.AuthHelper.IsAuthenticated(Context.ApplicationInstance.Context))
+                 {                              
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@SovaTranslate_001.auth.AuthHelper.GetUser(Context.ApplicationInstance.Context).email<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                      @switch (SovaTranslate_001.auth.AuthHelper.GetUser(Context.ApplicationInstance.Context).roleid)
+                      {
+                          case 0:
+                              {
+                                   break;
+                              }
+                              case 1:
+                              {
+                                  <li>@Html.ActionLink("Личный кабинет", "Index", "Manager")</li>; break;
+                              }
+                              case 2:
+                              {
+                                  <li>@Html.ActionLink("Личный кабинет", "Index", "Operator")</li>; break;
+                              }
+                              case 3:
+                              {
+                                  <li>@Html.ActionLink("Личный кабинет", "Index", "Admin")</li>; break;
+                              }
+                      }
+                    
+                    <li>@Html.ActionLink("Профиль","Profile","Account")</li>
+                    <li>@Html.ActionLink("Добавить заказ","Register","Application")</li>
+                    <li>@Html.ActionLink("Заказы","Orders","User")</li>
+                    <li class="divider"></li>
+                    <li>@Html.ActionLink("Выйти", "Logoff", "Account")</li>
+         
+                  </ul>  
+                   </li>
+                   }
+                   else{
+                   
+                                    
+                                   
+                     <li>@Html.ActionLink("Вход", "Login", "Account")</li>
+                     <li> @Html.ActionLink("Регистрация", "Registration", "Account")</li>
+                     
+                 }
+
+
+       
+      </ul>
+     
+    </div>
+</nav>  
+
+
+
+
+
+                
+
+                     
+
+   
+    <div class="content container">
+        
+     @RenderBody()
+    
+        </div>
+        <div id="push"></div>
+        </div>
+    <footer id="footer">
+        <div class="container">hey</div>
+    </footer>
+</body>
+    @if (!string.IsNullOrEmpty(ViewBag.CurrentPage))
+    {
+         <script type="text/javascript">
+             $(function () {
+                 $("a[title=@ViewBag.CurrentPage]").parent('li').addClass("active");
+             }
+             );
+         </script>
+    }
+</html>

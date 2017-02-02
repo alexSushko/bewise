@@ -1,0 +1,92 @@
+﻿@model SovaTranslate_001.Models.RegisterApplicationForm
+@{
+    ViewBag.Title = "Apply";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Apply</h2>
+
+@using (Html.BeginForm("Save", "Application", FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    <fieldset>
+         <div class="control-group">
+             @if(Model.userId!=0){@Html.Hidden("userId",Model.userId)}
+            @if(Model.name!=null){
+                @Html.Hidden("name", Model.name)
+            @Html.Label("Заявка "+ Model.name)
+            }
+            
+         <div class="control-group">
+            @if(Model.description!=null){
+            @Html.Hidden("description", Model.description)
+            @Html.Label("Описание заявки "+Model.description)
+            }
+           
+        </div>
+         <div class="control-group">
+            @Html.Hidden("deadline",Model.deadline)
+            @Html.Label(Model.deadline.ToShortDateString())
+           
+        </div>
+        
+        <div class="control-group">
+            @if(Model.text!=null){
+                @Html.Label("Текст перевода "+Model.text)
+            }
+
+            
+        </div>
+        <div class="control-group">
+            @Html.Label("Документы:")
+            @if(Model.UploadedFiles!=null&&Model.UploadedFiles[0]!=null){
+                
+               for(int i=0;i<Model.fileNames.Length;i++){
+                  
+               
+                
+                    @Html.Label("fileName",Model.fileNames[i])
+                @Html.Hidden("fileNames",Model.fileNames[i])
+
+                @*<br />
+                   for(int j =0; j<Model.specdoc[i].GetLength(0);j++){
+                    if((Model.specdoc[i])[j,0]!=0){
+                        @Html.Label(SovaTranslate_001.DataBase.GetSpecialization((int)(Model.specdoc[i])[j,1]).name+" - "+Math.Round((Model.specdoc[i])[j,0],2)+"%")
+                      <br />
+                    }
+                   }
+                   <br />*@
+                }
+            }
+              @foreach(var f in Model.translatefileNames){
+                  if(f!=null){
+                  @Html.Hidden("translatefileNames",f)
+            }
+            
+            }
+        </div><div class="control-group">
+            @Html.Hidden("Language", Model.Language)
+            @Html.Label("Язык:" +SovaTranslate_001.DataBase.GetLanguageName(Model.Language))
+          
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Спецификации:")
+            @foreach(var sp in Model.spec){
+               <input name="spec" type="hidden" class ="hiddenType" value="@sp" />
+                @Html.Label(SovaTranslate_001.DataBase.GetSpecialization(sp).name)
+            }
+            @*@Html.Hidden("price", Model.price)*@
+            </div>
+        
+        
+        <div class="control-group">@Html.Label("Цена: ")
+            @Html.Label(Model.price.ToString()+"грн")
+
+
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Добавить</button>
+        </div>
+    </fieldset>
+}
